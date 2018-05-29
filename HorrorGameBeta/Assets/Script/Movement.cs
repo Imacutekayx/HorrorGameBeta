@@ -4,12 +4,25 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour {
 
-    public float speed = 2;
-    public float turn = 2;
+    public float speed = 0.2f;
+    public float turn = 2f;
     private float turning;
+    private bool down;
 	
 	// Update is called once per frame
 	public void Update () {
+        //if (Input.GetKeyDown("left ctrl"))
+        //{
+        //    transform.position -= transform.up * speed;
+        //}
+        //else if(Input.GetKeyDown("left shift"))
+        //{
+        //    speed = speed * 1.5f;
+        //}
+        //else
+        //{
+        //    speed = speed / 1.5f;
+        //}
         if (Input.GetKey("w"))
         {
             transform.position += transform.forward * speed;
