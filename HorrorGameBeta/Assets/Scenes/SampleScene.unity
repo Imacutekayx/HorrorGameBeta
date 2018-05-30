@@ -3134,11 +3134,11 @@ BoxCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 801239942}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 83c39866c9f1b004abc9fdb9e6042004, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.5, y: 1.5, z: 1.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &801239944
 MeshRenderer:
@@ -5741,6 +5741,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1427944985}
   - component: {fileID: 1427944986}
+  - component: {fileID: 1427944987}
   m_Layer: 0
   m_Name: Spot Light
   m_TagString: Untagged
@@ -5771,7 +5772,7 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 3
+  m_Intensity: 2
   m_Range: 50
   m_SpotAngle: 50
   m_CookieSize: 10
@@ -5792,11 +5793,22 @@ Light:
     m_Bits: 4294967295
   m_Lightmapping: 1
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
+  m_BounceIntensity: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &1427944987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1427944984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7fbf1c468a2f0d4eb820be1baee3fa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1449911033
 GameObject:
   m_ObjectHideFlags: 0
@@ -8222,7 +8234,7 @@ GameObject:
   - component: {fileID: 1888835875}
   - component: {fileID: 1888835874}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
