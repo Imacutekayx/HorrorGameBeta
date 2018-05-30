@@ -41,15 +41,15 @@ public class Movement : MonoBehaviour {
         }
 
         //Sprint
-        if(Input.GetKey("left shift") && allowSprint)
+        if(Input.GetKey("left shift") && allowSprint && !sprint)
         {
             sprint = true;
-            speed *= 1.1f;
+            speed *= 4f;
         }
         else if (sprint)
         {
             sprint = false;
-            speed /= 1.1f;
+            speed /= 4f;
         }
 
         //Movements
