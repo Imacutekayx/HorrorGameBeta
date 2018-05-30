@@ -59,7 +59,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Script\Escape.cs" />
     <Compile Include="Assets\Script\Movement.cs" />
+    <Compile Include="Assets\Script\Rotation.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/briandgr/Desktop/HorrorGameBeta/HorrorGameBeta/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
