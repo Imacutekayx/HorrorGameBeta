@@ -975,7 +975,7 @@ GameObject:
   - component: {fileID: 128124086}
   m_Layer: 0
   m_Name: Spot Light
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967263
@@ -1295,7 +1295,7 @@ GameObject:
   - component: {fileID: 150217885}
   m_Layer: 0
   m_Name: Spot Light
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967263
@@ -2629,10 +2629,10 @@ GameObject:
   - component: {fileID: 318167102}
   m_Layer: 0
   m_Name: RedEyes
-  m_TagString: Untagged
+  m_TagString: RedEyes
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!136 &318167096
 CapsuleCollider:
@@ -3105,6 +3105,7 @@ GameObject:
   - component: {fileID: 386467878}
   - component: {fileID: 386467877}
   - component: {fileID: 386467876}
+  - component: {fileID: 386467879}
   m_Layer: 0
   m_Name: Switch0
   m_TagString: Untagged
@@ -3183,6 +3184,22 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 386467874}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &386467879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 386467874}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b79be6ba01da86419c80c0dbfd2802e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  red: {fileID: 0}
+  green: {fileID: 0}
+  maxRange: 5
+  minRange: 0
 --- !u!1 &419723881
 GameObject:
   m_ObjectHideFlags: 0
@@ -3279,7 +3296,7 @@ GameObject:
   - component: {fileID: 454975526}
   m_Layer: 0
   m_Name: Spot Light
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967263
@@ -3514,6 +3531,7 @@ GameObject:
   - component: {fileID: 470950511}
   - component: {fileID: 470950510}
   - component: {fileID: 470950509}
+  - component: {fileID: 470950512}
   m_Layer: 0
   m_Name: Light
   m_TagString: Untagged
@@ -3588,6 +3606,22 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 470950507}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &470950512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 470950507}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b79be6ba01da86419c80c0dbfd2802e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  red: {fileID: 318167095}
+  green: {fileID: 2100000, guid: ed076dbdd4078d244ba4ee222fb4b298, type: 2}
+  maxRange: 5
+  minRange: 0
 --- !u!1 &476299434
 GameObject:
   m_ObjectHideFlags: 0
@@ -3599,6 +3633,7 @@ GameObject:
   - component: {fileID: 476299438}
   - component: {fileID: 476299437}
   - component: {fileID: 476299436}
+  - component: {fileID: 476299439}
   m_Layer: 0
   m_Name: Light
   m_TagString: Untagged
@@ -3673,6 +3708,22 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 476299434}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &476299439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 476299434}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b79be6ba01da86419c80c0dbfd2802e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  red: {fileID: 318167095}
+  green: {fileID: 2100000, guid: ed076dbdd4078d244ba4ee222fb4b298, type: 2}
+  maxRange: 5
+  minRange: 0
 --- !u!1 &484808840
 GameObject:
   m_ObjectHideFlags: 0
@@ -3774,7 +3825,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &486731618
 Transform:
@@ -3940,7 +3991,7 @@ GameObject:
   - component: {fileID: 509439350}
   m_Layer: 0
   m_Name: Spot Light
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967263
@@ -7174,7 +7225,7 @@ GameObject:
   - component: {fileID: 930703608}
   m_Layer: 0
   m_Name: Spot Light
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967263
@@ -9406,7 +9457,7 @@ GameObject:
   - component: {fileID: 1102363172}
   m_Layer: 0
   m_Name: Lights
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967263
@@ -10918,7 +10969,7 @@ GameObject:
   - component: {fileID: 1300547576}
   m_Layer: 0
   m_Name: Spot Light
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967263
@@ -10983,7 +11034,7 @@ GameObject:
   - component: {fileID: 1303249663}
   m_Layer: 0
   m_Name: Spot Light
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967263
@@ -16607,7 +16658,7 @@ GameObject:
   - component: {fileID: 1882682111}
   m_Layer: 0
   m_Name: Spot Light
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967263
@@ -16847,7 +16898,7 @@ GameObject:
   - component: {fileID: 1888835874}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17214,6 +17265,7 @@ GameObject:
   - component: {fileID: 1922148662}
   - component: {fileID: 1922148661}
   - component: {fileID: 1922148660}
+  - component: {fileID: 1922148663}
   m_Layer: 0
   m_Name: Light
   m_TagString: Untagged
@@ -17288,6 +17340,22 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1922148658}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1922148663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1922148658}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b79be6ba01da86419c80c0dbfd2802e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  red: {fileID: 0}
+  green: {fileID: 2100000, guid: ed076dbdd4078d244ba4ee222fb4b298, type: 2}
+  maxRange: 5
+  minRange: 0
 --- !u!1 &1925549007
 GameObject:
   m_ObjectHideFlags: 0
@@ -17730,7 +17798,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2034424522
 Transform:

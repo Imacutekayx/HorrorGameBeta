@@ -10,6 +10,7 @@ public class Pathfinding : MonoBehaviour
     private Transform target;
     private NavMeshAgent agent;
     private float timer;
+    private SphereCollider coll;
 
     // Use this for initialization
     void OnEnable()

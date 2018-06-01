@@ -1,3 +1,2 @@
 Stairs
 Camera bug when rotation is inversed (behind the player's basic location)
-Bug Pathfinding without mesh
