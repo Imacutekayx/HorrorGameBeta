@@ -45,7 +45,10 @@ public class Switch : MonoBehaviour {
                 }
 
                 rend.material = green;
-                
+
+                kid.GetComponent<LightsOff>().on = true;
+                kid.GetComponent<LightsOff>().timer = 0;
+                GetComponent<Switch>().enabled = false;
             }
         }
     }
