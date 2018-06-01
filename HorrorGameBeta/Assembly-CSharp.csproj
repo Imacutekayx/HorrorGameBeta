@@ -62,6 +62,7 @@
     <Compile Include="Assets\Script\Escape.cs" />
     <Compile Include="Assets\Script\LightsOff.cs" />
     <Compile Include="Assets\Script\Movement.cs" />
+    <Compile Include="Assets\Script\Pathfinding.cs" />
     <Compile Include="Assets\Script\Rotation.cs" />
     <Compile Include="Assets\Script\Switch.cs" />
     <Compile Include="Assets\Script\ToggleLight.cs" />
