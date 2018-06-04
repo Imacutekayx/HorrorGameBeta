@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Movement : MonoBehaviour {
-
+    
     public float speed = 2.5f;
     private float translation;
     private float straffe;
@@ -29,7 +29,6 @@ public class Movement : MonoBehaviour {
             coll = GetComponent<CapsuleCollider>();
             coll.height = 1.5f;
             transform.Translate(0, -0.1f, 0);
-
         }
         else if (croutch)
         {
@@ -41,7 +40,7 @@ public class Movement : MonoBehaviour {
         }
 
         //Sprint
-        if(Input.GetKey("left shift") && allowSprint && !sprint)
+        if (Input.GetKey("left shift") && allowSprint && !sprint)
         {
             sprint = true;
             speed *= 4f;

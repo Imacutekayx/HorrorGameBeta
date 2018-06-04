@@ -11,6 +11,9 @@ TagManager:
   - S2
   - S0
   - PlayerLight
+  - MenuCamera
+  - PanelBase
+  - PanelOptions
   layers:
   - Default
   - TransparentFX

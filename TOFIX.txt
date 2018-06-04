@@ -1,4 +1,6 @@
 Stairs
-!Camera bug when rotation is inversed (behind the player's basic location)
-!Automaticaly out of scene
-Kid look at player after spawn
+Kid isLooked
+Menu
+SoundManager
+-Music
+-Sound

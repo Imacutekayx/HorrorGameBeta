@@ -59,19 +59,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Script\ChangeSpawn.cs" />
-    <Compile Include="Assets\Script\CheckSee.cs" />
-    <Compile Include="Assets\Script\Escape.cs" />
-    <Compile Include="Assets\Script\LightsOff.cs" />
-    <Compile Include="Assets\Script\LookAt.cs" />
-    <Compile Include="Assets\Script\Movement.cs" />
-    <Compile Include="Assets\Script\OnCollision.cs" />
-    <Compile Include="Assets\Script\Pathfinding.cs" />
-    <Compile Include="Assets\Script\Rotation.cs" />
-    <Compile Include="Assets\Script\Spawn.cs" />
-    <Compile Include="Assets\Script\StartGame.cs" />
-    <Compile Include="Assets\Script\Switch.cs" />
-    <Compile Include="Assets\Script\ToggleLight.cs" />
+    <Compile Include="Assets\Script\Kid\ChangeSpawn.cs" />
+    <Compile Include="Assets\Script\Kid\CheckSee.cs" />
+    <Compile Include="Assets\Script\Kid\LightsOff.cs" />
+    <Compile Include="Assets\Script\Kid\Spawn.cs" />
+    <Compile Include="Assets\Script\Menu\Menu.cs" />
+    <Compile Include="Assets\Script\Menu\Options.cs" />
+    <Compile Include="Assets\Script\Menu\QuitGame.cs" />
+    <Compile Include="Assets\Script\Menu\StartGame.cs" />
+    <Compile Include="Assets\Script\Menu\ToOptions.cs" />
+    <Compile Include="Assets\Script\Player\Escape.cs" />
+    <Compile Include="Assets\Script\Player\LookAt.cs" />
+    <Compile Include="Assets\Script\Player\Movement.cs" />
+    <Compile Include="Assets\Script\Player\Rotation.cs" />
+    <Compile Include="Assets\Script\Player\Switch.cs" />
+    <Compile Include="Assets\Script\Player\ToggleLight.cs" />
+    <Compile Include="Assets\Script\RedEyes\OnCollision.cs" />
+    <Compile Include="Assets\Script\RedEyes\Pathfinding.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/briandgr/Desktop/HorrorGameBeta/HorrorGameBeta/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
