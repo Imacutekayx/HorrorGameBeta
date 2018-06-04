@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ToggleLight : MonoBehaviour {
-    private Light spot;
+    public Light spot;
 
 	// Use this for initialization
 	void Start () {

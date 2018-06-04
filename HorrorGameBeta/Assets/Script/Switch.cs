@@ -37,8 +37,11 @@ public class Switch : MonoBehaviour {
             if (Input.GetKey("e"))
             {
                 red.GetComponent<Pathfinding>().enabled = false;
+                red.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
                 red.transform.position = new Vector3(18.72f, 16.38f, -29.36f);
                 
+                //TODO Play PowerOn
+
                 foreach(GameObject li in lights)
                 {
                     li.GetComponent<Light>().enabled = true;
@@ -48,6 +51,7 @@ public class Switch : MonoBehaviour {
 
                 kid.GetComponent<LightsOff>().on = true;
                 kid.GetComponent<LightsOff>().timer = 0;
+                //TODO Play LightOn
                 GetComponent<Switch>().enabled = false;
             }
         }

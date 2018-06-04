@@ -63,6 +63,7 @@
     <Compile Include="Assets\Script\CheckSee.cs" />
     <Compile Include="Assets\Script\Escape.cs" />
     <Compile Include="Assets\Script\LightsOff.cs" />
+    <Compile Include="Assets\Script\LookAt.cs" />
     <Compile Include="Assets\Script\Movement.cs" />
     <Compile Include="Assets\Script\OnCollision.cs" />
     <Compile Include="Assets\Script\Pathfinding.cs" />

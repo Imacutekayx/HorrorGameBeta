@@ -4,18 +4,22 @@ using UnityEngine;
 
 public class OnCollision : MonoBehaviour {
 
-    public GameObject cam;
+    public GameObject player;
 
 	// Use this for initialization
 	void Start () {
-        cam = GameObject.FindWithTag("MainCamera");
+        player = GameObject.FindWithTag("Player");
 	}
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.tag == "Player")
         {
-            cam.transform.rotation = Quaternion.Euler(-90f, 0f, 0f);
+            player.transform.LookAt(new Vector3(0, 9000, 0));
+            //TODO Play KillRed
+            player.GetComponent<Movement>().enabled = false;
+            player.GetComponent<Rotation>().enabled = false;
+            GetComponent<CheckSee>().enabled = false;
         }
     }
 }
