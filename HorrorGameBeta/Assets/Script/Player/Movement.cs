@@ -13,11 +13,6 @@ public class Movement : MonoBehaviour {
 
     private CapsuleCollider coll;
 
-    private void Start()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-    }
-
     // Update is called once per frame
     public void Update ()
     {

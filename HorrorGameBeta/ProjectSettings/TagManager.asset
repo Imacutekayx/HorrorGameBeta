@@ -14,6 +14,7 @@ TagManager:
   - MenuCamera
   - PanelBase
   - PanelOptions
+  - Menu
   layers:
   - Default
   - TransparentFX
