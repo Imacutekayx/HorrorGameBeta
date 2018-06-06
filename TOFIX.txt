@@ -1,6 +1,5 @@
 Stairs
 Kid isLooked
-SoundManager
--Music
--Sound
-Menu Music
+Music
+Sound Menu
+Start Scene

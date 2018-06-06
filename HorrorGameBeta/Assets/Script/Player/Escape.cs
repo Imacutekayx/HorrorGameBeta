@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class Escape : MonoBehaviour {
     public GameObject player;
@@ -8,6 +10,9 @@ public class Escape : MonoBehaviour {
     public GameObject red;
     public GameObject menu;
     public GameObject menuOptions;
+    public AudioClip menuEscape;
+    public AudioMixer music;
+    public Slider musicVolume;
 
 	// Use this for initialization
 	void Start () {
@@ -20,6 +25,7 @@ public class Escape : MonoBehaviour {
 	void Update () {
         if (Input.GetKey("escape"))
         {
+            menu.GetComponent<AudioSource>().clip = menuEscape;
             Cursor.lockState = CursorLockMode.Confined;
             //Red
             red.GetComponent<Rigidbody>().freezeRotation = true;
@@ -43,6 +49,7 @@ public class Escape : MonoBehaviour {
             }
 
             //Menu
+            music.SetFloat("MusicVolume", musicVolume.value * 40 - 30);
             menu.SetActive(true);
             menuOptions.SetActive(true);
 

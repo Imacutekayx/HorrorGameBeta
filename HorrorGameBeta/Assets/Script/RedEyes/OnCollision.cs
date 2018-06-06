@@ -5,6 +5,7 @@ using UnityEngine;
 public class OnCollision : MonoBehaviour {
 
     public GameObject player;
+    public AudioClip killRed;
 
 	// Use this for initialization
 	void Start () {
@@ -15,8 +16,9 @@ public class OnCollision : MonoBehaviour {
     {
         if (collision.collider.tag == "Player")
         {
+            GetComponent<AudioSource>().clip = killRed;
+            GetComponent<AudioSource>().Play();
             player.transform.LookAt(new Vector3(0, 9000, 0));
-            //TODO Play KillRed
             player.GetComponent<Movement>().enabled = false;
             player.GetComponent<Rotation>().enabled = false;
             GetComponent<CheckSee>().enabled = false;

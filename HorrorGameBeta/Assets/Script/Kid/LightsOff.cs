@@ -12,7 +12,10 @@ public class LightsOff : MonoBehaviour {
     private GameObject[] lights;
     public GameObject kid;
     public GameObject red;
+    public GameObject house;
     public Material redLight;
+    public AudioClip powerOff;
+    public AudioClip spawnRed;
 
     // Use this for initialization
     void Start ()
@@ -20,6 +23,7 @@ public class LightsOff : MonoBehaviour {
         lights = GameObject.FindGameObjectsWithTag("Light");
         kid = GameObject.FindWithTag("Kid");
         red = GameObject.FindWithTag("RedEyes");
+        house = GameObject.FindWithTag("Environnement");
     }
 
     private void Update()
@@ -32,8 +36,7 @@ public class LightsOff : MonoBehaviour {
             {
                 li.GetComponent<Light>().enabled = false;
             }
-
-            //TODO Play PowerOff
+            
             rnd = System.Convert.ToByte(Random.Range(0, 2));
             floatX = kid.GetComponent<Spawn>().x;
             System.Console.WriteLine(floatX);
@@ -88,9 +91,12 @@ public class LightsOff : MonoBehaviour {
                     }
                 }
             }
+            red.GetComponent<AudioSource>().clip = spawnRed;
+            red.GetComponent<AudioSource>().Play();
             red.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = true;
             red.GetComponent<Pathfinding>().enabled = true;
-            //TODO Play LightOff
+            house.GetComponent<AudioSource>().clip = powerOff;
+            house.GetComponent<AudioSource>().Play();
             kid.GetComponent<LightsOff>().enabled = false;
         }
         else

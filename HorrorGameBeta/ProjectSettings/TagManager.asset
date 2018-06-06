@@ -17,6 +17,7 @@ TagManager:
   - Menu
   - Environnement
   - Door
+  - Music
   layers:
   - Default
   - TransparentFX

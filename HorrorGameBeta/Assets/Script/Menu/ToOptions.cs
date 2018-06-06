@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class ToOptions : MonoBehaviour {
     public GameObject menu;
@@ -11,6 +13,9 @@ public class ToOptions : MonoBehaviour {
     public GameObject player;
     public Camera mainCam;
     public Camera menuCam;
+    public AudioMixer music;
+    public Slider musicVolume;
+
     public bool redStateActif;
     public bool kidStateActif;
     public bool inGame = false;
@@ -35,6 +40,7 @@ public class ToOptions : MonoBehaviour {
             inGame = false;
             kidStateActif = false;
             redStateActif = false;
+            music.SetFloat("MusicVolume", musicVolume.value * 40 - 20);
         }
         panelOptions.SetActive(false);
         panelMenu.SetActive(true);
@@ -42,16 +48,14 @@ public class ToOptions : MonoBehaviour {
 
     public void Validate()
     {
-        //TODO Add Parameters
-
         if(kid.transform.position == new Vector3(2.34f, 3.62f, -1.27f))
         {
             ToMenu();
         }
         else
         {
+            music.SetFloat("MusicVolume", musicVolume.value * 40 - 20);
             menu.SetActive(false);
-            //TODO reactivate escape parameters
             if (redStateActif)
             {
                 red.GetComponent<Pathfinding>().enabled = true;

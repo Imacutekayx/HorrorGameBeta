@@ -1,22 +1,21 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class StartGame : MonoBehaviour {
     public GameObject player;
     public GameObject kid;
     public GameObject red;
     public GameObject menu;
+    public GameObject menuOptions;
+    public GameObject menuBase;
+    public GameObject door;
+    public GameObject house;
     public Camera mainCam;
     public Camera menuCam;
     public Material green;
-    public GameObject menuOptions;
-    public GameObject menuBase;
-
     public AudioMixer music;
-    public GameObject door;
-    public GameObject house;
+    public Slider musicVolume;
 
     private GameObject[] lights;
 
@@ -26,13 +25,27 @@ public class StartGame : MonoBehaviour {
         kid = GameObject.FindWithTag("Kid");
         door = GameObject.FindWithTag("Door");
         house = GameObject.FindWithTag("Environnement");
+        red = GameObject.FindWithTag("RedEyes");
+        red.transform.SetPositionAndRotation(new Vector3(18.72f, 15.52f, -29.36f), Quaternion.Euler(0, 0, 0));
+
+        //TODO Create Start Scene
     }
 
     public void StartingGame()
     {
-        StartScene();
-        //Music
+        //Lights
+        lights = GameObject.FindGameObjectsWithTag("Light");
+        foreach (GameObject li in lights)
+        {
+            li.GetComponent<Light>().enabled = true;
+        }
 
+        music.SetFloat("MusicVolume", -80f);
+        
+        StartScene();
+
+        //Music
+        music.SetFloat("MusicVolume", musicVolume.value * 40 - 20);
 
         //Player
         player.GetComponent<Movement>().enabled = true;
@@ -51,20 +64,11 @@ public class StartGame : MonoBehaviour {
         kid.GetComponent<CheckSee>().enabled = false;
 
         //RedEyes
-        red = GameObject.FindWithTag("RedEyes");
-        red.transform.SetPositionAndRotation(new Vector3(18.72f, 15.52f, -29.36f), Quaternion.Euler(0, 0, 0));
         red.GetComponent<Rigidbody>().freezeRotation = false;
         red.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
         red.GetComponent<Pathfinding>().enabled = false;
         red.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
-
-        //Lights
-        lights = GameObject.FindGameObjectsWithTag("Light");
-        foreach (GameObject li in lights)
-        {
-            li.GetComponent<Light>().enabled = true;
-        }
-
+        
         //Switches
         GameObject.FindWithTag("S0").GetComponent<Renderer>().material = green;
         GameObject.FindWithTag("S0").GetComponent<Switch>().enabled = false;

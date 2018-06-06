@@ -7,14 +7,15 @@ public class Switch : MonoBehaviour {
     public GameObject target;
     public GameObject red;
     public GameObject kid;
+    public GameObject house;
     public Material green;
+    public AudioClip bouton;
+    public AudioClip lightOn;
+    private Renderer rend;
+    private GameObject[] lights;
 
     public int maxRange;
     public int minRange;
-
-    private Vector3 targetTran;
-    private Renderer rend;
-    private GameObject[] lights;
 
 
     // Use this for initialization
@@ -23,8 +24,8 @@ public class Switch : MonoBehaviour {
         target = GameObject.FindWithTag("Player");
         red = GameObject.FindWithTag("RedEyes");
         kid = GameObject.FindWithTag("Kid");
+        house = GameObject.FindWithTag("Environnement");
         lights = GameObject.FindGameObjectsWithTag("Light");
-        targetTran = target.transform.position;
         rend = GetComponent<Renderer>();
     }
 
@@ -36,13 +37,17 @@ public class Switch : MonoBehaviour {
         {
             if (Input.GetKey("e"))
             {
+                GetComponent<AudioSource>().clip = bouton;
+                GetComponent<AudioSource>().Play();
+
                 red.GetComponent<Pathfinding>().enabled = false;
                 red.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
                 red.transform.position = new Vector3(18.72f, 16.38f, -29.36f);
                 
-                //TODO Play PowerOn
+                house.GetComponent<AudioSource>().clip = lightOn;
+                house.GetComponent<AudioSource>().Play();
 
-                foreach(GameObject li in lights)
+                foreach (GameObject li in lights)
                 {
                     li.GetComponent<Light>().enabled = true;
                 }
@@ -51,7 +56,6 @@ public class Switch : MonoBehaviour {
 
                 kid.GetComponent<LightsOff>().on = true;
                 kid.GetComponent<LightsOff>().timer = 0;
-                //TODO Play LightOn
                 GetComponent<Switch>().enabled = false;
             }
         }

@@ -27,7 +27,20 @@ public class ChangeSettings : MonoBehaviour {
 
     public void ChangeSoundVolume(float volume)
     {
-
+        if (volume != 0)
+        {
+            volume = volume * 40 - 20;
+        }
+        else
+        {
+            volume = -80;
+        }
+        audioMixer.SetFloat("SoundVolume", volume);
+        audioMixer.SetFloat("PlayerVolume", volume);
+        audioMixer.SetFloat("FlashlightVolume", volume);
+        audioMixer.SetFloat("MenuVolume", volume);
+        audioMixer.SetFloat("KidVolume", volume);
+        audioMixer.SetFloat("RedVolume", volume);
     }
 
     public void ChangeSensibility(float sensibility)
