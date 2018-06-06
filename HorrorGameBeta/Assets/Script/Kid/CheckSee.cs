@@ -6,6 +6,7 @@ public class CheckSee : MonoBehaviour {
     public GameObject player;
     public GameObject playerLight;
     public GameObject kid;
+    public AudioClip killKid;
     private Light spot;
 
     public bool isLookedAt = false;
@@ -42,7 +43,8 @@ public class CheckSee : MonoBehaviour {
             if(killCount * Time.deltaTime > 3)
             {
                 player.transform.LookAt(new Vector3(0, 9000, 0));
-                //TODO Play KillKid
+                GetComponent<AudioSource>().clip = killKid;
+                GetComponent<AudioSource>().Play();
                 player.GetComponent<Movement>().enabled = false;
                 player.GetComponent<Rotation>().enabled = false;
                 GetComponent<CheckSee>().enabled = false;

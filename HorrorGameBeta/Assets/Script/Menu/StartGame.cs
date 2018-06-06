@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class StartGame : MonoBehaviour {
     public GameObject player;
@@ -13,18 +14,35 @@ public class StartGame : MonoBehaviour {
     public GameObject menuOptions;
     public GameObject menuBase;
 
+    public AudioMixer music;
+    public GameObject door;
+    public GameObject house;
+
     private GameObject[] lights;
 
-	public void StartingGame()
+    private void StartScene()
     {
-        //Player
         player = GameObject.FindWithTag("Player");
+        kid = GameObject.FindWithTag("Kid");
+        door = GameObject.FindWithTag("Door");
+        house = GameObject.FindWithTag("Environnement");
+    }
+
+    public void StartingGame()
+    {
+        StartScene();
+        //Music
+
+
+        //Player
         player.GetComponent<Movement>().enabled = true;
         player.GetComponent<Rotation>().enabled = true;
         player.GetComponent<Escape>().enabled = true;
+        player.GetComponent<Rigidbody>().useGravity = true;
+        player.GetComponent<Rigidbody>().freezeRotation = false;
+        player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
 
         //Kid
-        kid = GameObject.FindWithTag("Kid");
         kid.transform.SetPositionAndRotation(new Vector3(18f, 30f, -28f), Quaternion.Euler(0, 0, 0));
         kid.GetComponent<LightsOff>().enabled = true;
         kid.GetComponent<LightsOff>().timer = 0;
@@ -35,6 +53,8 @@ public class StartGame : MonoBehaviour {
         //RedEyes
         red = GameObject.FindWithTag("RedEyes");
         red.transform.SetPositionAndRotation(new Vector3(18.72f, 15.52f, -29.36f), Quaternion.Euler(0, 0, 0));
+        red.GetComponent<Rigidbody>().freezeRotation = false;
+        red.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
         red.GetComponent<Pathfinding>().enabled = false;
         red.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
 
@@ -54,7 +74,6 @@ public class StartGame : MonoBehaviour {
         GameObject.FindWithTag("S2").GetComponent<Switch>().enabled = false;
 
         //Menu
-        menu = GameObject.FindWithTag("Menu");
         menu.SetActive(false);
         menuBase.SetActive(false);
         menuOptions.GetComponent<ToOptions>().inGame = true;

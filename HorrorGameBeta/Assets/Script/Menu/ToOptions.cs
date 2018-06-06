@@ -17,9 +17,6 @@ public class ToOptions : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        menu = GameObject.FindWithTag("Menu");
-        panelMenu = GameObject.FindWithTag("PanelBase");
-        panelOptions = GameObject.FindWithTag("PanelOptions");
         player = GameObject.FindWithTag("Player");
         kid = GameObject.FindWithTag("Kid");
         red = GameObject.FindWithTag("RedEyes");
@@ -31,9 +28,13 @@ public class ToOptions : MonoBehaviour {
         {
             kid.transform.SetPositionAndRotation(new Vector3(2.34f, 3.62f, -1.27f), Quaternion.Euler(0, 160, 0));
             player.transform.SetPositionAndRotation(new Vector3(18.72f, 7.33f, -31.28f), Quaternion.Euler(0, 0, 0));
+            player.GetComponent<Rigidbody>().useGravity = false;
+            player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
             mainCam.enabled = false;
             menuCam.enabled = true;
             inGame = false;
+            kidStateActif = false;
+            redStateActif = false;
         }
         panelOptions.SetActive(false);
         panelMenu.SetActive(true);
@@ -62,14 +63,17 @@ public class ToOptions : MonoBehaviour {
             }
             else
             {
-                kid.GetComponent<Spawn>().enabled = false;
+                kid.GetComponent<Spawn>().enabled = true;
+                kid.GetComponent<LightsOff>().enabled = true;
             }
             player.GetComponent<Rigidbody>().freezeRotation = false;
+            player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
             player.GetComponent<Movement>().enabled = true;
             player.GetComponent<Rotation>().enabled = true;
             player.GetComponent<Escape>().enabled = true;
             redStateActif = false;
             kidStateActif = false;
+            Cursor.lockState = CursorLockMode.Locked;
         }
     }
 }

@@ -1,6 +1,5 @@
 Stairs
 Kid isLooked
-Bug Menu Back
 SoundManager
 -Music
 -Sound

@@ -22,6 +22,7 @@ public class Escape : MonoBehaviour {
         {
             Cursor.lockState = CursorLockMode.Confined;
             //Red
+            red.GetComponent<Rigidbody>().freezeRotation = true;
             if (red.GetComponent<Pathfinding>().enabled)
             {
                 red.GetComponent<Pathfinding>().enabled = false;
