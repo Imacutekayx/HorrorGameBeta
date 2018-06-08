@@ -63,6 +63,7 @@
     <Compile Include="Assets\Script\Kid\CheckSee.cs" />
     <Compile Include="Assets\Script\Kid\LightsOff.cs" />
     <Compile Include="Assets\Script\Kid\Spawn.cs" />
+    <Compile Include="Assets\Script\Menu\BeginGame.cs" />
     <Compile Include="Assets\Script\Menu\ChangeSettings.cs" />
     <Compile Include="Assets\Script\Menu\OnEnter.cs" />
     <Compile Include="Assets\Script\Menu\QuitGame.cs" />
@@ -74,6 +75,9 @@
     <Compile Include="Assets\Script\Player\Rotation.cs" />
     <Compile Include="Assets\Script\Player\Switch.cs" />
     <Compile Include="Assets\Script\Player\ToggleLight.cs" />
+    <Compile Include="Assets\Script\RedEyes\AreaCheck.cs" />
+    <Compile Include="Assets\Script\RedEyes\AreaCollision.cs" />
+    <Compile Include="Assets\Script\RedEyes\Chase.cs" />
     <Compile Include="Assets\Script\RedEyes\OnCollision.cs" />
     <Compile Include="Assets\Script\RedEyes\Pathfinding.cs" />
     <Reference Include="UnityEditor.StandardEvents">

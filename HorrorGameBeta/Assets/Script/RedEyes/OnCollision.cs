@@ -5,15 +5,12 @@ using UnityEngine;
 public class OnCollision : MonoBehaviour {
 
     public GameObject player;
+    public GameObject playerLight;
     public GameObject musicPlayer;
+    public GameObject menu;
+    public GameObject menuGameOver;
     public AudioClip killRed;
-
-	// Use this for initialization
-	void Start () {
-        player = GameObject.FindWithTag("Player");
-        musicPlayer = GameObject.FindWithTag("Music");
-	}
-
+    
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.tag == "Player")
@@ -24,6 +21,11 @@ public class OnCollision : MonoBehaviour {
             player.transform.LookAt(new Vector3(0, 9000, 0));
             player.GetComponent<Movement>().enabled = false;
             player.GetComponent<Rotation>().enabled = false;
+            player.GetComponent<Escape>().enabled = false;
+            playerLight.GetComponent<ToggleLight>().enabled = false;
+            Cursor.lockState = CursorLockMode.Confined;
+            menu.SetActive(true);
+            menuGameOver.SetActive(true);
             GetComponent<CheckSee>().enabled = false;
         }
     }

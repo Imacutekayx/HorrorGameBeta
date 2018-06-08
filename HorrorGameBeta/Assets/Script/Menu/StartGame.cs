@@ -10,6 +10,7 @@ public class StartGame : MonoBehaviour {
     public GameObject menu;
     public GameObject menuOptions;
     public GameObject menuBase;
+    public GameObject menuGameOver;
     public GameObject door;
     public GameObject house;
     public GameObject musicPlayer;
@@ -26,7 +27,6 @@ public class StartGame : MonoBehaviour {
     public AnimationClip enterHouse;
     public AnimationClip watch01;
     public AnimationClip watch02;
-
     private GameObject[] lights;
     private Animation playerAnim;
     private AudioSource doorSound;
@@ -46,12 +46,13 @@ public class StartGame : MonoBehaviour {
         doorSound.Play();
         playerAnim.Play("watch01");
         while (player.GetComponent<Animation>().IsPlaying("watch01")) { }
+        kid.transform.SetPositionAndRotation(new Vector3(18f, 30f, -28f), Quaternion.Euler(0, 0, 0));
         doorSound.clip = door3;
         playerAnim.Play("watch02");
         while (player.GetComponent<Animation>().IsPlaying("watch02")) { }
     }
 
-    public void StartingGame()
+    public void StartingGame(bool retry)
     {
         //Lights
         lights = GameObject.FindGameObjectsWithTag("Light");
@@ -63,6 +64,7 @@ public class StartGame : MonoBehaviour {
         music.SetFloat("MusicVolume", -80f);
 
         player = GameObject.FindWithTag("Player");
+        player.transform.SetPositionAndRotation(new Vector3(18.72f, 6.23f, -32.03f), Quaternion.Euler(0, 0, 0));
         playerAnim = player.GetComponent<Animation>();
         playerAnim.AddClip(enterHouse, "enterHouse");
         playerAnim.AddClip(watch01, "watch01");
@@ -72,11 +74,12 @@ public class StartGame : MonoBehaviour {
         house = GameObject.FindWithTag("Environnement");
         red = GameObject.FindWithTag("RedEyes");
         red.transform.SetPositionAndRotation(new Vector3(18.72f, 15.52f, -29.36f), Quaternion.Euler(0, 0, 0));
-        flashLight.transform.SetPositionAndRotation(new Vector3(0.2399998f, -2.22f, 1.642246f), Quaternion.Euler(90, 0, 0));
+        flashLight.transform.SetPositionAndRotation(new Vector3(19.15f, 4.3f, -30.14f), Quaternion.Euler(90, 0, 0));
 
         //Menu
         menu.SetActive(false);
         menuBase.SetActive(false);
+        menuGameOver.SetActive(false);
         menuOptions.GetComponent<ToOptions>().inGame = true;
 
         //Cameras
@@ -85,7 +88,10 @@ public class StartGame : MonoBehaviour {
         Cursor.lockState = CursorLockMode.Locked;
 
         //STARTSCENE
-        //StartScene();
+        if (!retry)
+        {
+            //StartScene();
+        }
 
         //Music
         musicPlayer = GameObject.FindWithTag("Music");
@@ -102,7 +108,7 @@ public class StartGame : MonoBehaviour {
         player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
 
         //FlashLight
-        flashLight.transform.SetPositionAndRotation(new Vector3(0.2399998f, -0.7800007f, 1.642246f), Quaternion.Euler(90, 0, 0));
+        flashLight.transform.SetPositionAndRotation(new Vector3(19.15f, 5.3f, -30.14f), Quaternion.Euler(90, 0, 0));
 
         //Kid
         kid.transform.SetPositionAndRotation(new Vector3(18f, 30f, -28f), Quaternion.Euler(0, 0, 0));

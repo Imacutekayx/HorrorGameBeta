@@ -1,6 +1,5 @@
 Stairs
-Kid isLooked
 Bug Sound Movement
 Bug Sound Menu
 Start Scene thunder
-GameOver
+SoundChase

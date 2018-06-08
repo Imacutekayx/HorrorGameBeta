@@ -5,6 +5,7 @@ using UnityEngine;
 public class LookAt : MonoBehaviour
 {
     public GameObject kid;
+    public GameObject red;
     private Vector3 hostPos;
     private Vector3 targetPos;
     private RaycastHit hit;
@@ -13,23 +14,35 @@ public class LookAt : MonoBehaviour
     void Start()
     {
         kid = GameObject.FindWithTag("Kid");
+        red = GameObject.FindWithTag("RedEyes");
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        // Will contain the information of which object the raycast hit
-        RaycastHit hit;
-
-        // if raycast hits, it checks if it hit an object with the tag Player
-        if (Physics.Raycast(transform.position, transform.forward, out hit, 10000) &&
-                    hit.collider.gameObject.CompareTag("Kid"))
+        switch (other.GetComponent<Collider>().tag)
         {
-            Debug.Log("True");
+            case "Kid":
+                {
+                    kid.GetComponent<CheckSee>().isLookedAt = true;
+                    break;
+                }
+            case "RedEyes":
+                {
+                    if (!red.GetComponent<Chase>().enabled && !kid.GetComponent<LightsOff>().enabled)
+                    {
+                        red.GetComponent<Chase>().enabled = true;
+                        red.GetComponent<AreaCheck>().enabled = true;
+                    }
+                    break;
+                }
         }
-        else
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.GetComponent<Collider>().tag == "Kid")
         {
-            Debug.Log("false");
+            kid.GetComponent<CheckSee>().isLookedAt = false;
         }
     }
 }

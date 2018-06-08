@@ -12,6 +12,7 @@ public class ToOptions : MonoBehaviour {
     public GameObject red;
     public GameObject player;
     public GameObject musicPlayer;
+    public GameObject menuGameOver;
     public Camera mainCam;
     public Camera menuCam;
     public AudioMixer music;
@@ -46,6 +47,7 @@ public class ToOptions : MonoBehaviour {
             music.SetFloat("MusicVolume", musicVolume.value * 40 - 20);
             musicPlayer.GetComponent<AudioSource>().clip = menuMusic;
             musicPlayer.GetComponent<AudioSource>().Play();
+            menuGameOver.SetActive(false);
         }
         panelOptions.SetActive(false);
         panelMenu.SetActive(true);
@@ -61,6 +63,7 @@ public class ToOptions : MonoBehaviour {
         {
             music.SetFloat("MusicVolume", musicVolume.value * 40 - 20);
             menu.SetActive(false);
+            panelOptions.SetActive(false);
             if (redStateActif)
             {
                 red.GetComponent<Pathfinding>().enabled = true;
