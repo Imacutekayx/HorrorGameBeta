@@ -1,5 +1,5 @@
 Stairs
 Kid isLooked
-Music
-Sound Menu
+Bug Sound Movement
 Start Scene
+GameOver

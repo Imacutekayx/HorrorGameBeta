@@ -8,9 +8,11 @@ public class Switch : MonoBehaviour {
     public GameObject red;
     public GameObject kid;
     public GameObject house;
+    public GameObject musicPlayer;
     public Material green;
     public AudioClip bouton;
     public AudioClip lightOn;
+    public AudioClip lightOnMusic;
     private Renderer rend;
     private GameObject[] lights;
 
@@ -26,6 +28,7 @@ public class Switch : MonoBehaviour {
         kid = GameObject.FindWithTag("Kid");
         house = GameObject.FindWithTag("Environnement");
         lights = GameObject.FindGameObjectsWithTag("Light");
+        musicPlayer = GameObject.FindWithTag("Music");
         rend = GetComponent<Renderer>();
     }
 
@@ -56,6 +59,10 @@ public class Switch : MonoBehaviour {
 
                 kid.GetComponent<LightsOff>().on = true;
                 kid.GetComponent<LightsOff>().timer = 0;
+
+                musicPlayer.GetComponent<AudioSource>().clip = lightOnMusic;
+                musicPlayer.GetComponent<AudioSource>().Play();
+
                 GetComponent<Switch>().enabled = false;
             }
         }

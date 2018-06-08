@@ -11,9 +11,11 @@ public class ToOptions : MonoBehaviour {
     public GameObject kid;
     public GameObject red;
     public GameObject player;
+    public GameObject musicPlayer;
     public Camera mainCam;
     public Camera menuCam;
     public AudioMixer music;
+    public AudioClip menuMusic;
     public Slider musicVolume;
 
     public bool redStateActif;
@@ -25,6 +27,7 @@ public class ToOptions : MonoBehaviour {
         player = GameObject.FindWithTag("Player");
         kid = GameObject.FindWithTag("Kid");
         red = GameObject.FindWithTag("RedEyes");
+        musicPlayer = GameObject.FindWithTag("Music");
     }
 
     public void ToMenu()
@@ -41,6 +44,8 @@ public class ToOptions : MonoBehaviour {
             kidStateActif = false;
             redStateActif = false;
             music.SetFloat("MusicVolume", musicVolume.value * 40 - 20);
+            musicPlayer.GetComponent<AudioSource>().clip = menuMusic;
+            musicPlayer.GetComponent<AudioSource>().Play();
         }
         panelOptions.SetActive(false);
         panelMenu.SetActive(true);

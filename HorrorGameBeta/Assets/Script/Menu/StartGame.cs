@@ -11,10 +11,12 @@ public class StartGame : MonoBehaviour {
     public GameObject menuBase;
     public GameObject door;
     public GameObject house;
+    public GameObject musicPlayer;
     public Camera mainCam;
     public Camera menuCam;
     public Material green;
     public AudioMixer music;
+    public AudioClip lightOn;
     public Slider musicVolume;
 
     private GameObject[] lights;
@@ -45,8 +47,11 @@ public class StartGame : MonoBehaviour {
         StartScene();
 
         //Music
+        musicPlayer = GameObject.FindWithTag("Music");
+        musicPlayer.GetComponent<AudioSource>().clip = lightOn;
+        musicPlayer.GetComponent<AudioSource>().Play();
         music.SetFloat("MusicVolume", musicVolume.value * 40 - 20);
-
+        
         //Player
         player.GetComponent<Movement>().enabled = true;
         player.GetComponent<Rotation>().enabled = true;

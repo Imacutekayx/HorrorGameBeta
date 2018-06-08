@@ -32,7 +32,7 @@ public class Movement : MonoBehaviour {
     public void Update ()
     {
         //Croutch
-        if (Input.GetKey("left ctrl"))
+        if (Input.GetKey("left ctrl") && !croutch)
         {
             if (soundVolume.value != 0 && player.GetComponent<AudioSource>().clip != crouch)
             {
@@ -45,7 +45,7 @@ public class Movement : MonoBehaviour {
             transform.Translate(0, -0.1f, 0);
             speed /= 2f;
         }
-        else if (croutch)
+        else if (!Input.GetKey("left ctrl") && croutch)
         {
             if (soundVolume.value != 0)
             {
@@ -71,7 +71,7 @@ public class Movement : MonoBehaviour {
             sprint = true;
             speed *= 4f;
         }
-        else if (sprint)
+        else if (!Input.GetKey("left shift") && sprint)
         {
             if(soundVolume.value != 0)
             {
@@ -85,13 +85,11 @@ public class Movement : MonoBehaviour {
         if(Input.GetKey("w") || Input.GetKey("a") || Input.GetKey("s") || Input.GetKey("d") && !walking)
         {
             walking = true;
-            player.GetComponent<AudioSource>().enabled = true;
             player.GetComponent<AudioSource>().Play();
         }
-        else if (walking)
+        else if (!Input.GetKey("w") && !Input.GetKey("a") && !Input.GetKey("s") && !Input.GetKey("d") && walking)
         {
             walking = false;
-            player.GetComponent<AudioSource>().enabled = false;
         }
 
         //Movements

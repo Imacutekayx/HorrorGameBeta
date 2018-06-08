@@ -1,11 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CheckSee : MonoBehaviour {
     public GameObject player;
     public GameObject playerLight;
     public GameObject kid;
+    public GameObject musicPlayer;
     public AudioClip killKid;
     private Light spot;
 
@@ -17,6 +16,7 @@ public class CheckSee : MonoBehaviour {
 	void Start () {
         player = GameObject.FindWithTag("Player");
         playerLight = GameObject.FindWithTag("PlayerLight");
+        musicPlayer = GameObject.FindWithTag("Music");
         spot = playerLight.GetComponent<Light>();
         killCount = 0;
         safeCount = 0;
@@ -42,6 +42,7 @@ public class CheckSee : MonoBehaviour {
             ++killCount;
             if(killCount * Time.deltaTime > 3)
             {
+                musicPlayer.GetComponent<AudioSource>().Stop();
                 player.transform.LookAt(new Vector3(0, 9000, 0));
                 GetComponent<AudioSource>().clip = killKid;
                 GetComponent<AudioSource>().Play();

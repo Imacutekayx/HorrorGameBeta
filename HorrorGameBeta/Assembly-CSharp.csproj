@@ -64,6 +64,7 @@
     <Compile Include="Assets\Script\Kid\LightsOff.cs" />
     <Compile Include="Assets\Script\Kid\Spawn.cs" />
     <Compile Include="Assets\Script\Menu\ChangeSettings.cs" />
+    <Compile Include="Assets\Script\Menu\OnEnter.cs" />
     <Compile Include="Assets\Script\Menu\QuitGame.cs" />
     <Compile Include="Assets\Script\Menu\StartGame.cs" />
     <Compile Include="Assets\Script\Menu\ToOptions.cs" />

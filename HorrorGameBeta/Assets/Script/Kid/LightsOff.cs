@@ -13,9 +13,11 @@ public class LightsOff : MonoBehaviour {
     public GameObject kid;
     public GameObject red;
     public GameObject house;
+    public GameObject musicPlayer;
     public Material redLight;
     public AudioClip powerOff;
     public AudioClip spawnRed;
+    public AudioClip lightOff;
 
     // Use this for initialization
     void Start ()
@@ -24,6 +26,7 @@ public class LightsOff : MonoBehaviour {
         kid = GameObject.FindWithTag("Kid");
         red = GameObject.FindWithTag("RedEyes");
         house = GameObject.FindWithTag("Environnement");
+        musicPlayer = GameObject.FindWithTag("Music");
     }
 
     private void Update()
@@ -98,6 +101,8 @@ public class LightsOff : MonoBehaviour {
             house.GetComponent<AudioSource>().clip = powerOff;
             house.GetComponent<AudioSource>().Play();
             kid.GetComponent<LightsOff>().enabled = false;
+            musicPlayer.GetComponent<AudioSource>().clip = lightOff;
+            musicPlayer.GetComponent<AudioSource>().Play();
         }
         else
         {
