@@ -18,6 +18,18 @@ public class LookAt : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //TODO LookAt who change isLookedAt value of CheckSee
+        // Will contain the information of which object the raycast hit
+        RaycastHit hit;
+
+        // if raycast hits, it checks if it hit an object with the tag Player
+        if (Physics.Raycast(transform.position, transform.forward, out hit, 10000) &&
+                    hit.collider.gameObject.CompareTag("Kid"))
+        {
+            Debug.Log("True");
+        }
+        else
+        {
+            Debug.Log("false");
+        }
     }
 }

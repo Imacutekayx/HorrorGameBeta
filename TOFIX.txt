@@ -1,5 +1,6 @@
 Stairs
 Kid isLooked
 Bug Sound Movement
-Start Scene
+Bug Sound Menu
+Start Scene thunder
 GameOver

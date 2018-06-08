@@ -35,7 +35,7 @@ public class ToOptions : MonoBehaviour {
         if (inGame)
         {
             kid.transform.SetPositionAndRotation(new Vector3(2.34f, 3.62f, -1.27f), Quaternion.Euler(0, 160, 0));
-            player.transform.SetPositionAndRotation(new Vector3(18.72f, 7.33f, -31.28f), Quaternion.Euler(0, 0, 0));
+            player.transform.SetPositionAndRotation(new Vector3(18.72f, 6.23f, -32.03f), Quaternion.Euler(0, 0, 0));
             player.GetComponent<Rigidbody>().useGravity = false;
             player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
             mainCam.enabled = false;
