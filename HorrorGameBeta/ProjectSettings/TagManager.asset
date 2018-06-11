@@ -18,6 +18,10 @@ TagManager:
   - Environnement
   - Door
   - Music
+  - Keyshow
+  - SliderMusic
+  - SliderSound
+  - SliderGame
   layers:
   - Default
   - TransparentFX

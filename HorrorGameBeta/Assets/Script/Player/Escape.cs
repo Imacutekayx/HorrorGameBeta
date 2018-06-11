@@ -15,7 +15,7 @@ public class Escape : MonoBehaviour {
     public AudioMixer music;
     public Slider musicVolume;
 
-    public string key;
+    public KeyCode key;
 
 	// Use this for initialization
 	void Start () {

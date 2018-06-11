@@ -9,6 +9,9 @@ public class Controls{
     [XmlArray("Control"), XmlArrayItem("Key")]
     public List<Keys> lstKeys;
 
+    [XmlArray("Sliding"), XmlArrayItem("Slider")]
+    public List<CtrlSlider> lstSliders;
+
     private Controls() { }
 
     public static Controls LoadFromFile(string filepath)

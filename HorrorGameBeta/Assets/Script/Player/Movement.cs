@@ -7,12 +7,12 @@ using UnityEngine.UI;
 public class Movement : MonoBehaviour {
     
     public float speed;
-    public string forward;
-    public string behind;
-    public string left;
-    public string right;
-    public string sprint;
-    public string crouch;
+    public KeyCode forward;
+    public KeyCode behind;
+    public KeyCode left;
+    public KeyCode right;
+    public KeyCode sprint;
+    public KeyCode crouch;
     private float translation;
     private float straffe;
     private bool isCrouch = false;

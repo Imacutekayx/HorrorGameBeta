@@ -61,6 +61,7 @@
   <ItemGroup>
     <Compile Include="Assets\Save\Controls.cs" />
     <Compile Include="Assets\Save\Keys.cs" />
+    <Compile Include="Assets\Save\Slider.cs" />
     <Compile Include="Assets\Script\Kid\ChangeSpawn.cs" />
     <Compile Include="Assets\Script\Kid\CheckSee.cs" />
     <Compile Include="Assets\Script\Kid\LightsOff.cs" />
@@ -83,7 +84,9 @@
     <Compile Include="Assets\Script\RedEyes\Chase.cs" />
     <Compile Include="Assets\Script\RedEyes\OnCollision.cs" />
     <Compile Include="Assets\Script\RedEyes\Pathfinding.cs" />
-    <None Include="Assets\Save\controls.xml" />
+    <None Include="Assets\Save\controls.xml">
+      <SubType>Designer</SubType>
+    </None>
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/briandgr/Desktop/HorrorGameBeta/HorrorGameBeta/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ToggleLight : MonoBehaviour {
     public Light spot;
-    public string key;
+    public KeyCode key;
 
 	// Use this for initialization
 	void Start () {

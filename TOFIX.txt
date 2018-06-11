@@ -3,4 +3,4 @@ Bug Sound Movement()
 Bug Sound Menu
 Start Scene thunder
 SoundChase
-Controls XML vs MonoBehaviour
+Add changes to xml for sound

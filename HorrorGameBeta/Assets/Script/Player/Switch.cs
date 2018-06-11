@@ -18,7 +18,7 @@ public class Switch : MonoBehaviour {
 
     public int maxRange;
     public int minRange;
-    public string interact;
+    public KeyCode interact;
 
 
     // Use this for initialization

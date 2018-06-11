@@ -6,15 +6,17 @@ using UnityEngine.Audio;
 public class ChangeSettings : MonoBehaviour {
     public GameObject player;
     public AudioMixer audioMixer;
+    private Controls controls;
 
     private void Start()
     {
         player = GameObject.FindWithTag("Player");
+        controls = Controls.LoadFromFile(Application.dataPath + "/Save/controls.xml");
     }
 
     public void ChangeMusicVolume(float volume)
     {
-        if(volume != 0)
+        if (volume != 0)
         {
             volume = volume * 40 - 20;
         }
@@ -46,5 +48,20 @@ public class ChangeSettings : MonoBehaviour {
     public void ChangeSensibility(float sensibility)
     {
         player.GetComponent<Rotation>().sensibility = sensibility * 2 + 1;
+    }
+
+    public void ChangeParamMusic(float value)
+    {
+        controls.lstSliders[0].sliderValue = value;
+    }
+
+    public void ChangeParamSound(float value)
+    {
+        controls.lstSliders[1].sliderValue = value;
+    }
+
+    public void ChangeParamGame(float value)
+    {
+        controls.lstSliders[2].sliderValue = value;
     }
 }

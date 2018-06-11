@@ -3,5 +3,5 @@ using UnityEngine;
 
 public class Keys{
     [XmlAttribute("name")] public string keyName;
-    [XmlAttribute("value")] public string keyValue;
+    [XmlAttribute("value")] public KeyCode keyValue;
 }
