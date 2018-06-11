@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Control>
+  <Key name="forward" value="w"></Key>
+  <Key name="behind" value="s"></Key>
+  <Key name="left" value="a"></Key>
+  <Key name="right" value="d"></Key>
+  <Key name="crouch" value="left ctrl"></Key>
+  <Key name="sprint" value="left shift"></Key>
+  <Key name="interact" value="e"></Key>
+  <Key name="light" value="f"></Key>
+  <Key name="escape" value="escape"></Key>
+</Control>

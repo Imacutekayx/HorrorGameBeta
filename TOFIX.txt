@@ -1,5 +1,6 @@
 Stairs
-Bug Sound Movement
+Bug Sound Movement()
 Bug Sound Menu
 Start Scene thunder
 SoundChase
+Controls XML vs MonoBehaviour

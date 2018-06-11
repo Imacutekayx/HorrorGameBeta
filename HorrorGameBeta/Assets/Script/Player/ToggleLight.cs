@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ToggleLight : MonoBehaviour {
     public Light spot;
+    public string key;
 
 	// Use this for initialization
 	void Start () {
@@ -13,7 +14,7 @@ public class ToggleLight : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown("f"))
+        if (Input.GetKeyDown(key))
         {
             if(spot.enabled == true)
             {

@@ -7,15 +7,22 @@ using UnityEngine.UI;
 public class Movement : MonoBehaviour {
     
     public float speed;
+    public string forward;
+    public string behind;
+    public string left;
+    public string right;
+    public string sprint;
+    public string crouch;
     private float translation;
     private float straffe;
-    private bool croutch = false;
-    private bool sprint = false;
+    private bool isCrouch = false;
+    private bool isSprint = false;
     private bool allowSprint = true;
     private bool walking = false;
+    private bool loop = false;
 
     public AudioMixer sound;
-    public AudioClip crouch;
+    public AudioClip slow;
     public AudioClip walk;
     public AudioClip run;
     public Slider soundVolume;
@@ -34,28 +41,28 @@ public class Movement : MonoBehaviour {
     public void Update ()
     {
         //Croutch
-        if (Input.GetKey("left ctrl") && !croutch)
+        if (Input.GetKey(crouch) && !isCrouch)
         {
-            if (soundVolume.value != 0 && GetComponent<AudioSource>().clip != crouch)
+            if (soundVolume.value != 0 && GetComponent<AudioSource>().clip != slow)
             {
-                GetComponent<AudioSource>().clip = crouch;
+                GetComponent<AudioSource>().clip = slow;
                 sound.SetFloat("PlayerVolume", soundVolume.value * 40 - 30);
             }
-            croutch = true;
+            isCrouch = true;
             allowSprint = false;
             coll.height = 1.5f;
             transform.Translate(0, -0.1f, 0);
             speed /= 2f;
             red.GetComponent<AreaCheck>().playerState = 0;
         }
-        else if (!Input.GetKey("left ctrl") && croutch)
+        else if (!Input.GetKey(crouch) && isCrouch)
         {
             if (soundVolume.value != 0)
             {
                 GetComponent<AudioSource>().clip = walk;
                 sound.SetFloat("PlayerVolume", soundVolume.value * 40 - 20);
             }
-            croutch = false;
+            isCrouch = false;
             allowSprint = true;
             coll = GetComponent<CapsuleCollider>();
             transform.Translate(0, 2.5f, 0);
@@ -65,45 +72,50 @@ public class Movement : MonoBehaviour {
         }
 
         //Sprint
-        if (Input.GetKey("left shift") && allowSprint && !sprint)
+        if (Input.GetKey(sprint) && allowSprint && !isSprint)
         {
             if(soundVolume.value != 0 && GetComponent<AudioSource>().clip != run)
             {
                 GetComponent<AudioSource>().clip = run;
                 sound.SetFloat("PlayerVolume", soundVolume.value * 40 - 10);
             }
-            sprint = true;
+            isSprint = true;
             speed *= 2f;
             red.GetComponent<AreaCheck>().playerState = 2;
         }
-        else if (!Input.GetKey("left shift") && sprint)
+        else if (!Input.GetKey(sprint) && isSprint)
         {
             if(soundVolume.value != 0)
             {
                 GetComponent<AudioSource>().clip = walk;
                 sound.SetFloat("PlayerVolume", soundVolume.value * 40 - 20);
             }
-            sprint = false;
+            isSprint = false;
             speed /= 2f;
             red.GetComponent<AreaCheck>().playerState = 1;
         }
 
-        if(Input.GetKey("w") || Input.GetKey("a") || Input.GetKey("s") || Input.GetKey("d") && !walking)
+        if(Input.GetKey(forward) || Input.GetKey(left) || Input.GetKey(behind) || Input.GetKey(right) && !walking && !loop)
         {
             if (!kid.GetComponent<LightsOff>().enabled)
             {
                 red.GetComponent<AreaCheck>().enabled = true;
             }
             walking = true;
+            GetComponent<AudioSource>().loop = true;
+            loop = true;
             GetComponent<AudioSource>().Play();
         }
-        else if (!Input.GetKey("w") && !Input.GetKey("a") && !Input.GetKey("s") && !Input.GetKey("d") && walking)
+        else if (!Input.GetKey(forward) && !Input.GetKey(left) && !Input.GetKey(behind) && !Input.GetKey(right) && walking && loop)
         {
             if (!kid.GetComponent<LightsOff>().enabled)
             {
                 red.GetComponent<AreaCheck>().enabled = false;
             }
             walking = false;
+            GetComponent<AudioSource>().loop = false;
+            GetComponent<AudioSource>().Stop();
+            loop = false;
         }
 
         //Movements

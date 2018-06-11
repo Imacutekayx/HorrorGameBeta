@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class StartGame : MonoBehaviour {
     public GameObject player;
+    public GameObject playerLight;
     public GameObject flashLight;
     public GameObject kid;
     public GameObject red;
@@ -65,6 +66,9 @@ public class StartGame : MonoBehaviour {
 
         player = GameObject.FindWithTag("Player");
         player.transform.SetPositionAndRotation(new Vector3(18.72f, 6.23f, -32.03f), Quaternion.Euler(0, 0, 0));
+        playerLight = GameObject.FindWithTag("PlayerLight");
+        playerLight.GetComponent<Light>().enabled = false;
+        playerLight.GetComponent<ToggleLight>().enabled = true;
         playerAnim = player.GetComponent<Animation>();
         playerAnim.AddClip(enterHouse, "enterHouse");
         playerAnim.AddClip(watch01, "watch01");

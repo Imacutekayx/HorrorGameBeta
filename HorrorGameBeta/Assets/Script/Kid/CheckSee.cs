@@ -3,7 +3,6 @@
 public class CheckSee : MonoBehaviour {
     public GameObject player;
     public GameObject playerLight;
-    public GameObject kid;
     public GameObject musicPlayer;
     public GameObject menuGameOver;
     public GameObject menu;
@@ -43,14 +42,11 @@ public class CheckSee : MonoBehaviour {
             ++killCount;
             if(killCount * Time.deltaTime > 3)
             {
+                player.GetComponent<Escape>().StopGame();
                 musicPlayer.GetComponent<AudioSource>().Stop();
                 player.transform.LookAt(new Vector3(0, 9000, 0));
                 GetComponent<AudioSource>().clip = killKid;
                 GetComponent<AudioSource>().Play();
-                player.GetComponent<Movement>().enabled = false;
-                player.GetComponent<Rotation>().enabled = false;
-                player.GetComponent<Escape>().enabled = false;
-                playerLight.GetComponent<ToggleLight>().enabled = false;
                 Cursor.lockState = CursorLockMode.Confined;
                 menu.SetActive(true);
                 menuGameOver.SetActive(true);

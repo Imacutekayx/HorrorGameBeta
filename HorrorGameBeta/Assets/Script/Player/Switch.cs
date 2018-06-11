@@ -18,6 +18,7 @@ public class Switch : MonoBehaviour {
 
     public int maxRange;
     public int minRange;
+    public string interact;
 
 
     // Use this for initialization
@@ -38,7 +39,7 @@ public class Switch : MonoBehaviour {
         if ((Vector3.Distance(transform.position, target.transform.position) < maxRange)
            && (Vector3.Distance(transform.position, target.transform.position) > minRange))
         {
-            if (Input.GetKey("e"))
+            if (Input.GetKey(interact))
             {
                 GetComponent<AudioSource>().clip = bouton;
                 GetComponent<AudioSource>().Play();

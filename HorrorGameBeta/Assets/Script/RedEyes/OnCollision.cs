@@ -15,14 +15,11 @@ public class OnCollision : MonoBehaviour {
     {
         if (collision.collider.tag == "Player")
         {
+            player.GetComponent<Escape>().StopGame();
             musicPlayer.GetComponent<AudioSource>().Stop();
             GetComponent<AudioSource>().clip = killRed;
             GetComponent<AudioSource>().Play();
             player.transform.LookAt(new Vector3(0, 9000, 0));
-            player.GetComponent<Movement>().enabled = false;
-            player.GetComponent<Rotation>().enabled = false;
-            player.GetComponent<Escape>().enabled = false;
-            playerLight.GetComponent<ToggleLight>().enabled = false;
             Cursor.lockState = CursorLockMode.Confined;
             menu.SetActive(true);
             menuGameOver.SetActive(true);
