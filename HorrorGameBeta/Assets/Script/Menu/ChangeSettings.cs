@@ -53,15 +53,18 @@ public class ChangeSettings : MonoBehaviour {
     public void ChangeParamMusic(float value)
     {
         controls.lstSliders[0].sliderValue = value;
+        controls.Save(Application.dataPath + "/Save/controls.xml");
     }
 
     public void ChangeParamSound(float value)
     {
         controls.lstSliders[1].sliderValue = value;
+        controls.Save(Application.dataPath + "/Save/controls.xml");
     }
 
     public void ChangeParamGame(float value)
     {
         controls.lstSliders[2].sliderValue = value;
+        controls.Save(Application.dataPath + "/Save/controls.xml");
     }
 }
