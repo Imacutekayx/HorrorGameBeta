@@ -1,10 +1,13 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Class which manage the controls and the value of the sliders
+/// </summary>
 public class ControlsManager : MonoBehaviour{
+
+    //Objects
     public GameObject player;
     public GameObject playerLight;
     public GameObject s0;
@@ -18,10 +21,13 @@ public class ControlsManager : MonoBehaviour{
     private GameObject[] keyShows;
     private Controls controls;
 
+    //Variables
     private int x;
 
-	// Use this for initialization
-	public void StartAssign () {
+    /// <summary>
+    /// Method which assign the values in the XML to the game
+    /// </summary>
+    public void StartAssign () {
         player = GameObject.FindWithTag("Player");
         playerLight = GameObject.FindWithTag("PlayerLight");
         s0 = GameObject.FindWithTag("S0");
@@ -48,6 +54,9 @@ public class ControlsManager : MonoBehaviour{
         menuOption.GetComponent<ChangeSettings>().ChangeSensibility(controls.lstSliders[2].sliderValue);
     }
 	
+    /// <summary>
+    /// Method which show the values in the XML in the ControlsMenu
+    /// </summary>
 	public void ChargeKeys()
     {
         x = 0;
@@ -60,6 +69,9 @@ public class ControlsManager : MonoBehaviour{
         }
     }
 
+    /// <summary>
+    /// Method which active when an key is pressed and a control is assigned
+    /// </summary>
     private void OnGUI()
     {
         if (currentKey != null)
@@ -72,20 +84,32 @@ public class ControlsManager : MonoBehaviour{
         }
     }
 
+    /// <summary>
+    /// Method which change the control that the user want to change
+    /// </summary>
+    /// <param name="clicked">Object with the name of the key that the User wants to change</param>
     public void ChangeKey(GameObject clicked)
     {
         currentKey = clicked;
     }
 
+    /// <summary>
+    /// Method which change the value of a control depending of the User
+    /// </summary>
+    /// <param name="name">Name of the control</param>
+    /// <param name="value">KeyCode that will be assigned</param>
     public void ChangeKey(string name, KeyCode value)
     {
         controls = Controls.LoadFromFile(Application.dataPath + "/Save/controls.xml");
+        //Analyse each key in the list
         foreach(Keys key in controls.lstKeys)
         {
+            //Check if the name of the Control is the same as the key's name and change it
             if(key.keyName == name)
             {
                 key.keyValue = value;
                 currentKey.transform.GetChild(0).transform.GetChild(0).GetComponent<Text>().text = value.ToString();
+                //Assign the value of the new key where it's needed
                 switch (key.keyName)
                 {
                     case "forward": { break; }

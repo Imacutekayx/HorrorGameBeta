@@ -1,19 +1,27 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Audio;
 
+/// <summary>
+/// Script that will save the User's preferences for the volume and the sensibility
+/// </summary>
 public class ChangeSettings : MonoBehaviour {
+
+    //Objects
     public GameObject player;
     public AudioMixer audioMixer;
     private Controls controls;
 
+    //Use this for initialization
     private void Start()
     {
         player = GameObject.FindWithTag("Player");
         controls = Controls.LoadFromFile(Application.dataPath + "/Save/controls.xml");
     }
 
+    /// <summary>
+    /// Method which change the music volume
+    /// </summary>
+    /// <param name="volume">Value of the slider</param>
     public void ChangeMusicVolume(float volume)
     {
         if (volume != 0)
@@ -27,6 +35,10 @@ public class ChangeSettings : MonoBehaviour {
         audioMixer.SetFloat("MusicVolume", volume);
     }
 
+    /// <summary>
+    /// Method which change the sound volume
+    /// </summary>
+    /// <param name="volume">Value of the slider</param>
     public void ChangeSoundVolume(float volume)
     {
         if (volume != 0)
@@ -45,23 +57,39 @@ public class ChangeSettings : MonoBehaviour {
         audioMixer.SetFloat("RedVolume", volume);
     }
 
+    /// <summary>
+    /// Method which change the camera sensibility
+    /// </summary>
+    /// <param name="volume">Value of the slider</param>
     public void ChangeSensibility(float sensibility)
     {
         player.GetComponent<Rotation>().sensibility = sensibility * 2 + 1;
     }
 
+    /// <summary>
+    /// Method which save the value of the music volume in the Controls
+    /// </summary>
+    /// <param name="volume">Value of the slider</param>
     public void ChangeParamMusic(float value)
     {
         controls.lstSliders[0].sliderValue = value;
         controls.Save(Application.dataPath + "/Save/controls.xml");
     }
 
+    /// <summary>
+    /// Method which save the value of the sound volume in the Controls
+    /// </summary>
+    /// <param name="volume">Value of the slider</param>
     public void ChangeParamSound(float value)
     {
         controls.lstSliders[1].sliderValue = value;
         controls.Save(Application.dataPath + "/Save/controls.xml");
     }
 
+    /// <summary>
+    /// Method which save the value of the camera sensibility in the Controls
+    /// </summary>
+    /// <param name="volume">Value of the slider</param>
     public void ChangeParamGame(float value)
     {
         controls.lstSliders[2].sliderValue = value;

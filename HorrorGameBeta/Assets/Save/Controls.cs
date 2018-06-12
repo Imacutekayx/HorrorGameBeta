@@ -1,19 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System.Xml.Serialization;
+﻿using System.Collections.Generic;
 using System.IO;
+using System.Xml.Serialization;
 
+/// <summary>
+/// Class Controls which will be the link between the XML and the game
+/// </summary>
 [XmlRoot("Controls")]
 public class Controls{
+
+    //Lists of XML informations
     [XmlArray("Control"), XmlArrayItem("Key")]
     public List<Keys> lstKeys;
-
     [XmlArray("Sliding"), XmlArrayItem("Slider")]
     public List<CtrlSlider> lstSliders;
 
-    private Controls() { }
-
+    /// <summary>
+    /// Method which will load the informations from the XML file
+    /// </summary>
+    /// <param name="filepath">Path to the XML file</param>
+    /// <returns>Controls</returns>
     public static Controls LoadFromFile(string filepath)
     {
         XmlSerializer serializer = new XmlSerializer(typeof(Controls));
@@ -23,6 +28,10 @@ public class Controls{
         }
     }
 
+    /// <summary>
+    /// Method which will save the informations of the game in the XML file
+    /// </summary>
+    /// <param name="path">Path to the XML file</param>
     public void Save(string path)
     {
         XmlSerializer serializer = new XmlSerializer(typeof(Controls));

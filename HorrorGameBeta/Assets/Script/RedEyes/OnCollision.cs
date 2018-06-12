@@ -1,9 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+/// <summary>
+/// Script that kill the Player when it touches the RedEyes
+/// </summary>
 public class OnCollision : MonoBehaviour {
 
+    //Objects
     public GameObject player;
     public GameObject playerLight;
     public GameObject musicPlayer;
@@ -11,8 +13,13 @@ public class OnCollision : MonoBehaviour {
     public GameObject menuGameOver;
     public AudioClip killRed;
     
+    /// <summary>
+    /// Method which analyse the collider which collisions it
+    /// </summary>
+    /// <param name="collision">The collider which collisions this one</param>
     private void OnCollisionEnter(Collision collision)
     {
+        //Check if the collider is the Player
         if (collision.collider.tag == "Player")
         {
             player.GetComponent<Escape>().StopGame();

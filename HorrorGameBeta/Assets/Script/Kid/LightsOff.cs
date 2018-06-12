@@ -1,14 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+/// <summary>
+/// Script that will shut down the lights and active the RedEyes
+/// </summary>
 public class LightsOff : MonoBehaviour {
 
-    public int timer = 0;
-    public bool on = true;
-    private float floatX;
-    private byte rnd;
-    
+    //Objects
     private GameObject[] lights;
     public GameObject kid;
     public GameObject red;
@@ -19,7 +16,13 @@ public class LightsOff : MonoBehaviour {
     public AudioClip spawnRed;
     public AudioClip lightOff;
 
-    // Use this for initialization
+    //Variables
+    public int timer = 0;
+    public bool on = true;
+    private float floatX;
+    private byte rnd;
+
+    //Use this for initialization
     void Start ()
     {
         lights = GameObject.FindGameObjectsWithTag("Light");
@@ -29,25 +32,31 @@ public class LightsOff : MonoBehaviour {
         musicPlayer = GameObject.FindWithTag("Music");
     }
 
+    //Update is called once per frame
     private void Update()
     {
+        //Check if the timer is higher than 60 seconds
         if(timer*Time.deltaTime > 60 && on)
         {
             on = false;
 
+            //Shut down the lights
             foreach (GameObject li in lights)
             {
                 li.GetComponent<Light>().enabled = false;
             }
             
+            //Random a floor other than the one where the Player is and teleport the RedEyes there
             rnd = System.Convert.ToByte(Random.Range(0, 2));
             floatX = kid.GetComponent<Spawn>().x;
             System.Console.WriteLine(floatX);
+            //Check if the Player is somewhere in the game
             if (floatX != 18)
             {
-                //0
+                //Check if the Player is at the floor 0
                 if(floatX == -3.27f)
                 {
+                    //Check the Random to choose the floor to reach
                     if(rnd == 0)
                     {
                         GameObject.FindWithTag("S1").GetComponent<Renderer>().material = redLight;
@@ -61,10 +70,11 @@ public class LightsOff : MonoBehaviour {
                         red.transform.SetPositionAndRotation(new Vector3(18.72f, 16.38f, -29.36f), Quaternion.Euler(0, 0, 0));
                     }
                 }
-                //1
-                else if(floatX == -11.93f || floatX == -0.88 || floatX == 23.7)
+                //Check if the Player is at the floor 1
+                else if (floatX == -11.93f || floatX == -0.88 || floatX == 23.7)
                 {
-                    if(rnd == 0)
+                    //Check the Random to choose the floor to reach
+                    if (rnd == 0)
                     {
                         GameObject.FindWithTag("S0").GetComponent<Renderer>().material = redLight;
                         GameObject.FindWithTag("S0").GetComponent<Switch>().enabled = true;
@@ -77,10 +87,11 @@ public class LightsOff : MonoBehaviour {
                         red.transform.SetPositionAndRotation(new Vector3(18.72f, 16.38f, -29.36f), Quaternion.Euler(0, 0, 0));
                     }
                 }
-                //2
+                //Check if the Player is at the floor 2
                 else
                 {
-                    if(rnd == 0)
+                    //Check the Random to choose the floor to reach
+                    if (rnd == 0)
                     {
                         GameObject.FindWithTag("S0").GetComponent<Renderer>().material = redLight;
                         GameObject.FindWithTag("S0").GetComponent<Switch>().enabled = true;
@@ -94,6 +105,7 @@ public class LightsOff : MonoBehaviour {
                     }
                 }
             }
+            //Enable RedEyes's Components and change the ambiance
             red.GetComponent<AudioSource>().clip = spawnRed;
             red.GetComponent<AudioSource>().Play();
             red.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = true;

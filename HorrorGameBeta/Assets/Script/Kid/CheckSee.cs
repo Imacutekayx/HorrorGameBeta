@@ -1,6 +1,11 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// Script that analyse if the player look at the Kid with the PlayerLight on and kill him if not for 5 seconds
+/// </summary>
 public class CheckSee : MonoBehaviour {
+
+    //Objects
     public GameObject player;
     public GameObject playerLight;
     public GameObject musicPlayer;
@@ -9,11 +14,12 @@ public class CheckSee : MonoBehaviour {
     public AudioClip killKid;
     private Light spot;
 
+    //Variables
     public bool isLookedAt = false;
     public float killCount;
     public float safeCount;
 
-	// Use this for initialization
+	//Use this for initialization
 	void Start () {
         player = GameObject.FindWithTag("Player");
         playerLight = GameObject.FindWithTag("PlayerLight");
@@ -22,10 +28,11 @@ public class CheckSee : MonoBehaviour {
         safeCount = 0;
 	}
 	
-	// Update is called once per frame
+	//Update is called once per frame
 	void Update () {
         transform.LookAt(player.transform);
 
+        //Check if the player is looking at the Kid and if the PlayerLight is enabled
         if (isLookedAt && spot.enabled == true)
         {
             ++safeCount;
@@ -40,7 +47,7 @@ public class CheckSee : MonoBehaviour {
         else
         {
             ++killCount;
-            if(killCount * Time.deltaTime > 3)
+            if(killCount * Time.deltaTime > 5)
             {
                 player.GetComponent<Escape>().StopGame();
                 musicPlayer.GetComponent<AudioSource>().Stop();

@@ -1,26 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
+/// <summary>
+/// Script that manages the movements of the Player
+/// </summary>
 public class Movement : MonoBehaviour {
-    
-    public float speed;
-    public KeyCode forward;
-    public KeyCode behind;
-    public KeyCode left;
-    public KeyCode right;
-    public KeyCode sprint;
-    public KeyCode crouch;
-    private float translation;
-    private float straffe;
-    private bool isCrouch = false;
-    private bool isSprint = false;
-    private bool allowSprint = true;
-    private bool walking = false;
-    private bool loop = false;
 
+    //Objects
     public AudioMixer sound;
     public AudioClip slow;
     public AudioClip walk;
@@ -30,6 +17,23 @@ public class Movement : MonoBehaviour {
     public GameObject kid;
     private CapsuleCollider coll;
 
+    //Variables
+    public KeyCode forward;
+    public KeyCode behind;
+    public KeyCode left;
+    public KeyCode right;
+    public KeyCode sprint;
+    public KeyCode crouch;
+    public float speed;
+    private float translation;
+    private float straffe;
+    private bool isCrouch = false;
+    private bool isSprint = false;
+    private bool allowSprint = true;
+    private bool walking = false;
+    private bool loop = false;
+
+    //Use this for initialization
     void Start()
     {
         red = GameObject.FindWithTag("RedEyes");
@@ -37,12 +41,13 @@ public class Movement : MonoBehaviour {
         coll = GetComponent<CapsuleCollider>();
     }
 
-    // Update is called once per frame
+    //Update is called once per frame
     public void Update ()
     {
         //Croutch
         if (Input.GetKey(crouch) && !isCrouch)
         {
+            //Check the sound volume before changing it
             if (soundVolume.value != 0 && GetComponent<AudioSource>().clip != slow)
             {
                 GetComponent<AudioSource>().clip = slow;
@@ -57,6 +62,7 @@ public class Movement : MonoBehaviour {
         }
         else if (!Input.GetKey(crouch) && isCrouch)
         {
+            //Check the sound volume before changing it
             if (soundVolume.value != 0)
             {
                 GetComponent<AudioSource>().clip = walk;
@@ -74,7 +80,8 @@ public class Movement : MonoBehaviour {
         //Sprint
         if (Input.GetKey(sprint) && allowSprint && !isSprint)
         {
-            if(soundVolume.value != 0 && GetComponent<AudioSource>().clip != run)
+            //Check the sound volume before changing it
+            if (soundVolume.value != 0 && GetComponent<AudioSource>().clip != run)
             {
                 GetComponent<AudioSource>().clip = run;
                 sound.SetFloat("PlayerVolume", soundVolume.value * 40 - 10);
@@ -85,7 +92,8 @@ public class Movement : MonoBehaviour {
         }
         else if (!Input.GetKey(sprint) && isSprint)
         {
-            if(soundVolume.value != 0)
+            //Check the sound volume before changing it
+            if (soundVolume.value != 0)
             {
                 GetComponent<AudioSource>().clip = walk;
                 sound.SetFloat("PlayerVolume", soundVolume.value * 40 - 20);
@@ -95,8 +103,10 @@ public class Movement : MonoBehaviour {
             red.GetComponent<AreaCheck>().playerState = 1;
         }
 
+        //Basic movement
         if(Input.GetKey(forward) || Input.GetKey(left) || Input.GetKey(behind) || Input.GetKey(right) && !walking && !loop)
         {
+            //Check the component LightsOff of Kid and enable the component AreaCheck of RedEyes if true
             if (!kid.GetComponent<LightsOff>().enabled)
             {
                 red.GetComponent<AreaCheck>().enabled = true;
@@ -108,6 +118,7 @@ public class Movement : MonoBehaviour {
         }
         else if (!Input.GetKey(forward) && !Input.GetKey(left) && !Input.GetKey(behind) && !Input.GetKey(right) && walking && loop)
         {
+            //Check the component LightsOff of Kid and disable the component AreaCheck of RedEyes if true
             if (!kid.GetComponent<LightsOff>().enabled)
             {
                 red.GetComponent<AreaCheck>().enabled = false;

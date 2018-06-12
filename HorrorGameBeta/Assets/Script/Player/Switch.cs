@@ -1,9 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+/// <summary>
+/// Script which enable the User to interact with the switch when the lights are off
+/// </summary>
 public class Switch : MonoBehaviour {
 
+    //Objects
     public GameObject target;
     public GameObject red;
     public GameObject kid;
@@ -16,12 +18,13 @@ public class Switch : MonoBehaviour {
     private Renderer rend;
     private GameObject[] lights;
 
+    //Variables
     public int maxRange;
     public int minRange;
     public KeyCode interact;
 
 
-    // Use this for initialization
+    //Use this for initialization
     void Start()
     {
         target = GameObject.FindWithTag("Player");
@@ -33,12 +36,14 @@ public class Switch : MonoBehaviour {
         rend = GetComponent<Renderer>();
     }
 
-    // Update is called once per frame
+    //Update is called once per frame
     void Update()
     {
+        //Check if the Player is in area
         if ((Vector3.Distance(transform.position, target.transform.position) < maxRange)
            && (Vector3.Distance(transform.position, target.transform.position) > minRange))
         {
+            //Check if the player press the InteractKey
             if (Input.GetKey(interact))
             {
                 GetComponent<AudioSource>().clip = bouton;
@@ -51,6 +56,7 @@ public class Switch : MonoBehaviour {
                 house.GetComponent<AudioSource>().clip = lightOn;
                 house.GetComponent<AudioSource>().Play();
 
+                //Enable all the lights
                 foreach (GameObject li in lights)
                 {
                     li.GetComponent<Light>().enabled = true;

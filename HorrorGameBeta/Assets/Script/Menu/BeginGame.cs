@@ -1,13 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+/// <summary>
+/// Script that will start the GameMenu
+/// </summary>
 public class BeginGame : MonoBehaviour {
     public GameObject panelMyuuji;
     public GameObject panelBase;
     public GameObject musicPlayer;
 	
-	// Update is called once per frame
+	/// <summary>
+    /// Method that active the panel of the main menu
+    /// </summary>
 	public void Begin () {
         panelMyuuji.SetActive(false);
         panelBase.SetActive(true);

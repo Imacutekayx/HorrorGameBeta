@@ -1,10 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
+/// <summary>
+/// Script that active the OptionMenu during the game
+/// </summary>
 public class Escape : MonoBehaviour {
+
+    //Objects
     public GameObject player;
     public GameObject playerLight;
     public GameObject kid;
@@ -15,9 +18,10 @@ public class Escape : MonoBehaviour {
     public AudioMixer music;
     public Slider musicVolume;
 
+    //Variable
     public KeyCode key;
 
-	// Use this for initialization
+	//Use this for initialization
 	void Start () {
         player = GameObject.FindWithTag("Player");
         playerLight = GameObject.FindWithTag("PlayerLight");
@@ -25,20 +29,26 @@ public class Escape : MonoBehaviour {
         red = GameObject.FindWithTag("RedEyes");
 	}
 	
-	// Update is called once per frame
+	//Update is called once per frame
 	void Update () {
+        //Check if the User press the EscapeKey
         if (Input.GetKey(key))
         {
             StopGame();
         }
 	}
 
+    /// <summary>
+    /// Method which stop the scripts in the game to make it pause
+    /// </summary>
     public void StopGame()
     {
         menu.GetComponent<AudioSource>().clip = menuEscape;
         Cursor.lockState = CursorLockMode.Confined;
+
         //Red
         red.GetComponent<Rigidbody>().freezeRotation = true;
+        //Check the state of the RedEyes
         if (red.GetComponent<Pathfinding>().enabled)
         {
             red.GetComponent<Pathfinding>().enabled = false;
@@ -48,6 +58,7 @@ public class Escape : MonoBehaviour {
 
         //Kid
         kid.GetComponent<LightsOff>().enabled = false;
+        //Check the state of the RedEyes
         if (kid.GetComponent<Spawn>().enabled == true)
         {
             kid.GetComponent<Spawn>().enabled = false;

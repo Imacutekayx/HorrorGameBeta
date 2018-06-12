@@ -2,7 +2,12 @@
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
+/// <summary>
+/// Script that will reset the game
+/// </summary>
 public class StartGame : MonoBehaviour {
+
+    //objects
     public GameObject player;
     public GameObject playerLight;
     public GameObject flashLight;
@@ -32,6 +37,9 @@ public class StartGame : MonoBehaviour {
     private Animation playerAnim;
     private AudioSource doorSound;
 
+    /// <summary>
+    /// Method that will play an animation
+    /// </summary>
     private void StartScene()
     {
         playerAnim.Play("enterHouse");
@@ -53,6 +61,10 @@ public class StartGame : MonoBehaviour {
         while (player.GetComponent<Animation>().IsPlaying("watch02")) { }
     }
 
+    /// <summary>
+    /// Method that reset the game parameters
+    /// </summary>
+    /// <param name="retry">Boolean to check if this is a retry or a first try</param>
     public void StartingGame(bool retry)
     {
         //Lights
@@ -64,6 +76,7 @@ public class StartGame : MonoBehaviour {
 
         music.SetFloat("MusicVolume", -80f);
 
+        //GameObjects needed for the animation
         player = GameObject.FindWithTag("Player");
         player.transform.SetPositionAndRotation(new Vector3(18.72f, 6.23f, -32.03f), Quaternion.Euler(0, 0, 0));
         playerLight = GameObject.FindWithTag("PlayerLight");
@@ -92,6 +105,7 @@ public class StartGame : MonoBehaviour {
         Cursor.lockState = CursorLockMode.Locked;
 
         //STARTSCENE
+        //Check if this is a retry
         if (!retry)
         {
             //StartScene();

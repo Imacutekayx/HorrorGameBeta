@@ -1,20 +1,28 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+/// <summary>
+/// Script that will change the next teleportation's position of the Kid depending of the Player's current location
+/// </summary>
 public class ChangeSpawn : MonoBehaviour {
 
+    //Objects
     public GameObject kid;
 
-	// Use this for initialization
+	//Use this for initialization
 	void Start () {
         kid = GameObject.FindWithTag("Kid");
 	}
 
+    /// <summary>
+    /// Method that activate when the Player enter the collider of the object and analyse the name of the object it's assign to to analyse the position of the Player
+    /// </summary>
+    /// <param name="other">Collider that enter the this collider's area</param>
     private void OnTriggerEnter(Collider other)
     {
+        //Check if the other collider is the Player
         if(other.tag == "Player")
         {
+            //Check the name of the GameObject to change the Kid's teleportation's position
             switch (name)
             {
                 case "Sa":
