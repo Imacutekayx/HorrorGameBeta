@@ -11,6 +11,7 @@ public class OnCollision : MonoBehaviour {
     public GameObject musicPlayer;
     public GameObject menu;
     public GameObject menuGameOver;
+    public GameObject battery;
     public AudioClip killRed;
     
     /// <summary>
@@ -30,6 +31,7 @@ public class OnCollision : MonoBehaviour {
             Cursor.lockState = CursorLockMode.Confined;
             menu.SetActive(true);
             menuGameOver.SetActive(true);
+            battery.transform.SetPositionAndRotation(new Vector3(22f, -22f, -10f), Quaternion.Euler(90, 90, 0));
             GetComponent<CheckSee>().enabled = false;
         }
     }

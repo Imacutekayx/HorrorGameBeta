@@ -3948,7 +3948,7 @@ Transform:
   - {fileID: 77640712}
   - {fileID: 1718091218}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!195 &318167100
 NavMeshAgent:
@@ -4015,6 +4015,7 @@ MonoBehaviour:
   musicPlayer: {fileID: 1758515535}
   menu: {fileID: 478266507}
   menuGameOver: {fileID: 1042707000}
+  battery: {fileID: 364545557}
   killRed: {fileID: 8300000, guid: e4d28e65409bca5449cfb0546ca7d6ee, type: 3}
 --- !u!82 &318167104
 AudioSource:
@@ -4394,6 +4395,92 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 351793964}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &364545557
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 364545561}
+  - component: {fileID: 364545560}
+  - component: {fileID: 364545559}
+  - component: {fileID: 364545558}
+  m_Layer: 0
+  m_Name: Battery
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!136 &364545558
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 364545557}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5000001
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!23 &364545559
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 364545557}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 2100000, guid: 0f7984f873b97ab4e8476fc0c817bf4e, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &364545560
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 364545557}
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &364545561
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 364545557}
+  m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
+  m_LocalPosition: {x: 22, y: -22, z: -10}
+  m_LocalScale: {x: 0.083127044, y: 0.09252829, z: 0.09107553}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 90, y: 90, z: 0}
 --- !u!1 &365021454
 GameObject:
   m_ObjectHideFlags: 0
@@ -6135,7 +6222,7 @@ RectTransform:
   - {fileID: 1042707001}
   - {fileID: 72161202}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -9701,7 +9788,7 @@ Transform:
   - {fileID: 1033625598}
   - {fileID: 1329768061}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &801239947
 Rigidbody:
@@ -10139,7 +10226,7 @@ Transform:
   - {fileID: 1832200303}
   - {fileID: 865399428}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &826681328
 GameObject:
@@ -11629,7 +11716,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &923972437
 GameObject:
@@ -15197,7 +15284,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1114268901 stripped
 Transform:
@@ -19430,6 +19517,7 @@ MonoBehaviour:
   player: {fileID: 0}
   musicPlayer: {fileID: 0}
   menuGameOver: {fileID: 0}
+  battery: {fileID: 0}
   mainCam: {fileID: 282840813}
   menuCam: {fileID: 1109889226}
   music: {fileID: 0}
@@ -21296,6 +21384,7 @@ MonoBehaviour:
   player: {fileID: 0}
   musicPlayer: {fileID: 0}
   menuGameOver: {fileID: 0}
+  battery: {fileID: 0}
   mainCam: {fileID: 282840813}
   menuCam: {fileID: 1109889226}
   music: {fileID: 0}
@@ -21496,6 +21585,7 @@ MonoBehaviour:
   player: {fileID: 1888835873}
   musicPlayer: {fileID: 1758515535}
   menuGameOver: {fileID: 1042707000}
+  battery: {fileID: 0}
   mainCam: {fileID: 282840813}
   menuCam: {fileID: 1109889226}
   music: {fileID: 24100000, guid: b2babdabb96da9a4b8e81b5aaba2e6d5, type: 2}
@@ -23676,7 +23766,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1776525654
 GameObject:
@@ -27229,6 +27319,7 @@ MonoBehaviour:
   musicPlayer: {fileID: 1758515535}
   menuGameOver: {fileID: 1042707000}
   menu: {fileID: 478266507}
+  battery: {fileID: 0}
   killKid: {fileID: 8300000, guid: b723dfae06b73c545a9f5473ea994f53, type: 3}
   isLookedAt: 0
   killCount: 0
@@ -27264,6 +27355,7 @@ MonoBehaviour:
   red: {fileID: 0}
   house: {fileID: 0}
   musicPlayer: {fileID: 0}
+  battery: {fileID: 0}
   redLight: {fileID: 2100000, guid: ad5ac0c9272d94341b1b8655b6117fc1, type: 2}
   powerOff: {fileID: 8300000, guid: 8cfc75d6be138b042afa8f18432f29c2, type: 3}
   spawnRed: {fileID: 8300000, guid: b2ed9e3ca06c8394cbfc0514655c473b, type: 3}
@@ -27340,7 +27432,7 @@ Transform:
   - {fileID: 1368961990}
   - {fileID: 1993687756}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 160, z: 0}
 --- !u!82 &1983451434
 AudioSource:

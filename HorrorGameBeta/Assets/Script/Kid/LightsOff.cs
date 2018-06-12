@@ -11,6 +11,7 @@ public class LightsOff : MonoBehaviour {
     public GameObject red;
     public GameObject house;
     public GameObject musicPlayer;
+    public GameObject battery;
     public Material redLight;
     public AudioClip powerOff;
     public AudioClip spawnRed;
@@ -21,6 +22,7 @@ public class LightsOff : MonoBehaviour {
     public bool on = true;
     private float floatX;
     private byte rnd;
+    private byte rnd2;
 
     //Use this for initialization
     void Start ()
@@ -30,6 +32,7 @@ public class LightsOff : MonoBehaviour {
         red = GameObject.FindWithTag("RedEyes");
         house = GameObject.FindWithTag("Environnement");
         musicPlayer = GameObject.FindWithTag("Music");
+        battery = GameObject.FindWithTag("Battery");
     }
 
     //Update is called once per frame
@@ -48,6 +51,7 @@ public class LightsOff : MonoBehaviour {
             
             //Random a floor other than the one where the Player is and teleport the RedEyes there
             rnd = System.Convert.ToByte(Random.Range(0, 2));
+            rnd2 = System.Convert.ToByte(Random.Range(0, 2));
             floatX = kid.GetComponent<Spawn>().x;
             System.Console.WriteLine(floatX);
             //Check if the Player is somewhere in the game
@@ -62,12 +66,30 @@ public class LightsOff : MonoBehaviour {
                         GameObject.FindWithTag("S1").GetComponent<Renderer>().material = redLight;
                         GameObject.FindWithTag("S1").GetComponent<Switch>().enabled = true;
                         red.transform.SetPositionAndRotation(new Vector3(18.72f, 5.34f, -29.36f), Quaternion.Euler(0, 0, 0));
+                        //Check the Random to choose the position of the battery
+                        if(rnd2 == 0)
+                        {
+                            battery.transform.SetPositionAndRotation(new Vector3(-20.74f, 13.428f, -7.8f), Quaternion.Euler(90, 40, 0));
+                        }
+                        else
+                        {
+                            battery.transform.SetPositionAndRotation(new Vector3(9.87f, 11.63f, 8.67f), Quaternion.Euler(90, 70, 0));
+                        }
                     }
                     else
                     {
                         GameObject.FindWithTag("S2").GetComponent<Renderer>().material = redLight;
                         GameObject.FindWithTag("S2").GetComponent<Switch>().enabled = true;
                         red.transform.SetPositionAndRotation(new Vector3(18.72f, 16.38f, -29.36f), Quaternion.Euler(0, 0, 0));
+                        //Check the Random to choose the position of the battery
+                        if (rnd2 == 0)
+                        {
+                            battery.transform.SetPositionAndRotation(new Vector3(-3.992f, 1.794f, -20.894f), Quaternion.Euler(90, 95, 0));
+                        }
+                        else
+                        {
+                            battery.transform.SetPositionAndRotation(new Vector3(8.63f, 3.553f, 22.9f), Quaternion.Euler(90, 30, 0));
+                        }
                     }
                 }
                 //Check if the Player is at the floor 1
@@ -79,12 +101,22 @@ public class LightsOff : MonoBehaviour {
                         GameObject.FindWithTag("S0").GetComponent<Renderer>().material = redLight;
                         GameObject.FindWithTag("S0").GetComponent<Switch>().enabled = true;
                         red.transform.SetPositionAndRotation(new Vector3(19.38f, -5.05f, 19.39f), Quaternion.Euler(0, 0, 0));
+                        //Check the Random to choose the position of the battery
+                        if (rnd2 == 0)
+                        {
+                            battery.transform.SetPositionAndRotation(new Vector3(-20.74f, 13.428f, -7.8f), Quaternion.Euler(90, 40, 0));
+                        }
+                        else
+                        {
+                            battery.transform.SetPositionAndRotation(new Vector3(9.87f, 11.63f, 8.67f), Quaternion.Euler(90, 70, 0));
+                        }
                     }
                     else
                     {
                         GameObject.FindWithTag("S2").GetComponent<Renderer>().material = redLight;
                         GameObject.FindWithTag("S2").GetComponent<Switch>().enabled = true;
                         red.transform.SetPositionAndRotation(new Vector3(18.72f, 16.38f, -29.36f), Quaternion.Euler(0, 0, 0));
+                        battery.transform.SetPositionAndRotation(new Vector3(21.348f, -8.57f, -10.339f), Quaternion.Euler(90, 15, 0));
                     }
                 }
                 //Check if the Player is at the floor 2
@@ -96,12 +128,22 @@ public class LightsOff : MonoBehaviour {
                         GameObject.FindWithTag("S0").GetComponent<Renderer>().material = redLight;
                         GameObject.FindWithTag("S0").GetComponent<Switch>().enabled = true;
                         red.transform.SetPositionAndRotation(new Vector3(19.38f, -5.05f, 19.39f), Quaternion.Euler(0, 0, 0));
+                        //Check the Random to choose the position of the battery
+                        if (rnd2 == 0)
+                        {
+                            battery.transform.SetPositionAndRotation(new Vector3(-3.992f, 1.794f, -20.894f), Quaternion.Euler(90, 95, 0));
+                        }
+                        else
+                        {
+                            battery.transform.SetPositionAndRotation(new Vector3(9.87f, 11.63f, 8.67f), Quaternion.Euler(90, 70, 0));
+                        }
                     }
                     else
                     {
                         GameObject.FindWithTag("S1").GetComponent<Renderer>().material = redLight;
                         GameObject.FindWithTag("S1").GetComponent<Switch>().enabled = true;
                         red.transform.SetPositionAndRotation(new Vector3(18.72f, 5.34f, -29.36f), Quaternion.Euler(0, 0, 0));
+                        battery.transform.SetPositionAndRotation(new Vector3(21.348f, -8.57f, -10.339f), Quaternion.Euler(90, 15, 0));
                     }
                 }
             }

@@ -16,6 +16,7 @@ public class ToOptions : MonoBehaviour {
     public GameObject player;
     public GameObject musicPlayer;
     public GameObject menuGameOver;
+    public GameObject battery;
     public Camera mainCam;
     public Camera menuCam;
     public AudioMixer music;
@@ -33,6 +34,7 @@ public class ToOptions : MonoBehaviour {
         kid = GameObject.FindWithTag("Kid");
         red = GameObject.FindWithTag("RedEyes");
         musicPlayer = GameObject.FindWithTag("Music");
+        battery = GameObject.FindWithTag("Battery");
     }
 
     /// <summary>
@@ -56,6 +58,7 @@ public class ToOptions : MonoBehaviour {
             musicPlayer.GetComponent<AudioSource>().clip = menuMusic;
             musicPlayer.GetComponent<AudioSource>().Play();
             menuGameOver.SetActive(false);
+            battery.transform.SetPositionAndRotation(new Vector3(22f, -22f, -10f), Quaternion.Euler(90, 90, 0));
         }
         panelOptions.SetActive(false);
         panelMenu.SetActive(true);

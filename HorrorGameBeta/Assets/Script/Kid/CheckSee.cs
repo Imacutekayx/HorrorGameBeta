@@ -11,6 +11,7 @@ public class CheckSee : MonoBehaviour {
     public GameObject musicPlayer;
     public GameObject menuGameOver;
     public GameObject menu;
+    public GameObject battery;
     public AudioClip killKid;
     private Light spot;
 
@@ -23,6 +24,7 @@ public class CheckSee : MonoBehaviour {
 	void Start () {
         player = GameObject.FindWithTag("Player");
         playerLight = GameObject.FindWithTag("PlayerLight");
+        battery = GameObject.FindWithTag("Battery");
         spot = playerLight.GetComponent<Light>();
         killCount = 0;
         safeCount = 0;
@@ -57,6 +59,7 @@ public class CheckSee : MonoBehaviour {
                 Cursor.lockState = CursorLockMode.Confined;
                 menu.SetActive(true);
                 menuGameOver.SetActive(true);
+                battery.transform.SetPositionAndRotation(new Vector3(22f, -22f, -10f), Quaternion.Euler(90, 90, 0));
                 GetComponent<CheckSee>().enabled = false;
             }
         }
