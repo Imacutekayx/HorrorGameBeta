@@ -14,6 +14,7 @@ public class Escape : MonoBehaviour {
     public GameObject red;
     public GameObject menu;
     public GameObject menuOptions;
+    public GameObject userLayout;
     public AudioClip menuEscape;
     public AudioMixer music;
     public Slider musicVolume;
@@ -73,6 +74,7 @@ public class Escape : MonoBehaviour {
         music.SetFloat("MusicVolume", musicVolume.value * 40 - 30);
         menu.SetActive(true);
         menuOptions.SetActive(true);
+        userLayout.SetActive(false);
 
         //PlayerLight
         playerLight.GetComponent<ToggleLight>().enabled = false;
@@ -81,6 +83,7 @@ public class Escape : MonoBehaviour {
         player.GetComponent<Rigidbody>().freezeRotation = true;
         player.GetComponent<Movement>().enabled = false;
         player.GetComponent<Rotation>().enabled = false;
+        player.GetComponent<AudioSource>().Stop();
         player.GetComponent<Escape>().enabled = false;
     }
 }

@@ -75,6 +75,7 @@
     <Compile Include="Assets\Script\Menu\ToOptions.cs" />
     <Compile Include="Assets\Script\Player\Battery.cs" />
     <Compile Include="Assets\Script\Player\Escape.cs" />
+    <Compile Include="Assets\Script\Player\Instructions.cs" />
     <Compile Include="Assets\Script\Player\LookAt.cs" />
     <Compile Include="Assets\Script\Player\Movement.cs" />
     <Compile Include="Assets\Script\Player\Rotation.cs" />

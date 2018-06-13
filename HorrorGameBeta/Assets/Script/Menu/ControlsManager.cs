@@ -18,6 +18,7 @@ public class ControlsManager : MonoBehaviour{
     public GameObject sliderSound;
     public GameObject sliderGame;
     public GameObject menuOption;
+    public GameObject instructions;
     private GameObject currentKey;
     private GameObject[] keyShows;
     private Controls controls;
@@ -48,6 +49,7 @@ public class ControlsManager : MonoBehaviour{
         s1.GetComponent<Switch>().interact = controls.lstKeys[6].keyValue;
         s2.GetComponent<Switch>().interact = controls.lstKeys[6].keyValue;
         battery.GetComponent<Battery>().interact = controls.lstKeys[6].keyValue;
+        instructions.GetComponent<Instructions>().interact = controls.lstKeys[6].keyValue;
         sliderMusic.GetComponent<UnityEngine.UI.Slider>().value = controls.lstSliders[0].sliderValue;
         sliderSound.GetComponent<UnityEngine.UI.Slider>().value = controls.lstSliders[1].sliderValue;
         sliderGame.GetComponent<UnityEngine.UI.Slider>().value = controls.lstSliders[2].sliderValue;

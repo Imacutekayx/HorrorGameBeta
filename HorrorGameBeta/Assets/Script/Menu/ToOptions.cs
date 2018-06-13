@@ -17,6 +17,7 @@ public class ToOptions : MonoBehaviour {
     public GameObject playerLight;
     public GameObject musicPlayer;
     public GameObject menuGameOver;
+    public GameObject userLayout;
     public GameObject battery;
     public Camera mainCam;
     public Camera menuCam;
@@ -79,6 +80,7 @@ public class ToOptions : MonoBehaviour {
         {
             music.SetFloat("MusicVolume", musicVolume.value * 40 - 20);
             menu.SetActive(false);
+            userLayout.SetActive(true);
             panelOptions.SetActive(false);
             //Check the state of RedEyes before the escape
             if (redStateActif)

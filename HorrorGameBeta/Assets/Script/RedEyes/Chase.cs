@@ -13,9 +13,15 @@ public class Chase : MonoBehaviour {
 	void Start () {
         player = GameObject.FindWithTag("Player");
 	}
-	
-	//Update is called once per frame
-	void Update () {
+
+    //When the script is enabled
+    private void OnEnable()
+    {
+        //TODO Play Chase
+    }
+
+    //Update is called once per frame
+    void Update () {
         GetComponent<Pathfinding>().enabled = false;
         GetComponent<NavMeshAgent>().destination = player.transform.position;
 	}

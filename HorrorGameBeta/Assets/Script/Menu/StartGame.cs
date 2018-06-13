@@ -17,9 +17,13 @@ public class StartGame : MonoBehaviour {
     public GameObject menuOptions;
     public GameObject menuBase;
     public GameObject menuGameOver;
+    public GameObject userLayout;
     public GameObject door;
     public GameObject house;
     public GameObject musicPlayer;
+    public GameObject batteryBar;
+    public GameObject instructions;
+    public GameObject instructionsPaper;
     public Camera mainCam;
     public Camera menuCam;
     public Material green;
@@ -34,7 +38,7 @@ public class StartGame : MonoBehaviour {
     public AnimationClip watch01;
     public AnimationClip watch02;
     private GameObject[] lights;
-    private Animation playerAnim;
+    private Animator playerAnimator;
     private AudioSource doorSound;
 
     /// <summary>
@@ -42,10 +46,12 @@ public class StartGame : MonoBehaviour {
     /// </summary>
     private void StartScene()
     {
-        playerAnim.Play("enterHouse");
+        //TODO Animation
+        playerAnimator.Play("Entry");
         doorSound.clip = door1;
         doorSound.Play();
-        while (player.GetComponent<Animation>().IsPlaying("enterHouse")){}
+        //while (playerAnimator.anima){}
+        //TODO Thunder
         kid.transform.SetPositionAndRotation(new Vector3(), Quaternion.Euler(0, 0, 0));
         kid.transform.LookAt(player.transform);
         kid.GetComponent<AudioSource>().clip = IWill;
@@ -53,12 +59,12 @@ public class StartGame : MonoBehaviour {
         while (kid.GetComponent<AudioSource>().isPlaying){}
         doorSound.clip = door2;
         doorSound.Play();
-        playerAnim.Play("watch01");
-        while (player.GetComponent<Animation>().IsPlaying("watch01")) { }
+        playerAnimator.Play("Watch1");
+        //while (player.GetComponent<Animation>().IsPlaying("watch01")) { }
         kid.transform.SetPositionAndRotation(new Vector3(18f, 30f, -28f), Quaternion.Euler(0, 0, 0));
         doorSound.clip = door3;
-        playerAnim.Play("watch02");
-        while (player.GetComponent<Animation>().IsPlaying("watch02")) { }
+        playerAnimator.Play("Watch2");
+        //while (player.GetComponent<Animation>().IsPlaying("watch02")) { }
     }
 
     /// <summary>
@@ -81,10 +87,7 @@ public class StartGame : MonoBehaviour {
         player.transform.SetPositionAndRotation(new Vector3(18.72f, 6.23f, -32.03f), Quaternion.Euler(0, 0, 0));
         playerLight = GameObject.FindWithTag("PlayerLight");
         playerLight.GetComponent<Light>().enabled = false;
-        playerAnim = player.GetComponent<Animation>();
-        playerAnim.AddClip(enterHouse, "enterHouse");
-        playerAnim.AddClip(watch01, "watch01");
-        playerAnim.AddClip(watch02, "watch02");
+        playerAnimator = player.GetComponent<Animator>();
         kid = GameObject.FindWithTag("Kid");
         doorSound = door.GetComponent<AudioSource>();
         house = GameObject.FindWithTag("Environnement");
@@ -107,7 +110,7 @@ public class StartGame : MonoBehaviour {
         //Check if this is a retry
         if (!retry)
         {
-            //StartScene();
+            StartScene();
         }
 
         //Music
@@ -152,5 +155,13 @@ public class StartGame : MonoBehaviour {
         GameObject.FindWithTag("S1").GetComponent<Switch>().enabled = false;
         GameObject.FindWithTag("S2").GetComponent<Renderer>().material = green;
         GameObject.FindWithTag("S2").GetComponent<Switch>().enabled = false;
+
+        //UserLayout
+        userLayout.SetActive(true);
+        batteryBar.SetActive(true);
+        instructions.SetActive(false);
+
+        //InstructionsPaper
+        instructionsPaper.GetComponent<Renderer>().enabled = true;
     }
 }

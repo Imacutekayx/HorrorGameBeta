@@ -12,6 +12,7 @@ public class CheckSee : MonoBehaviour {
     public GameObject menuGameOver;
     public GameObject menuOptions;
     public GameObject menu;
+    public GameObject userLayout;
     public GameObject battery;
     public AudioClip killKid;
     private Light spot;
@@ -60,6 +61,7 @@ public class CheckSee : MonoBehaviour {
                 menu.SetActive(true);
                 menuOptions.SetActive(false);
                 menuGameOver.SetActive(true);
+                userLayout.SetActive(false);
                 battery.transform.SetPositionAndRotation(new Vector3(22f, -22f, -10f), Quaternion.Euler(90, 90, 0));
                 GetComponent<CheckSee>().enabled = false;
             }

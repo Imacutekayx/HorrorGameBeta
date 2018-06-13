@@ -9,11 +9,12 @@ public class ToggleLight : MonoBehaviour {
 
     //Objects
     public Light spot;
-    public Image batteryBar;    
+    public Slider batteryBar;
 
     //Variables
     public KeyCode key;
     public float timer;
+    public float generalTimer;
     public int batteryTime = 100;
 
 	//Use this for initialization
@@ -47,8 +48,11 @@ public class ToggleLight : MonoBehaviour {
             if(batteryTime == 0)
             {
                 spot.enabled = false;
-            } 
-            //TODO BatteryBar
+            }
+            if(batteryBar.value != batteryTime)
+            {
+                batteryBar.value = batteryTime;
+            }
         }
 	}
 }

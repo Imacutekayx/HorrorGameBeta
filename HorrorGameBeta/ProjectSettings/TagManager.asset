@@ -25,6 +25,7 @@ TagManager:
   - Battery
   - BatteryBar
   - UserLayout
+  - Instructions
   layers:
   - Default
   - TransparentFX

@@ -1,6 +1,5 @@
 Stairs
-Bug Sound Movement()
 Bug Sound Menu
 Start Scene thunder
 SoundChase
-Add changes to xml for sound
+PaperSound
