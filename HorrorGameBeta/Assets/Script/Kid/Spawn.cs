@@ -24,7 +24,7 @@ public class Spawn : MonoBehaviour {
     private void Update()
     {
         //Check if the timer is more than 30 seconds and teleport the Kid to the Player
-        if(timer*Time.deltaTime > 30)
+        if(timer*Time.deltaTime > 20)
         {
             transform.SetPositionAndRotation(new Vector3(x, y, z), Quaternion.Euler(0,0,0));
             GetComponent<CheckSee>().killCount = 0;

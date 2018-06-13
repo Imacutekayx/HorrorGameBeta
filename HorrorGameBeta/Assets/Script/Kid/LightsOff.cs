@@ -32,7 +32,6 @@ public class LightsOff : MonoBehaviour {
         red = GameObject.FindWithTag("RedEyes");
         house = GameObject.FindWithTag("Environnement");
         musicPlayer = GameObject.FindWithTag("Music");
-        battery = GameObject.FindWithTag("Battery");
     }
 
     //Update is called once per frame

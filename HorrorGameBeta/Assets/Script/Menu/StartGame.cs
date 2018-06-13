@@ -81,7 +81,6 @@ public class StartGame : MonoBehaviour {
         player.transform.SetPositionAndRotation(new Vector3(18.72f, 6.23f, -32.03f), Quaternion.Euler(0, 0, 0));
         playerLight = GameObject.FindWithTag("PlayerLight");
         playerLight.GetComponent<Light>().enabled = false;
-        playerLight.GetComponent<ToggleLight>().enabled = true;
         playerAnim = player.GetComponent<Animation>();
         playerAnim.AddClip(enterHouse, "enterHouse");
         playerAnim.AddClip(watch01, "watch01");
@@ -124,6 +123,10 @@ public class StartGame : MonoBehaviour {
         player.GetComponent<Rigidbody>().useGravity = true;
         player.GetComponent<Rigidbody>().freezeRotation = false;
         player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+
+        //PlayerLight
+        playerLight.GetComponent<ToggleLight>().enabled = true;
+        playerLight.GetComponent<ToggleLight>().timer = 0;
 
         //FlashLight
         flashLight.transform.SetPositionAndRotation(new Vector3(19.15f, 5.3f, -30.14f), Quaternion.Euler(90, 0, 0));

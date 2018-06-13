@@ -14,6 +14,7 @@ public class ToOptions : MonoBehaviour {
     public GameObject kid;
     public GameObject red;
     public GameObject player;
+    public GameObject playerLight;
     public GameObject musicPlayer;
     public GameObject menuGameOver;
     public GameObject battery;
@@ -31,10 +32,10 @@ public class ToOptions : MonoBehaviour {
 	//Use this for initialization
 	void Start () {
         player = GameObject.FindWithTag("Player");
+        playerLight = GameObject.FindWithTag("PlayerLight");
         kid = GameObject.FindWithTag("Kid");
         red = GameObject.FindWithTag("RedEyes");
         musicPlayer = GameObject.FindWithTag("Music");
-        battery = GameObject.FindWithTag("Battery");
     }
 
     /// <summary>
@@ -100,6 +101,7 @@ public class ToOptions : MonoBehaviour {
             player.GetComponent<Movement>().enabled = true;
             player.GetComponent<Rotation>().enabled = true;
             player.GetComponent<Escape>().enabled = true;
+            playerLight.GetComponent<ToggleLight>().enabled = true;
             redStateActif = false;
             kidStateActif = false;
             Cursor.lockState = CursorLockMode.Locked;

@@ -23,6 +23,8 @@ TagManager:
   - SliderSound
   - SliderGame
   - Battery
+  - BatteryBar
+  - UserLayout
   layers:
   - Default
   - TransparentFX

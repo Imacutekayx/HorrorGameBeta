@@ -4012,9 +4012,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1888835873}
   playerLight: {fileID: 1427944984}
+  kid: {fileID: 1983451426}
   musicPlayer: {fileID: 1758515535}
   menu: {fileID: 478266507}
   menuGameOver: {fileID: 1042707000}
+  menuOptions: {fileID: 1566696740}
   battery: {fileID: 364545557}
   killRed: {fileID: 8300000, guid: e4d28e65409bca5449cfb0546ca7d6ee, type: 3}
 --- !u!82 &318167104
@@ -4137,6 +4139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  kid: {fileID: 0}
   playerState: 1
   isInArea: 0
 --- !u!1 &329597325
@@ -4406,6 +4409,7 @@ GameObject:
   - component: {fileID: 364545560}
   - component: {fileID: 364545559}
   - component: {fileID: 364545558}
+  - component: {fileID: 364545562}
   m_Layer: 0
   m_Name: Battery
   m_TagString: Untagged
@@ -4481,6 +4485,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: 90, z: 0}
+--- !u!114 &364545562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 364545557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18d1801c2d6e50b44958c581c387e612, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightPlayer: {fileID: 0}
+  target: {fileID: 0}
+  maxRange: 5
+  minRange: 0
+  interact: 0
 --- !u!1 &365021454
 GameObject:
   m_ObjectHideFlags: 0
@@ -8435,6 +8455,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   playerLight: {fileID: 0}
+  battery: {fileID: 364545557}
   s0: {fileID: 0}
   s1: {fileID: 0}
   s2: {fileID: 0}
@@ -17027,6 +17048,7 @@ MonoBehaviour:
   door: {fileID: 991697433}
   house: {fileID: 0}
   musicPlayer: {fileID: 0}
+  userLayout: {fileID: 0}
   mainCam: {fileID: 282840813}
   menuCam: {fileID: 1109889226}
   green: {fileID: 2100000, guid: ed076dbdd4078d244ba4ee222fb4b298, type: 2}
@@ -19013,7 +19035,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spot: {fileID: 0}
+  batteryBar: {fileID: 0}
   key: 0
+  timer: 0
+  batteryTime: 100
 --- !u!1 &1428091892
 GameObject:
   m_ObjectHideFlags: 0
@@ -19515,9 +19540,11 @@ MonoBehaviour:
   kid: {fileID: 0}
   red: {fileID: 0}
   player: {fileID: 0}
+  playerLight: {fileID: 0}
   musicPlayer: {fileID: 0}
   menuGameOver: {fileID: 0}
   battery: {fileID: 0}
+  userLayout: {fileID: 0}
   mainCam: {fileID: 282840813}
   menuCam: {fileID: 1109889226}
   music: {fileID: 0}
@@ -21382,13 +21409,15 @@ MonoBehaviour:
   kid: {fileID: 0}
   red: {fileID: 0}
   player: {fileID: 0}
+  playerLight: {fileID: 0}
   musicPlayer: {fileID: 0}
   menuGameOver: {fileID: 0}
-  battery: {fileID: 0}
+  battery: {fileID: 364545557}
+  userLayout: {fileID: 0}
   mainCam: {fileID: 282840813}
   menuCam: {fileID: 1109889226}
-  music: {fileID: 0}
-  menuMusic: {fileID: 0}
+  music: {fileID: 24100000, guid: b2babdabb96da9a4b8e81b5aaba2e6d5, type: 2}
+  menuMusic: {fileID: 8300000, guid: 97412dce2452f3942936e666672281fe, type: 3}
   musicVolume: {fileID: 0}
   redStateActif: 0
   kidStateActif: 0
@@ -21583,9 +21612,11 @@ MonoBehaviour:
   kid: {fileID: 1983451426}
   red: {fileID: 318167095}
   player: {fileID: 1888835873}
+  playerLight: {fileID: 0}
   musicPlayer: {fileID: 1758515535}
   menuGameOver: {fileID: 1042707000}
-  battery: {fileID: 0}
+  battery: {fileID: 364545557}
+  userLayout: {fileID: 0}
   mainCam: {fileID: 282840813}
   menuCam: {fileID: 1109889226}
   music: {fileID: 24100000, guid: b2babdabb96da9a4b8e81b5aaba2e6d5, type: 2}
@@ -26063,6 +26094,7 @@ MonoBehaviour:
   red: {fileID: 0}
   menu: {fileID: 478266507}
   menuOptions: {fileID: 1566696740}
+  userLayout: {fileID: 0}
   menuEscape: {fileID: 8300000, guid: 8c40fd2c066908643a473780f650e1a9, type: 3}
   music: {fileID: 24100000, guid: b2babdabb96da9a4b8e81b5aaba2e6d5, type: 2}
   musicVolume: {fileID: 1611897973}
@@ -26077,7 +26109,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 243115346937186304, guid: b2babdabb96da9a4b8e81b5aaba2e6d5,
     type: 2}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: b1038e03a6bf5034ca7be40da9f57c57, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -27318,8 +27350,9 @@ MonoBehaviour:
   playerLight: {fileID: 0}
   musicPlayer: {fileID: 1758515535}
   menuGameOver: {fileID: 1042707000}
+  menuOptions: {fileID: 1566696740}
   menu: {fileID: 478266507}
-  battery: {fileID: 0}
+  battery: {fileID: 364545557}
   killKid: {fileID: 8300000, guid: b723dfae06b73c545a9f5473ea994f53, type: 3}
   isLookedAt: 0
   killCount: 0
@@ -27355,7 +27388,7 @@ MonoBehaviour:
   red: {fileID: 0}
   house: {fileID: 0}
   musicPlayer: {fileID: 0}
-  battery: {fileID: 0}
+  battery: {fileID: 364545557}
   redLight: {fileID: 2100000, guid: ad5ac0c9272d94341b1b8655b6117fc1, type: 2}
   powerOff: {fileID: 8300000, guid: 8cfc75d6be138b042afa8f18432f29c2, type: 3}
   spawnRed: {fileID: 8300000, guid: b2ed9e3ca06c8394cbfc0514655c473b, type: 3}

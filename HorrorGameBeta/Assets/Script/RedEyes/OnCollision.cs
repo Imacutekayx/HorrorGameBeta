@@ -8,9 +8,11 @@ public class OnCollision : MonoBehaviour {
     //Objects
     public GameObject player;
     public GameObject playerLight;
+    public GameObject kid;
     public GameObject musicPlayer;
     public GameObject menu;
     public GameObject menuGameOver;
+    public GameObject menuOptions;
     public GameObject battery;
     public AudioClip killRed;
     
@@ -30,9 +32,11 @@ public class OnCollision : MonoBehaviour {
             player.transform.LookAt(new Vector3(0, 9000, 0));
             Cursor.lockState = CursorLockMode.Confined;
             menu.SetActive(true);
+            menuOptions.SetActive(false);
             menuGameOver.SetActive(true);
             battery.transform.SetPositionAndRotation(new Vector3(22f, -22f, -10f), Quaternion.Euler(90, 90, 0));
-            GetComponent<CheckSee>().enabled = false;
+            kid.GetComponent<CheckSee>().enabled = false;
+            GetComponent<OnCollision>().enabled = false;
         }
     }
 }

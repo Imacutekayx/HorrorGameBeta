@@ -8,6 +8,7 @@ public class AreaCheck : MonoBehaviour {
 
     //Objects
     public GameObject player;
+    public GameObject kid;
 
     //Variables
     public byte playerState = 1;
@@ -16,45 +17,50 @@ public class AreaCheck : MonoBehaviour {
 	//Use this for initialization
 	void Start () {
         player = GameObject.FindWithTag("Player");
+        kid = GameObject.FindWithTag("Kid");
 	}
 	
 	//Update is called once per frame
 	void Update ()
     {
-        //Check the state of the Player to manage the Chase
-        switch (playerState)
+        //Check if the lights are off
+        if (!kid.GetComponent<LightsOff>().enabled)
         {
-            //Crouch
-            case 0:
-                {
-                    if(!isInArea && GetComponent<Chase>().enabled)
+            //Check the state of the Player to manage the Chase
+            switch (playerState)
+            {
+                //Crouch
+                case 0:
                     {
-                        GetComponent<Chase>().enabled = false;
-                        GetComponent<Pathfinding>().enabled = true;
-                        GetComponent<NavMeshAgent>().speed = 7.5f;
+                        if (!isInArea && GetComponent<Chase>().enabled)
+                        {
+                            GetComponent<Chase>().enabled = false;
+                            GetComponent<Pathfinding>().enabled = true;
+                            GetComponent<NavMeshAgent>().speed = 7.5f;
+                        }
+                        break;
                     }
-                    break;
-                }
-            //Walk
-            case 1:
-                {
-                    if(isInArea && !GetComponent<Chase>().enabled)
+                //Walk
+                case 1:
                     {
-                        GetComponent<Chase>().enabled = true;
-                        GetComponent<NavMeshAgent>().speed = 17.5f;
+                        if (isInArea && !GetComponent<Chase>().enabled)
+                        {
+                            GetComponent<Chase>().enabled = true;
+                            GetComponent<NavMeshAgent>().speed = 17.5f;
+                        }
+                        break;
                     }
-                    break;
-                }
-            //Run
-            case 2:
-                {
-                    if (!GetComponent<Chase>().enabled)
+                //Run
+                case 2:
                     {
-                        GetComponent<Chase>().enabled = true;
-                        GetComponent<NavMeshAgent>().speed = 17.5f;
+                        if (!GetComponent<Chase>().enabled)
+                        {
+                            GetComponent<Chase>().enabled = true;
+                            GetComponent<NavMeshAgent>().speed = 17.5f;
+                        }
+                        break;
                     }
-                    break;
-                }
+            }
         }
 	}
 }

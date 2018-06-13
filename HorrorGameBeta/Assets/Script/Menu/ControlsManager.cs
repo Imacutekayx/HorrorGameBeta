@@ -10,6 +10,7 @@ public class ControlsManager : MonoBehaviour{
     //Objects
     public GameObject player;
     public GameObject playerLight;
+    public GameObject battery;
     public GameObject s0;
     public GameObject s1;
     public GameObject s2;
@@ -46,6 +47,7 @@ public class ControlsManager : MonoBehaviour{
         s0.GetComponent<Switch>().interact = controls.lstKeys[6].keyValue;
         s1.GetComponent<Switch>().interact = controls.lstKeys[6].keyValue;
         s2.GetComponent<Switch>().interact = controls.lstKeys[6].keyValue;
+        battery.GetComponent<Battery>().interact = controls.lstKeys[6].keyValue;
         sliderMusic.GetComponent<UnityEngine.UI.Slider>().value = controls.lstSliders[0].sliderValue;
         sliderSound.GetComponent<UnityEngine.UI.Slider>().value = controls.lstSliders[1].sliderValue;
         sliderGame.GetComponent<UnityEngine.UI.Slider>().value = controls.lstSliders[2].sliderValue;
@@ -131,6 +133,7 @@ public class ControlsManager : MonoBehaviour{
                             s0.GetComponent<Switch>().interact = value;
                             s1.GetComponent<Switch>().interact = value;
                             s2.GetComponent<Switch>().interact = value;
+                            battery.GetComponent<Battery>().interact = value;
                             break;
                         }
                     case "light":

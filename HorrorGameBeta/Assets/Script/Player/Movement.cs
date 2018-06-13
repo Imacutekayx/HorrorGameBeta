@@ -51,6 +51,7 @@ public class Movement : MonoBehaviour {
             if (soundVolume.value != 0 && GetComponent<AudioSource>().clip != slow)
             {
                 GetComponent<AudioSource>().clip = slow;
+                GetComponent<AudioSource>().Play();
                 sound.SetFloat("PlayerVolume", soundVolume.value * 40 - 30);
             }
             isCrouch = true;
@@ -66,6 +67,7 @@ public class Movement : MonoBehaviour {
             if (soundVolume.value != 0)
             {
                 GetComponent<AudioSource>().clip = walk;
+                GetComponent<AudioSource>().Play();
                 sound.SetFloat("PlayerVolume", soundVolume.value * 40 - 20);
             }
             isCrouch = false;
@@ -84,6 +86,7 @@ public class Movement : MonoBehaviour {
             if (soundVolume.value != 0 && GetComponent<AudioSource>().clip != run)
             {
                 GetComponent<AudioSource>().clip = run;
+                GetComponent<AudioSource>().Play();
                 sound.SetFloat("PlayerVolume", soundVolume.value * 40 - 10);
             }
             isSprint = true;
@@ -96,6 +99,7 @@ public class Movement : MonoBehaviour {
             if (soundVolume.value != 0)
             {
                 GetComponent<AudioSource>().clip = walk;
+                GetComponent<AudioSource>().Play();
                 sound.SetFloat("PlayerVolume", soundVolume.value * 40 - 20);
             }
             isSprint = false;
@@ -104,7 +108,7 @@ public class Movement : MonoBehaviour {
         }
 
         //Basic movement
-        if(Input.GetKey(forward) || Input.GetKey(left) || Input.GetKey(behind) || Input.GetKey(right) && !walking && !loop)
+        if((Input.GetKey(forward) || Input.GetKey(left) || Input.GetKey(behind) || Input.GetKey(right)) && !walking && !loop)
         {
             //Check the component LightsOff of Kid and enable the component AreaCheck of RedEyes if true
             if (!kid.GetComponent<LightsOff>().enabled)
