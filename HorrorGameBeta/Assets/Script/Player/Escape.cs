@@ -45,7 +45,6 @@ public class Escape : MonoBehaviour {
     public void StopGame()
     {
         menu.GetComponent<AudioSource>().clip = menuEscape;
-        Cursor.lockState = CursorLockMode.Confined;
 
         //Red
         red.GetComponent<Rigidbody>().freezeRotation = true;
@@ -82,8 +81,9 @@ public class Escape : MonoBehaviour {
         //Player
         player.GetComponent<Rigidbody>().freezeRotation = true;
         player.GetComponent<Movement>().enabled = false;
-        player.GetComponent<Rotation>().enabled = false;
         player.GetComponent<AudioSource>().Stop();
+        player.GetComponent<Rotation>().enabled = false;
+        Cursor.lockState = CursorLockMode.None;
         player.GetComponent<Escape>().enabled = false;
     }
 }

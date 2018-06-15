@@ -43,7 +43,7 @@ public class ToggleLight : MonoBehaviour {
         {
             //Calculate the battery remaining
             ++timer;
-            batteryTime = Convert.ToInt32(100 - (timer * Time.deltaTime * 3));
+            batteryTime = Convert.ToInt32(100 - (timer * Time.deltaTime * 2));
             //Check if the battery is empty
             if(batteryTime == 0)
             {

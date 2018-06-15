@@ -36,8 +36,10 @@ public class Instructions : MonoBehaviour {
                     //TODO PaperSound
                     isActive = false;
                     target.GetComponent<Movement>().enabled = true;
-                    target.GetComponent<Rotation>().enabled = true;
                     target.GetComponent<Escape>().enabled = true;
+                    target.GetComponent<Rotation>().enabled = true;
+                    target.GetComponent<Rigidbody>().freezeRotation = false;
+                    target.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
                     playerLight.GetComponent<ToggleLight>().enabled = true;
                     batteryBar.SetActive(true);
                     instructions.SetActive(false);
@@ -48,8 +50,10 @@ public class Instructions : MonoBehaviour {
                     //TODO PaperSound
                     isActive = true;
                     target.GetComponent<Movement>().enabled = false;
-                    target.GetComponent<Rotation>().enabled = false;
                     target.GetComponent<Escape>().enabled = false;
+                    target.GetComponent<Rotation>().enabled = false;
+                    target.GetComponent<Rigidbody>().freezeRotation = true;
+                    target.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
                     playerLight.GetComponent<ToggleLight>().enabled = false;
                     batteryBar.SetActive(false);
                     instructions.SetActive(true);

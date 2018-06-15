@@ -7,6 +7,7 @@ public class BeginGame : MonoBehaviour {
     public GameObject panelMyuuji;
     public GameObject panelBase;
     public GameObject musicPlayer;
+    public GameObject panelOptions;
 	
 	/// <summary>
     /// Method that active the panel of the main menu
@@ -14,6 +15,7 @@ public class BeginGame : MonoBehaviour {
 	public void Begin () {
         panelMyuuji.SetActive(false);
         panelBase.SetActive(true);
+        panelOptions.GetComponent<ChangeSettings>().controls = Controls.LoadFromFile(Application.dataPath + "/Save/controls.xml");
         musicPlayer.GetComponent<AudioSource>().Play();
         GetComponent<BeginGame>().enabled = false;
 	}

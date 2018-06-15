@@ -31,7 +31,6 @@ public class OnCollision : MonoBehaviour {
             GetComponent<AudioSource>().clip = killRed;
             GetComponent<AudioSource>().Play();
             player.transform.LookAt(new Vector3(0, 9000, 0));
-            Cursor.lockState = CursorLockMode.Confined;
             menu.SetActive(true);
             menuOptions.SetActive(false);
             menuGameOver.SetActive(true);

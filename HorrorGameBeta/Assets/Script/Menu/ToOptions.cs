@@ -101,8 +101,8 @@ public class ToOptions : MonoBehaviour {
             player.GetComponent<Rigidbody>().freezeRotation = false;
             player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
             player.GetComponent<Movement>().enabled = true;
-            player.GetComponent<Rotation>().enabled = true;
             player.GetComponent<Escape>().enabled = true;
+            player.GetComponent<Rotation>().enabled = true;
             playerLight.GetComponent<ToggleLight>().enabled = true;
             redStateActif = false;
             kidStateActif = false;

@@ -16,6 +16,7 @@ public class Rotation : MonoBehaviour {
         yaw += sensibility * Input.GetAxis("Mouse X");
         pitch -= sensibility * Input.GetAxis("Mouse Y");
 
+        if(pitch < 90 && pitch > -90)
         transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
     }
 }

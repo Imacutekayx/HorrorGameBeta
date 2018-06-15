@@ -1,5 +1,11 @@
-Stairs
-Bug Sound Menu
-Start Scene thunder
-SoundChase
-PaperSound
+//Bug Sound Menu
+Start Scene thunder.
+SoundChase.
+PaperSound.
+Bug BatteryBar
+Bug Rotation
+Bug Area
+
+FRIDAY:AFTERNOON
+Installer
+Presentation

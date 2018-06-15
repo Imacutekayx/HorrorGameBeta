@@ -23,7 +23,7 @@ public class Spawn : MonoBehaviour {
     //Update is called once per frame
     private void Update()
     {
-        //Check if the timer is more than 30 seconds and teleport the Kid to the Player
+        //Check if the timer is more than 20 seconds and teleport the Kid to the Player
         if(timer*Time.deltaTime > 20)
         {
             transform.SetPositionAndRotation(new Vector3(x, y, z), Quaternion.Euler(0,0,0));

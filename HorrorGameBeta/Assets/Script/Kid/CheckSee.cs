@@ -52,12 +52,13 @@ public class CheckSee : MonoBehaviour {
             ++killCount;
             if(killCount * Time.deltaTime > 5)
             {
+                killCount = 0;
+                safeCount = 0;
                 player.GetComponent<Escape>().StopGame();
                 musicPlayer.GetComponent<AudioSource>().Stop();
                 player.transform.LookAt(new Vector3(0, 9000, 0));
                 GetComponent<AudioSource>().clip = killKid;
                 GetComponent<AudioSource>().Play();
-                Cursor.lockState = CursorLockMode.Confined;
                 menu.SetActive(true);
                 menuOptions.SetActive(false);
                 menuGameOver.SetActive(true);

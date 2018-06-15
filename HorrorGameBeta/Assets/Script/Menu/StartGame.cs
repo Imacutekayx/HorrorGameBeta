@@ -46,25 +46,21 @@ public class StartGame : MonoBehaviour {
     /// </summary>
     private void StartScene()
     {
-        //TODO Animation
-        playerAnimator.Play("Entry");
+        playerAnimator.enabled = true;
         doorSound.clip = door1;
         doorSound.Play();
-        //while (playerAnimator.anima){}
         //TODO Thunder
         kid.transform.SetPositionAndRotation(new Vector3(), Quaternion.Euler(0, 0, 0));
         kid.transform.LookAt(player.transform);
         kid.GetComponent<AudioSource>().clip = IWill;
         kid.GetComponent<AudioSource>().Play();
-        while (kid.GetComponent<AudioSource>().isPlaying){}
+        //while (kid.GetComponent<AudioSource>().isPlaying){}
         doorSound.clip = door2;
         doorSound.Play();
-        playerAnimator.Play("Watch1");
-        //while (player.GetComponent<Animation>().IsPlaying("watch01")) { }
+        playerAnimator.SetBool("PlayWatch1", true);
         kid.transform.SetPositionAndRotation(new Vector3(18f, 30f, -28f), Quaternion.Euler(0, 0, 0));
         doorSound.clip = door3;
-        playerAnimator.Play("Watch2");
-        //while (player.GetComponent<Animation>().IsPlaying("watch02")) { }
+        playerAnimator.SetBool("PlayWatch2", true);
     }
 
     /// <summary>
@@ -110,7 +106,7 @@ public class StartGame : MonoBehaviour {
         //Check if this is a retry
         if (!retry)
         {
-            StartScene();
+            //StartScene();
         }
 
         //Music
@@ -127,19 +123,29 @@ public class StartGame : MonoBehaviour {
         player.GetComponent<Rigidbody>().freezeRotation = false;
         player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
 
+        //PlayerAnimator
+        playerAnimator.enabled = false;
+        playerAnimator.SetBool("PlayWatch1", false);
+        playerAnimator.SetBool("PlayWatch2", false);
+
         //PlayerLight
-        playerLight.GetComponent<ToggleLight>().enabled = true;
         playerLight.GetComponent<ToggleLight>().timer = 0;
+        playerLight.GetComponent<ToggleLight>().batteryTime = 100;
+        playerLight.GetComponent<ToggleLight>().enabled = true;
 
         //FlashLight
         flashLight.transform.SetPositionAndRotation(new Vector3(19.15f, 5.3f, -30.14f), Quaternion.Euler(90, 0, 0));
 
         //Kid
         kid.transform.SetPositionAndRotation(new Vector3(18f, 30f, -28f), Quaternion.Euler(0, 0, 0));
-        kid.GetComponent<LightsOff>().enabled = true;
         kid.GetComponent<LightsOff>().timer = 0;
-        kid.GetComponent<Spawn>().enabled = true;
+        kid.GetComponent<LightsOff>().on = true;
+        kid.GetComponent<LightsOff>().enabled = true;
         kid.GetComponent<Spawn>().timer = 0;
+        kid.GetComponent<Spawn>().x = 23.7f;
+        kid.GetComponent<Spawn>().y = 2.79f;
+        kid.GetComponent<Spawn>().z = 16.1f;
+        kid.GetComponent<Spawn>().enabled = true;
         kid.GetComponent<CheckSee>().enabled = false;
 
         //RedEyes
@@ -158,6 +164,7 @@ public class StartGame : MonoBehaviour {
 
         //UserLayout
         userLayout.SetActive(true);
+        batteryBar.GetComponent<Slider>().value = 100;
         batteryBar.SetActive(true);
         instructions.SetActive(false);
 

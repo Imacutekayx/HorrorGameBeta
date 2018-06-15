@@ -9,14 +9,7 @@ public class ChangeSettings : MonoBehaviour {
     //Objects
     public GameObject player;
     public AudioMixer audioMixer;
-    private Controls controls;
-
-    //Use this for initialization
-    private void Start()
-    {
-        player = GameObject.FindWithTag("Player");
-        controls = Controls.LoadFromFile(Application.dataPath + "/Save/controls.xml");
-    }
+    public Controls controls;
 
     /// <summary>
     /// Method which change the music volume

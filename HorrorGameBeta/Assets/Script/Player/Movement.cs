@@ -15,7 +15,7 @@ public class Movement : MonoBehaviour {
     public Slider soundVolume;
     public GameObject red;
     public GameObject kid;
-    private CapsuleCollider coll;
+    private BoxCollider coll;
 
     //Variables
     public KeyCode forward;
@@ -38,7 +38,7 @@ public class Movement : MonoBehaviour {
     {
         red = GameObject.FindWithTag("RedEyes");
         kid = GameObject.FindWithTag("Kid");
-        coll = GetComponent<CapsuleCollider>();
+        coll = GetComponent<BoxCollider>();
     }
 
     //Update is called once per frame
@@ -56,8 +56,8 @@ public class Movement : MonoBehaviour {
             }
             isCrouch = true;
             allowSprint = false;
-            coll.height = 1.5f;
-            transform.Translate(0, -0.1f, 0);
+            coll.center = new Vector3(0f, 0f, 0f);
+            transform.Translate(0, -4f, 0);
             speed /= 2f;
             red.GetComponent<AreaCheck>().playerState = 0;
         }
@@ -72,9 +72,8 @@ public class Movement : MonoBehaviour {
             }
             isCrouch = false;
             allowSprint = true;
-            coll = GetComponent<CapsuleCollider>();
-            transform.Translate(0, 2.5f, 0);
-            coll.height = 5f;
+            transform.Translate(0, 4f, 0);
+            coll.center = new Vector3(0f, -3f, 0f);
             speed *= 2f;
             red.GetComponent<AreaCheck>().playerState = 1;
         }
