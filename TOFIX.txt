@@ -3,8 +3,7 @@ Start Scene thunder.
 SoundChase.
 PaperSound.
 Bug BatteryBar
-Bug Rotation
-Bug Area
+?Bug Rotation
 
 FRIDAY:AFTERNOON
 Installer

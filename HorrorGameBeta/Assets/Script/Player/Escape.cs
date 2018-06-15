@@ -55,6 +55,10 @@ public class Escape : MonoBehaviour {
             red.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
             menuOptions.GetComponent<ToOptions>().redStateActif = true;
         }
+        else
+        {
+            menuOptions.GetComponent<ToOptions>().redStateActif = false;
+        }
 
         //Kid
         kid.GetComponent<LightsOff>().enabled = false;
@@ -62,6 +66,7 @@ public class Escape : MonoBehaviour {
         if (kid.GetComponent<Spawn>().enabled == true)
         {
             kid.GetComponent<Spawn>().enabled = false;
+            menuOptions.GetComponent<ToOptions>().kidStateActif = false;
         }
         else
         {
