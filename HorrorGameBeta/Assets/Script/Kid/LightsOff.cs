@@ -162,4 +162,18 @@ public class LightsOff : MonoBehaviour {
             ++timer;
         }
     }
+
+    /// <summary>
+    /// Ending switch
+    /// </summary>
+    public void Ends()
+    {
+        //TODO Play NotLightOn
+        //TODO Play NotTheGoodOne
+        GameObject.FindWithTag("S0").GetComponent<Renderer>().material = redLight;
+        GameObject.FindWithTag("S0").GetComponent<Switch>().enabled = true;
+        red.SetActive(false);
+        kid.SetActive(false);
+        //TODO Play Ending Music
+    }
 }

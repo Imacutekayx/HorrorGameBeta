@@ -2,6 +2,11 @@
 Start Scene thunder.
 SoundChase.
 PaperSound.
+NotLightOn.
+NotTheGoodOne.
+Music Ending
+Music EndingCredit
+StartAnim
 Bug BatteryBar
 ?Bug Rotation
 

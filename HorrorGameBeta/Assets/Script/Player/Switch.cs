@@ -11,6 +11,7 @@ public class Switch : MonoBehaviour {
     public GameObject kid;
     public GameObject house;
     public GameObject musicPlayer;
+    public GameObject panelOptions;
     public Material green;
     public AudioClip bouton;
     public AudioClip lightOn;
@@ -22,6 +23,7 @@ public class Switch : MonoBehaviour {
     public int maxRange;
     public int minRange;
     public KeyCode interact;
+    public byte SwitchActived;
 
 
     //Use this for initialization
@@ -46,29 +48,45 @@ public class Switch : MonoBehaviour {
             //Check if the player press the InteractKey
             if (Input.GetKey(interact))
             {
+                SwitchActived = GameObject.FindWithTag("S0").GetComponent<Switch>().SwitchActived;
                 GetComponent<AudioSource>().clip = bouton;
                 GetComponent<AudioSource>().Play();
 
-                red.GetComponent<Pathfinding>().enabled = false;
-                red.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
-                red.transform.position = new Vector3(18.72f, 16.38f, -29.36f);
-                
-                house.GetComponent<AudioSource>().clip = lightOn;
-                house.GetComponent<AudioSource>().Play();
-
-                //Enable all the lights
-                foreach (GameObject li in lights)
+                if (SwitchActived < 2)
                 {
-                    li.GetComponent<Light>().enabled = true;
+                    GameObject.FindWithTag("S0").GetComponent<Switch>().SwitchActived = ++SwitchActived;
+                    red.GetComponent<Pathfinding>().enabled = false;
+                    red.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
+                    red.transform.position = new Vector3(18.72f, 16.38f, -29.36f);
+
+                    house.GetComponent<AudioSource>().clip = lightOn;
+                    house.GetComponent<AudioSource>().Play();
+
+                    //Enable all the lights
+                    foreach (GameObject li in lights)
+                    {
+                        li.GetComponent<Light>().enabled = true;
+                    }
+
+                    rend.material = green;
+
+                    kid.GetComponent<LightsOff>().on = true;
+                    kid.GetComponent<LightsOff>().timer = 0;
+
+                    musicPlayer.GetComponent<AudioSource>().clip = lightOnMusic;
+                    musicPlayer.GetComponent<AudioSource>().Play();
                 }
-
-                rend.material = green;
-
-                kid.GetComponent<LightsOff>().on = true;
-                kid.GetComponent<LightsOff>().timer = 0;
-
-                musicPlayer.GetComponent<AudioSource>().clip = lightOnMusic;
-                musicPlayer.GetComponent<AudioSource>().Play();
+                else if(SwitchActived == 2)
+                {
+                    kid.GetComponent<LightsOff>().Ends();
+                }
+                else
+                {
+                    //TODO Play EndingCredit anim
+                    //TODO Play EndingCredit music
+                    target.GetComponent<Escape>().StopGame();
+                    panelOptions.GetComponent<ToOptions>().ToMenu();
+                }
 
                 GetComponent<Switch>().enabled = false;
             }

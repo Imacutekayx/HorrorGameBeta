@@ -47,6 +47,7 @@ public class StartGame : MonoBehaviour {
     private void StartScene()
     {
         playerAnimator.enabled = true;
+        new WaitForSeconds(playerAnimator.GetCurrentAnimatorStateInfo(0).length + playerAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime);
         doorSound.clip = door1;
         doorSound.Play();
         //TODO Thunder
@@ -54,13 +55,15 @@ public class StartGame : MonoBehaviour {
         kid.transform.LookAt(player.transform);
         kid.GetComponent<AudioSource>().clip = IWill;
         kid.GetComponent<AudioSource>().Play();
-        //while (kid.GetComponent<AudioSource>().isPlaying){}
+        new WaitForSeconds(kid.GetComponent<AudioSource>().clip.length);
         doorSound.clip = door2;
         doorSound.Play();
         playerAnimator.SetBool("PlayWatch1", true);
+        new WaitForSeconds(playerAnimator.GetCurrentAnimatorStateInfo(0).length + playerAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime);
         kid.transform.SetPositionAndRotation(new Vector3(18f, 30f, -28f), Quaternion.Euler(0, 0, 0));
         doorSound.clip = door3;
         playerAnimator.SetBool("PlayWatch2", true);
+        new WaitForSeconds(playerAnimator.GetCurrentAnimatorStateInfo(0).length + playerAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime);
     }
 
     /// <summary>
@@ -106,7 +109,7 @@ public class StartGame : MonoBehaviour {
         //Check if this is a retry
         if (!retry)
         {
-            //StartScene();
+            StartScene();
         }
 
         //Music
@@ -157,6 +160,7 @@ public class StartGame : MonoBehaviour {
         //Switches
         GameObject.FindWithTag("S0").GetComponent<Renderer>().material = green;
         GameObject.FindWithTag("S0").GetComponent<Switch>().enabled = false;
+        GameObject.FindWithTag("S0").GetComponent<Switch>().SwitchActived = 0;
         GameObject.FindWithTag("S1").GetComponent<Renderer>().material = green;
         GameObject.FindWithTag("S1").GetComponent<Switch>().enabled = false;
         GameObject.FindWithTag("S2").GetComponent<Renderer>().material = green;
