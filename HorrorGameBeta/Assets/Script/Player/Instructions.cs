@@ -10,6 +10,8 @@ public class Instructions : MonoBehaviour {
     public GameObject playerLight;
     public GameObject batteryBar;
     public GameObject instructions;
+    public GameObject house;
+    public AudioClip paperSound;
 
     //Variables
     public int maxRange;
@@ -21,6 +23,7 @@ public class Instructions : MonoBehaviour {
     void Start () {
         target = GameObject.FindWithTag("Player");
         playerLight = GameObject.FindWithTag("PlayerLight");
+        house = GameObject.FindWithTag("Environnement");
 	}
 	
 	// Update is called once per frame
@@ -33,7 +36,8 @@ public class Instructions : MonoBehaviour {
             {
                 if (isActive)
                 {
-                    //TODO PaperSound
+                    house.GetComponent<AudioSource>().clip = paperSound;
+                    house.GetComponent<AudioSource>().Play();
                     isActive = false;
                     target.GetComponent<Movement>().enabled = true;
                     target.GetComponent<Escape>().enabled = true;
@@ -47,7 +51,8 @@ public class Instructions : MonoBehaviour {
                 }
                 else
                 {
-                    //TODO PaperSound
+                    house.GetComponent<AudioSource>().clip = paperSound;
+                    house.GetComponent<AudioSource>().Play();
                     isActive = true;
                     target.GetComponent<Movement>().enabled = false;
                     target.GetComponent<Escape>().enabled = false;

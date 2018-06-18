@@ -1,13 +1,8 @@
 //Bug Sound Menu
-Start Scene thunder.
-SoundChase.
-PaperSound.
-NotLightOn.
-NotTheGoodOne.
-Music Ending
-Music EndingCredit
-StartAnim
+SoundChase
 Bug BatteryBar
+Bug Sound
+Bug Area
 ?Bug Rotation
 
 FRIDAY:AFTERNOON

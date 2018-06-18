@@ -12,10 +12,12 @@ public class Switch : MonoBehaviour {
     public GameObject house;
     public GameObject musicPlayer;
     public GameObject panelOptions;
+    public GameObject creditCanvas;
     public Material green;
     public AudioClip bouton;
     public AudioClip lightOn;
     public AudioClip lightOnMusic;
+    public AudioClip endingCreditMusic;
     private Renderer rend;
     private GameObject[] lights;
 
@@ -83,11 +85,13 @@ public class Switch : MonoBehaviour {
                 else
                 {
                     //TODO Play EndingCredit anim
-                    //TODO Play EndingCredit music
+                    musicPlayer.GetComponent<AudioSource>().clip = endingCreditMusic;
+                    musicPlayer.GetComponent<AudioSource>().Play();
                     target.GetComponent<Escape>().StopGame();
                     panelOptions.GetComponent<ToOptions>().ToMenu();
                 }
-
+                creditCanvas.SetActive(true);
+                creditCanvas.GetComponent<Credits>().enabled = true;
                 GetComponent<Switch>().enabled = false;
             }
         }

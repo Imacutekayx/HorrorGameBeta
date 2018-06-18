@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
@@ -7,7 +8,7 @@ using UnityEngine.UI;
 /// </summary>
 public class StartGame : MonoBehaviour {
 
-    //objects
+    //Objects
     public GameObject player;
     public GameObject playerLight;
     public GameObject flashLight;
@@ -33,6 +34,8 @@ public class StartGame : MonoBehaviour {
     public AudioClip door2;
     public AudioClip door3;
     public AudioClip IWill;
+    public AudioClip thunder;
+    public AudioClip notLightOn;
     public Slider musicVolume;
     public AnimationClip enterHouse;
     public AnimationClip watch01;
@@ -40,31 +43,6 @@ public class StartGame : MonoBehaviour {
     private GameObject[] lights;
     private Animator playerAnimator;
     private AudioSource doorSound;
-
-    /// <summary>
-    /// Method that will play an animation
-    /// </summary>
-    private void StartScene()
-    {
-        playerAnimator.enabled = true;
-        new WaitForSeconds(playerAnimator.GetCurrentAnimatorStateInfo(0).length + playerAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime);
-        doorSound.clip = door1;
-        doorSound.Play();
-        //TODO Thunder
-        kid.transform.SetPositionAndRotation(new Vector3(), Quaternion.Euler(0, 0, 0));
-        kid.transform.LookAt(player.transform);
-        kid.GetComponent<AudioSource>().clip = IWill;
-        kid.GetComponent<AudioSource>().Play();
-        new WaitForSeconds(kid.GetComponent<AudioSource>().clip.length);
-        doorSound.clip = door2;
-        doorSound.Play();
-        playerAnimator.SetBool("PlayWatch1", true);
-        new WaitForSeconds(playerAnimator.GetCurrentAnimatorStateInfo(0).length + playerAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime);
-        kid.transform.SetPositionAndRotation(new Vector3(18f, 30f, -28f), Quaternion.Euler(0, 0, 0));
-        doorSound.clip = door3;
-        playerAnimator.SetBool("PlayWatch2", true);
-        new WaitForSeconds(playerAnimator.GetCurrentAnimatorStateInfo(0).length + playerAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime);
-    }
 
     /// <summary>
     /// Method that reset the game parameters
@@ -83,20 +61,18 @@ public class StartGame : MonoBehaviour {
 
         //GameObjects needed for the animation
         player = GameObject.FindWithTag("Player");
-        player.transform.SetPositionAndRotation(new Vector3(18.72f, 6.23f, -32.03f), Quaternion.Euler(0, 0, 0));
+        player.transform.rotation = Quaternion.Euler(0, 0, 0);
         playerLight = GameObject.FindWithTag("PlayerLight");
-        playerLight.GetComponent<Light>().enabled = false;
+        playerLight.GetComponent<Light>().enabled = true;
         playerAnimator = player.GetComponent<Animator>();
         kid = GameObject.FindWithTag("Kid");
         doorSound = door.GetComponent<AudioSource>();
         house = GameObject.FindWithTag("Environnement");
         red = GameObject.FindWithTag("RedEyes");
         red.transform.SetPositionAndRotation(new Vector3(18.72f, 15.52f, -29.36f), Quaternion.Euler(0, 0, 0));
-        flashLight.transform.SetPositionAndRotation(new Vector3(19.15f, 4.3f, -30.14f), Quaternion.Euler(90, 0, 0));
 
         //Menu
-        menu.SetActive(false);
-        menuBase.SetActive(false);
+        menu.GetComponent<Canvas>().enabled = false;
         menuGameOver.SetActive(false);
         menuOptions.GetComponent<ToOptions>().inGame = true;
 
@@ -109,15 +85,63 @@ public class StartGame : MonoBehaviour {
         //Check if this is a retry
         if (!retry)
         {
-            StartScene();
+            StartCoroutine(StartScene());
         }
+        else
+        {
+            ResetParams();
+        }
+    }
+
+    /// <summary>
+    /// Method that will play an animation
+    /// </summary>
+    private IEnumerator StartScene()
+    {
+        //Animation
+        playerAnimator.enabled = true;
+        playerAnimator.Play("EnterHouse");
+        doorSound.clip = door1;
+        doorSound.Play();
+        yield return new WaitForSeconds(playerAnimator.GetCurrentAnimatorClipInfo(0).Length + 1);
+        house.GetComponent<AudioSource>().clip = thunder;
+        house.GetComponent<AudioSource>().Play();
+        kid.transform.SetPositionAndRotation(new Vector3(18.67f, 7.17f, -11.79f), Quaternion.Euler(0, 0, 0));
+        kid.transform.LookAt(player.transform);
+        kid.GetComponent<AudioSource>().clip = IWill;
+        kid.GetComponent<AudioSource>().Play();
+        yield return new WaitForSeconds(kid.GetComponent<AudioSource>().clip.length);
+        doorSound.clip = door2;
+        doorSound.Play();
+        playerAnimator.SetBool("PlayWatch1", true);
+        yield return new WaitForSeconds(playerAnimator.GetCurrentAnimatorClipInfo(0).Length);
+        kid.transform.SetPositionAndRotation(new Vector3(18f, 30f, -28f), Quaternion.Euler(0, 0, 0));
+        doorSound.clip = door3;
+        doorSound.Play();
+        yield return new WaitForSeconds(1);
+        playerAnimator.SetBool("PlayWatch2", true);
+        yield return new WaitForSeconds(playerAnimator.GetCurrentAnimatorClipInfo(0).Length + 1);
+        house.GetComponent<AudioSource>().clip = notLightOn;
+        house.GetComponent<AudioSource>().Play();
+        ResetParams();
+    }
+
+    /// <summary>
+    /// Method which reset the parameters of the game
+    /// </summary>
+    private void ResetParams()
+    {
+        //Menu
+        menu.GetComponent<Canvas>().enabled = true;
+        menu.SetActive(false);
+        menuBase.SetActive(false);
 
         //Music
         musicPlayer = GameObject.FindWithTag("Music");
         musicPlayer.GetComponent<AudioSource>().clip = lightOn;
         musicPlayer.GetComponent<AudioSource>().Play();
         music.SetFloat("MusicVolume", musicVolume.value * 40 - 20);
-        
+
         //Player
         player.GetComponent<Movement>().enabled = true;
         player.GetComponent<Rotation>().enabled = true;
@@ -132,12 +156,10 @@ public class StartGame : MonoBehaviour {
         playerAnimator.SetBool("PlayWatch2", false);
 
         //PlayerLight
+        playerLight.GetComponent<Light>().enabled = false;
         playerLight.GetComponent<ToggleLight>().timer = 0;
         playerLight.GetComponent<ToggleLight>().batteryTime = 100;
         playerLight.GetComponent<ToggleLight>().enabled = true;
-
-        //FlashLight
-        flashLight.transform.SetPositionAndRotation(new Vector3(19.15f, 5.3f, -30.14f), Quaternion.Euler(90, 0, 0));
 
         //Kid
         kid.transform.SetPositionAndRotation(new Vector3(18f, 30f, -28f), Quaternion.Euler(0, 0, 0));
@@ -156,7 +178,7 @@ public class StartGame : MonoBehaviour {
         red.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
         red.GetComponent<Pathfinding>().enabled = false;
         red.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
-        
+
         //Switches
         GameObject.FindWithTag("S0").GetComponent<Renderer>().material = green;
         GameObject.FindWithTag("S0").GetComponent<Switch>().enabled = false;

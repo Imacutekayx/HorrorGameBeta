@@ -13,9 +13,13 @@ public class LightsOff : MonoBehaviour {
     public GameObject musicPlayer;
     public GameObject battery;
     public Material redLight;
+    public Material black;
     public AudioClip powerOff;
     public AudioClip spawnRed;
     public AudioClip lightOff;
+    public AudioClip endingMusic;
+    public AudioClip notLightOn;
+    public AudioClip notTheGoodOne;
 
     //Variables
     public int timer = 0;
@@ -23,6 +27,7 @@ public class LightsOff : MonoBehaviour {
     private float floatX;
     private byte rnd;
     private byte rnd2;
+    private byte nbrSwitchActived;
 
     //Use this for initialization
     void Start ()
@@ -51,6 +56,7 @@ public class LightsOff : MonoBehaviour {
             //Random a floor other than the one where the Player is and teleport the RedEyes there
             rnd = System.Convert.ToByte(Random.Range(0, 2));
             rnd2 = System.Convert.ToByte(Random.Range(0, 2));
+            nbrSwitchActived = GameObject.FindWithTag("S0").GetComponent<Switch>().SwitchActived;
             floatX = kid.GetComponent<Spawn>().x;
             System.Console.WriteLine(floatX);
             //Check if the Player is somewhere in the game
@@ -95,7 +101,7 @@ public class LightsOff : MonoBehaviour {
                 else if (floatX == -11.93f || floatX == -0.88 || floatX == 23.7)
                 {
                     //Check the Random to choose the floor to reach
-                    if (rnd == 0)
+                    if (rnd == 0 && nbrSwitchActived < 2)
                     {
                         GameObject.FindWithTag("S0").GetComponent<Renderer>().material = redLight;
                         GameObject.FindWithTag("S0").GetComponent<Switch>().enabled = true;
@@ -122,7 +128,7 @@ public class LightsOff : MonoBehaviour {
                 else
                 {
                     //Check the Random to choose the floor to reach
-                    if (rnd == 0)
+                    if (rnd == 0 && nbrSwitchActived < 2)
                     {
                         GameObject.FindWithTag("S0").GetComponent<Renderer>().material = redLight;
                         GameObject.FindWithTag("S0").GetComponent<Switch>().enabled = true;
@@ -168,12 +174,17 @@ public class LightsOff : MonoBehaviour {
     /// </summary>
     public void Ends()
     {
-        //TODO Play NotLightOn
-        //TODO Play NotTheGoodOne
+        house.GetComponent<AudioSource>().clip = notLightOn;
+        house.GetComponent<AudioSource>().Play();
+        kid.GetComponent<AudioSource>().clip = notTheGoodOne;
+        kid.GetComponent<AudioSource>().Play();
+        GameObject.FindWithTag("S2").GetComponent<Renderer>().material = black;
+        GameObject.FindWithTag("S1").GetComponent<Renderer>().material = black;
         GameObject.FindWithTag("S0").GetComponent<Renderer>().material = redLight;
         GameObject.FindWithTag("S0").GetComponent<Switch>().enabled = true;
         red.SetActive(false);
         kid.SetActive(false);
-        //TODO Play Ending Music
+        musicPlayer.GetComponent<AudioSource>().clip = endingMusic;
+        musicPlayer.GetComponent<AudioSource>().Play();
     }
 }
