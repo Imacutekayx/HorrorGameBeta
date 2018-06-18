@@ -11,7 +11,6 @@ public class Switch : MonoBehaviour {
     public GameObject kid;
     public GameObject house;
     public GameObject musicPlayer;
-    public GameObject panelOptions;
     public GameObject creditCanvas;
     public Material green;
     public AudioClip bouton;
@@ -80,18 +79,23 @@ public class Switch : MonoBehaviour {
                 }
                 else if(SwitchActived == 2)
                 {
-                    kid.GetComponent<LightsOff>().Ends();
+                    GameObject.FindWithTag("S0").GetComponent<Switch>().SwitchActived = ++SwitchActived;
+                    StartCoroutine(kid.GetComponent<LightsOff>().Ends());
                 }
                 else
                 {
-                    //TODO Play EndingCredit anim
+                    target.GetComponent<Escape>().StopGame();
+                    Cursor.lockState = CursorLockMode.Locked;
+                    creditCanvas.SetActive(true);
+                    creditCanvas.GetComponent<Credits>().chkDev = false;
+                    creditCanvas.GetComponent<Credits>().chkMus = false;
+                    creditCanvas.GetComponent<Credits>().chkSou = false;
+                    creditCanvas.GetComponent<Credits>().chkThx = false;
+                    creditCanvas.GetComponent<Credits>().chkCur = false;
+                    creditCanvas.GetComponent<Credits>().enabled = true;
                     musicPlayer.GetComponent<AudioSource>().clip = endingCreditMusic;
                     musicPlayer.GetComponent<AudioSource>().Play();
-                    target.GetComponent<Escape>().StopGame();
-                    panelOptions.GetComponent<ToOptions>().ToMenu();
                 }
-                creditCanvas.SetActive(true);
-                creditCanvas.GetComponent<Credits>().enabled = true;
                 GetComponent<Switch>().enabled = false;
             }
         }

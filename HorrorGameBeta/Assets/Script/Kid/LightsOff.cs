@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 /// <summary>
 /// Script that will shut down the lights and active the RedEyes
@@ -172,7 +173,7 @@ public class LightsOff : MonoBehaviour {
     /// <summary>
     /// Ending switch
     /// </summary>
-    public void Ends()
+    public IEnumerator Ends()
     {
         house.GetComponent<AudioSource>().clip = notLightOn;
         house.GetComponent<AudioSource>().Play();
@@ -183,8 +184,9 @@ public class LightsOff : MonoBehaviour {
         GameObject.FindWithTag("S0").GetComponent<Renderer>().material = redLight;
         GameObject.FindWithTag("S0").GetComponent<Switch>().enabled = true;
         red.SetActive(false);
-        kid.SetActive(false);
+        yield return new WaitForSeconds(kid.GetComponent<AudioSource>().clip.length + 1);
         musicPlayer.GetComponent<AudioSource>().clip = endingMusic;
         musicPlayer.GetComponent<AudioSource>().Play();
+        kid.SetActive(false);
     }
 }

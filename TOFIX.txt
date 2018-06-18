@@ -1,5 +1,6 @@
 //Bug Sound Menu
 SoundChase
+Bug BtnCredit
 Bug BatteryBar
 Bug Sound
 Bug Area

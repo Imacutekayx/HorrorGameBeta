@@ -61,7 +61,7 @@ public class StartGame : MonoBehaviour {
 
         //GameObjects needed for the animation
         player = GameObject.FindWithTag("Player");
-        player.transform.rotation = Quaternion.Euler(0, 0, 0);
+        player.transform.SetPositionAndRotation(new Vector3(18.72f, 6.01f, -27.03f), Quaternion.identity);
         playerLight = GameObject.FindWithTag("PlayerLight");
         playerLight.GetComponent<Light>().enabled = true;
         playerAnimator = player.GetComponent<Animator>();
@@ -69,7 +69,7 @@ public class StartGame : MonoBehaviour {
         doorSound = door.GetComponent<AudioSource>();
         house = GameObject.FindWithTag("Environnement");
         red = GameObject.FindWithTag("RedEyes");
-        red.transform.SetPositionAndRotation(new Vector3(18.72f, 15.52f, -29.36f), Quaternion.Euler(0, 0, 0));
+        red.transform.SetPositionAndRotation(new Vector3(18.72f, 15.52f, -29.36f), Quaternion.identity);
 
         //Menu
         menu.GetComponent<Canvas>().enabled = false;
@@ -162,6 +162,7 @@ public class StartGame : MonoBehaviour {
         playerLight.GetComponent<ToggleLight>().enabled = true;
 
         //Kid
+        kid.SetActive(true);
         kid.transform.SetPositionAndRotation(new Vector3(18f, 30f, -28f), Quaternion.Euler(0, 0, 0));
         kid.GetComponent<LightsOff>().timer = 0;
         kid.GetComponent<LightsOff>().on = true;
@@ -174,6 +175,7 @@ public class StartGame : MonoBehaviour {
         kid.GetComponent<CheckSee>().enabled = false;
 
         //RedEyes
+        red.SetActive(true);
         red.GetComponent<Rigidbody>().freezeRotation = false;
         red.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
         red.GetComponent<Pathfinding>().enabled = false;
@@ -182,7 +184,7 @@ public class StartGame : MonoBehaviour {
         //Switches
         GameObject.FindWithTag("S0").GetComponent<Renderer>().material = green;
         GameObject.FindWithTag("S0").GetComponent<Switch>().enabled = false;
-        GameObject.FindWithTag("S0").GetComponent<Switch>().SwitchActived = 0;
+        GameObject.FindWithTag("S0").GetComponent<Switch>().SwitchActived = 2;
         GameObject.FindWithTag("S1").GetComponent<Renderer>().material = green;
         GameObject.FindWithTag("S1").GetComponent<Switch>().enabled = false;
         GameObject.FindWithTag("S2").GetComponent<Renderer>().material = green;
