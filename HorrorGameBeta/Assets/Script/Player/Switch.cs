@@ -87,6 +87,7 @@ public class Switch : MonoBehaviour {
                     target.GetComponent<Escape>().StopGame();
                     Cursor.lockState = CursorLockMode.Locked;
                     creditCanvas.SetActive(true);
+                    creditCanvas.GetComponent<Credits>().timer = 0;
                     creditCanvas.GetComponent<Credits>().chkDev = false;
                     creditCanvas.GetComponent<Credits>().chkMus = false;
                     creditCanvas.GetComponent<Credits>().chkSou = false;

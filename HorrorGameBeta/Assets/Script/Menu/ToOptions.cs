@@ -47,8 +47,7 @@ public class ToOptions : MonoBehaviour {
         //Check if the User is in game and reset the parameters to have a clear scene
         if (inGame)
         {
-            kid.SetActive(true);
-            kid.transform.SetPositionAndRotation(new Vector3(2.34f, 3.62f, -1.27f), Quaternion.Euler(0, 160, 0));
+            GameObject.FindWithTag("Kid").transform.SetPositionAndRotation(new Vector3(2.34f, 3.62f, -1.27f), Quaternion.Euler(0, 160, 0));
             player.transform.SetPositionAndRotation(new Vector3(18.72f, 6.01f, -27.03f), Quaternion.identity);
             player.GetComponent<Rigidbody>().useGravity = false;
             player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
@@ -62,6 +61,10 @@ public class ToOptions : MonoBehaviour {
             musicPlayer.GetComponent<AudioSource>().Play();
             menuGameOver.SetActive(false);
             battery.transform.SetPositionAndRotation(new Vector3(22f, -22f, -10f), Quaternion.Euler(90, 90, 0));
+            foreach(GameObject light in GameObject.FindGameObjectsWithTag("Light"))
+            {
+                light.GetComponent<Light>().enabled = true;
+            }
         }
         panelOptions.SetActive(false);
         panelMenu.SetActive(true);

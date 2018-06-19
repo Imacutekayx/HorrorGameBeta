@@ -4599,6 +4599,7 @@ MonoBehaviour:
   chkSou: 0
   chkThx: 0
   chkCur: 0
+  timer: 0
 --- !u!1 &329597325
 GameObject:
   m_ObjectHideFlags: 0

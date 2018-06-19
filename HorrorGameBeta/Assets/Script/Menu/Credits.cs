@@ -18,7 +18,7 @@ public class Credits : MonoBehaviour {
     public bool chkSou;
     public bool chkThx;
     public bool chkCur;
-    private int timer;
+    public int timer;
 
     //Update is called once per frame
     void Update () {

@@ -177,8 +177,8 @@ public class LightsOff : MonoBehaviour {
     {
         house.GetComponent<AudioSource>().clip = notLightOn;
         house.GetComponent<AudioSource>().Play();
-        kid.GetComponent<AudioSource>().clip = notTheGoodOne;
-        kid.GetComponent<AudioSource>().Play();
+        GetComponent<AudioSource>().clip = notTheGoodOne;
+        GetComponent<AudioSource>().Play();
         GameObject.FindWithTag("S2").GetComponent<Renderer>().material = black;
         GameObject.FindWithTag("S1").GetComponent<Renderer>().material = black;
         GameObject.FindWithTag("S0").GetComponent<Renderer>().material = redLight;
@@ -187,6 +187,8 @@ public class LightsOff : MonoBehaviour {
         yield return new WaitForSeconds(kid.GetComponent<AudioSource>().clip.length + 1);
         musicPlayer.GetComponent<AudioSource>().clip = endingMusic;
         musicPlayer.GetComponent<AudioSource>().Play();
-        kid.SetActive(false);
+        GetComponent<CheckSee>().enabled = false;
+        GetComponent<Spawn>().enabled = false;
+        GetComponent<LightsOff>().enabled = false;
     }
 }
