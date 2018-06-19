@@ -8,6 +8,7 @@ public class Chase : MonoBehaviour {
 
     //Objects
     public GameObject player;
+    public AudioClip chase;
 
 	//Use this for initialization
 	void Start () {
@@ -17,7 +18,8 @@ public class Chase : MonoBehaviour {
     //When the script is enabled
     private void OnEnable()
     {
-        //TODO Play Chase
+        GetComponent<AudioSource>().clip = chase;
+        GetComponent<AudioSource>().Play();
     }
 
     //Update is called once per frame

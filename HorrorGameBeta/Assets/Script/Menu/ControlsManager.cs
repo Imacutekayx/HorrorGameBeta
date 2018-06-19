@@ -116,10 +116,26 @@ public class ControlsManager : MonoBehaviour{
                 //Assign the value of the new key where it's needed
                 switch (key.keyName)
                 {
-                    case "forward": { break; }
-                    case "behind": { break; }
-                    case "left": { break; }
-                    case "right": { break; }
+                    case "forward":
+                        {
+                            player.GetComponent<Movement>().forward = value;
+                            break;
+                        }
+                    case "behind":
+                        {
+                            player.GetComponent<Movement>().behind = value;
+                            break;
+                        }
+                    case "left":
+                        {
+                            player.GetComponent<Movement>().left = value;
+                            break;
+                        }
+                    case "right":
+                        {
+                            player.GetComponent<Movement>().right = value;
+                            break;
+                        }
                     case "crouch":
                         {
                             player.GetComponent<Movement>().crouch = value;

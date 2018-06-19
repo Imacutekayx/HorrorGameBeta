@@ -16,6 +16,7 @@ public class Movement : MonoBehaviour {
     public GameObject red;
     public GameObject kid;
     private BoxCollider coll;
+    private Vector3 tempVector;
 
     //Variables
     public KeyCode forward;
@@ -133,11 +134,25 @@ public class Movement : MonoBehaviour {
         }
 
         //Movements
-        translation = Input.GetAxis("Vertical") * speed;
-        straffe = Input.GetAxis("Horizontal") * speed;
-        translation *= Time.deltaTime;
-        straffe *= Time.deltaTime;
-
-        transform.Translate(straffe, 0, translation);
+        if (Input.GetKey(forward))
+        {
+            tempVector = transform.rotation * Vector3.forward * Time.deltaTime * speed;
+            transform.position += tempVector;
+        }
+        if (Input.GetKey(behind))
+        {
+            tempVector = transform.rotation * Vector3.forward * Time.deltaTime * speed;
+            transform.position -= tempVector;
+        }
+        if (Input.GetKey(right))
+        {
+            tempVector = transform.rotation * Vector3.right * Time.deltaTime * speed;
+            transform.position += tempVector;
+        }
+        if (Input.GetKey(left))
+        {
+            tempVector = transform.rotation * Vector3.right * Time.deltaTime * speed;
+            transform.position -= tempVector;
+        }
     }
 }

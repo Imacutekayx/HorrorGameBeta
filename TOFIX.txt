@@ -1,9 +1,7 @@
-//Bug Sound Menu
-SoundChase
-Bug BtnCredit
+Gamepad
 Bug BatteryBar
 Bug Sound
-Bug Area
+?Bug Area
 ?Bug Rotation
 
 FRIDAY:AFTERNOON
