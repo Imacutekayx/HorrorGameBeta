@@ -8,9 +8,20 @@
     <Key name="crouch" value="LeftControl" />
     <Key name="sprint" value="LeftShift" />
     <Key name="interact" value="E" />
-    <Key name="light" value="F" />
+    <Key name="light" value="Q" />
     <Key name="escape" value="Escape" />
   </Control>
+  <Gamepad>
+	<Button name="forward" value="" />
+	<Button name="behind" value="" />
+	<Button name="left" value="" />
+	<Button name="right" value="" />
+	<Button name="crouch" value="" />
+	<Button name="sprint" value="" />
+	<Button name="interact" value="" />
+	<Button name="light" value="" />
+	<Button name="escape" value="" />
+  </Gamepad>
   <Sliding>
     <Slider name="music" value="0.5" />
     <Slider name="sound" value="0.5" />

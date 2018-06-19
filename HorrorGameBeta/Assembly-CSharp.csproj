@@ -59,6 +59,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Save\Button.cs" />
     <Compile Include="Assets\Save\Controls.cs" />
     <Compile Include="Assets\Save\Keys.cs" />
     <Compile Include="Assets\Save\Slider.cs" />

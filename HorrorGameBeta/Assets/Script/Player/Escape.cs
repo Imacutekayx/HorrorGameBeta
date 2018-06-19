@@ -21,6 +21,7 @@ public class Escape : MonoBehaviour {
 
     //Variable
     public KeyCode key;
+    public string button;
 
 	//Use this for initialization
 	void Start () {
@@ -33,7 +34,7 @@ public class Escape : MonoBehaviour {
 	//Update is called once per frame
 	void Update () {
         //Check if the User press the EscapeKey
-        if (Input.GetKey(key))
+        if (Input.GetKeyDown(key) || Input.GetKeyDown(button))
         {
             StopGame();
         }

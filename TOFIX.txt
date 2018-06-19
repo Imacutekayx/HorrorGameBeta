@@ -1,8 +1,8 @@
-Gamepad
+Gamepad => Rotation.cs & ControlsManager.cs
+Bug Rotation World
 Bug BatteryBar
 Bug Sound
 ?Bug Area
-?Bug Rotation
 
 FRIDAY:AFTERNOON
 Installer

@@ -17,6 +17,7 @@ public class Instructions : MonoBehaviour {
     public int maxRange;
     public int minRange;
     public KeyCode interact;
+    public string interactBtn;
     private bool isActive;
 
     // Use this for initialization
@@ -32,7 +33,7 @@ public class Instructions : MonoBehaviour {
         if((Vector3.Distance(transform.position, target.transform.position) < maxRange)
            && (Vector3.Distance(transform.position, target.transform.position) > minRange)){
             //Check if the player is pressing the InteractKey and if the instructions are enabled already
-            if (Input.GetKeyDown(interact))
+            if (Input.GetKeyDown(interact) || Input.GetButtonDown(interactBtn))
             {
                 if (isActive)
                 {

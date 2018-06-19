@@ -13,6 +13,8 @@ public class Controls{
     public List<Keys> lstKeys;
     [XmlArray("Sliding"), XmlArrayItem("Slider")]
     public List<CtrlSlider> lstSliders;
+    [XmlArray("Gamepad"), XmlArrayItem("Button")]
+    public List<Button> lstButtons;
 
     /// <summary>
     /// Method which will load the informations from the XML file
