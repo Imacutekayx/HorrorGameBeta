@@ -1,7 +1,7 @@
-Gamepad => Rotation.cs & ControlsManager.cs
+Gamepad => Escape in game && Button added at the beginning
 Bug Rotation World
 Bug BatteryBar
-Bug Sound
+Bug Sound ?onMenu ?Volume
 ?Bug Area
 
 FRIDAY:AFTERNOON

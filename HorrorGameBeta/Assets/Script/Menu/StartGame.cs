@@ -83,14 +83,14 @@ public class StartGame : MonoBehaviour {
 
         //STARTSCENE
         //Check if this is a retry
-        if (!retry)
-        {
-            StartCoroutine(StartScene());
-        }
-        else
-        {
+        //if (!retry)
+        //{
+        //    StartCoroutine(StartScene());
+        //}
+        //else
+        //{
             ResetParams();
-        }
+        //}
     }
 
     /// <summary>

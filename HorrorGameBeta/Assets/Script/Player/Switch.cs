@@ -24,7 +24,7 @@ public class Switch : MonoBehaviour {
     public int maxRange;
     public int minRange;
     public KeyCode interact;
-    public string interactBtn;
+    public KeyCode interactBtn;
     public byte SwitchActived;
 
 
@@ -48,7 +48,7 @@ public class Switch : MonoBehaviour {
            && (Vector3.Distance(transform.position, target.transform.position) > minRange))
         {
             //Check if the player press the InteractKey
-            if (Input.GetKeyDown(interact) || Input.GetButtonDown(interactBtn))
+            if (Input.GetKeyDown(interact) || Input.GetKeyDown(interactBtn))
             {
                 SwitchActived = GameObject.FindWithTag("S0").GetComponent<Switch>().SwitchActived;
                 GetComponent<AudioSource>().clip = bouton;

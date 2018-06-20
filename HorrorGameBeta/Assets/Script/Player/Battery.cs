@@ -13,7 +13,7 @@ public class Battery : MonoBehaviour {
     public int maxRange;
     public int minRange;
     public KeyCode interact;
-    public string interactBtn;
+    public KeyCode interactBtn;
 
     //Use this for initialization
     private void Start()
@@ -30,7 +30,7 @@ public class Battery : MonoBehaviour {
            && (Vector3.Distance(transform.position, target.transform.position) > minRange))
         {
             //Check if the player press the InteractKey
-            if (Input.GetKeyDown(interact) || Input.GetButtonDown(interactBtn))
+            if (Input.GetKeyDown(interact) || Input.GetKeyDown(interactBtn))
             {
                 lightPlayer.GetComponent<ToggleLight>().timer = 0;
                 lightPlayer.GetComponent<ToggleLight>().enabled = true;

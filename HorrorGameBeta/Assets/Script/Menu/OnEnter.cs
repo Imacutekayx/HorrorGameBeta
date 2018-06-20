@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Script that will play a sound when the mouse is on the buttons or are clicked
@@ -9,6 +10,8 @@ public class OnEnter : MonoBehaviour {
     public GameObject menu;
     public AudioClip onMenu;
     public AudioClip click;
+    public Material basic;
+    public Material on;
     private AudioSource audioSource;
 
     //Variables
@@ -25,15 +28,19 @@ public class OnEnter : MonoBehaviour {
     //Active when the mouse enter the object's area
     private void OnMouseEnter()
     {
+        transform.GetChild(0).GetComponent<Text>().material = on;
         audioSource.clip = onMenu;
         audioSource.Play();
         inside = true;
+        Debug.Log("In");
     }
 
     //Active when the mouse exit the object's area
     private void OnMouseExit()
     {
+        transform.GetChild(0).GetComponent<Text>().material = basic;
         inside = false;
+        Debug.Log("Out");
     }
 
     //Update is called once per frame

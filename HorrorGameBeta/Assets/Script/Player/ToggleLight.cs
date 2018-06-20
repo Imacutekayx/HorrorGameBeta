@@ -13,7 +13,7 @@ public class ToggleLight : MonoBehaviour {
 
     //Variables
     public KeyCode key;
-    public string button;
+    public KeyCode button;
     public float timer;
     public float generalTimer;
     public int batteryTime = 100;
@@ -27,7 +27,7 @@ public class ToggleLight : MonoBehaviour {
 	//Update is called once per frame
 	void Update () {
         //Check if the User press the LightKey
-        if (Input.GetKeyDown(key) || Input.GetButtonDown(button))
+        if (Input.GetKeyDown(key) || Input.GetKeyDown(button))
         {
             //Check the state of the PlayerLight before changing it
             if(spot.enabled == true)

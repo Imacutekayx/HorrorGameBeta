@@ -25,15 +25,15 @@ public class Movement : MonoBehaviour {
     public KeyCode right;
     public KeyCode sprint;
     public KeyCode crouch;
-    public string forwardBtn;
-    public string behindBtn;
-    public string leftBtn;
-    public string rightBtn;
-    public string sprintBtn;
-    public string crouchBtn;
+    public KeyCode forwardBtn;
+    public KeyCode behindBtn;
+    public KeyCode leftBtn;
+    public KeyCode rightBtn;
+    public KeyCode sprintBtn;
+    public KeyCode crouchBtn;
     public float speed;
-    private float translation;
-    private float straffe;
+    private readonly float translation;
+    private readonly float straffe;
     private bool isCrouch = false;
     private bool isSprint = false;
     private bool allowSprint = true;
@@ -52,7 +52,7 @@ public class Movement : MonoBehaviour {
     public void Update ()
     {
         //Croutch
-        if ((Input.GetKey(crouch) || Input.GetButton(crouchBtn)) && !isCrouch)
+        if ((Input.GetKey(crouch) || Input.GetKey(crouchBtn)) && !isCrouch)
         {
             //Check the sound volume before changing it
             if (soundVolume.value != 0 && GetComponent<AudioSource>().clip != slow)
@@ -68,7 +68,7 @@ public class Movement : MonoBehaviour {
             speed /= 2f;
             red.GetComponent<AreaCheck>().playerState = 0;
         }
-        else if ((!Input.GetKey(crouch) || !Input.GetButton(crouchBtn)) && isCrouch)
+        else if ((!Input.GetKey(crouch) && !Input.GetKey(crouchBtn)) && isCrouch)
         {
             //Check the sound volume before changing it
             if (soundVolume.value != 0)
@@ -99,7 +99,7 @@ public class Movement : MonoBehaviour {
             speed *= 2f;
             red.GetComponent<AreaCheck>().playerState = 2;
         }
-        else if ((!Input.GetKey(sprint) || !Input.GetButton(sprintBtn)) && isSprint)
+        else if ((!Input.GetKey(sprint) && !Input.GetKey(sprintBtn)) && isSprint)
         {
             //Check the sound volume before changing it
             if (soundVolume.value != 0)
@@ -115,7 +115,7 @@ public class Movement : MonoBehaviour {
 
         //Basic movement
         if(((Input.GetKey(forward) || Input.GetKey(left) || Input.GetKey(behind) || Input.GetKey(right))
-            || (Input.GetButton(forwardBtn) || Input.GetButton(leftBtn) || Input.GetButton(behindBtn) || Input.GetButton(rightBtn)))
+            || (Input.GetAxis("Vertical") == 1 || Input.GetAxis("Horizontal") == -1 || Input.GetAxis("Vertical") == -1 || Input.GetAxis("Horizontal") == 1))
             && !walking && !loop)
         {
             //Check the component LightsOff of Kid and enable the component AreaCheck of RedEyes if true
@@ -129,7 +129,7 @@ public class Movement : MonoBehaviour {
             GetComponent<AudioSource>().Play();
         }
         else if (((!Input.GetKey(forward) && !Input.GetKey(left) && !Input.GetKey(behind) && !Input.GetKey(right))
-            || (!Input.GetButton(forwardBtn) && !Input.GetButton(leftBtn) && !Input.GetButton(behindBtn) && !Input.GetButton(rightBtn)))
+            || (Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") == 0))
             && walking && loop)
         {
             //Check the component LightsOff of Kid and disable the component AreaCheck of RedEyes if true
@@ -144,22 +144,22 @@ public class Movement : MonoBehaviour {
         }
 
         //Movements
-        if (Input.GetKey(forward) || Input.GetButton(forwardBtn))
+        if (Input.GetKey(forward) || Input.GetAxis("Vertical") == 1)
         {
             tempVector = transform.rotation * Vector3.forward * Time.deltaTime * speed;
             transform.position += tempVector;
         }
-        if (Input.GetKey(behind) || Input.GetButton(behindBtn))
+        if (Input.GetKey(behind) || Input.GetAxis("Vertical") == -1)
         {
             tempVector = transform.rotation * Vector3.forward * Time.deltaTime * speed;
             transform.position -= tempVector;
         }
-        if (Input.GetKey(right) || Input.GetButton(rightBtn))
+        if (Input.GetKey(right) || Input.GetAxis("Horizontal") == 1)
         {
             tempVector = transform.rotation * Vector3.right * Time.deltaTime * speed;
             transform.position += tempVector;
         }
-        if (Input.GetKey(left) || Input.GetButton(leftBtn))
+        if (Input.GetKey(left) || Input.GetAxis("Horizontal") == -1)
         {
             tempVector = transform.rotation * Vector3.right * Time.deltaTime * speed;
             transform.position -= tempVector;
