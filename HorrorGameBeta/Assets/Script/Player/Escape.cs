@@ -15,6 +15,7 @@ public class Escape : MonoBehaviour {
     public GameObject menu;
     public GameObject menuOptions;
     public GameObject userLayout;
+    public GameObject newCurrentBtn;
     public AudioClip menuEscape;
     public AudioMixer music;
     public Slider musicVolume;
@@ -80,6 +81,10 @@ public class Escape : MonoBehaviour {
         //Menu
         music.SetFloat("MusicVolume", musicVolume.value * 40 - 30);
         menu.SetActive(true);
+        menu.GetComponent<MenuController>().SetNewBtn(true);
+        menu.GetComponent<MenuController>().localLayer = 1;
+        menu.GetComponent<MenuController>().currentBtn = newCurrentBtn;
+        menu.GetComponent<MenuController>().SetNewBtn(false);
         menuOptions.SetActive(true);
         userLayout.SetActive(false);
 

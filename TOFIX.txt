@@ -1,7 +1,5 @@
-Gamepad => Escape in game && Button added at the beginning
 Bug Rotation World
 Bug BatteryBar
-Bug Sound ?onMenu ?Volume
 ?Bug Area
 
 FRIDAY:AFTERNOON

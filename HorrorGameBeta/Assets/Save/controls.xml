@@ -14,7 +14,7 @@
   <Sliding>
     <Slider name="music" value="0.5" />
     <Slider name="sound" value="0.5" />
-    <Slider name="sensibility" value="1" />
+    <Slider name="sensibility" value="0.5" />
   </Sliding>
   <Gamepad>
     <Button name="forward" value="JoystickButton10" />

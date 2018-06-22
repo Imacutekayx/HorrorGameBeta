@@ -19,10 +19,11 @@ public class MenuController : MonoBehaviour {
     //Variables
     public KeyCode accept;
     public KeyCode escape;
+    public int localLayer;
     private float timer;
     private float timerEsc;
+    private float timerSlid;
     private int layer = -1;
-    private int localLayer;
     private int tempChildCount;
     private int tempCurrentIndex;
 
@@ -69,7 +70,8 @@ public class MenuController : MonoBehaviour {
                 for(int x = 0; x < transform.GetChild(localLayer).childCount; ++x)
                 {
                     //TODO Fix out of buttons exception
-                    if(transform.GetChild(localLayer).GetChild(x).tag == "Button")
+                    if (transform.GetChild(localLayer).GetChild(x).tag == "Button" || transform.GetChild(localLayer).GetChild(x).tag == "SliderMusic"
+                        || transform.GetChild(localLayer).GetChild(x).tag == "SliderSound" || transform.GetChild(localLayer).GetChild(x).tag == "SliderGame")
                     {
                         ++tempChildCount;
                     }
@@ -83,6 +85,34 @@ public class MenuController : MonoBehaviour {
                     SetNewBtn(false);
                 }
                 tempChildCount = 0;
+            }
+        }
+
+        //Move Right
+        if(Input.GetAxis("Horizontal") == 1)
+        {
+            if(++timerSlid *Time.deltaTime > 0.025 && (currentBtn.tag == "SliderMusic" 
+                || currentBtn.tag == "SliderSound" || currentBtn.tag == "SliderGame"))
+            {
+                timerSlid = 0;
+                if(currentBtn.GetComponent<Slider>().value < 1)
+                {
+                    currentBtn.GetComponent<Slider>().value += 0.01f;
+                }
+            }
+        }
+
+        //Move Left
+        if (Input.GetAxis("Horizontal") == -1)
+        {
+            if (++timerSlid * Time.deltaTime > 0.025 && (currentBtn.tag == "SliderMusic"
+                || currentBtn.tag == "SliderSound" || currentBtn.tag == "SliderGame"))
+            {
+                timerSlid = 0;
+                if (currentBtn.GetComponent<Slider>().value > 0)
+                {
+                    currentBtn.GetComponent<Slider>().value -= 0.01f;
+                }
             }
         }
 
@@ -132,7 +162,7 @@ public class MenuController : MonoBehaviour {
                         localLayer = 1;
                         layer = 1;
                         SetNewBtn(true);
-                        currentBtn = transform.GetChild(1).GetChild(0).gameObject;
+                        currentBtn = transform.GetChild(1).GetChild(3).gameObject;
                         SetNewBtn(false);
                         break;
                     }
@@ -163,6 +193,7 @@ public class MenuController : MonoBehaviour {
                 case "ValidateCon":
                 case "BackGam":
                     {
+                        menu.GetComponent<MenuController>().localLayer = 0;
                         GetNewBtn(name, false);
                         break;
                     }
@@ -185,16 +216,62 @@ public class MenuController : MonoBehaviour {
     /// Method which set the new currentBtn
     /// </summary>
     /// <param name="old">If we are changing the old button</param>
-    private void SetNewBtn(bool old)
+    public void SetNewBtn(bool old)
     {
         //Check if this is the old button
         if (old)
         {
-            currentBtn.transform.GetChild(0).GetComponent<Text>().material = basic;
+            //Analyse the tag of the object and assign the basic material
+            switch (currentBtn.tag)
+            {
+                case "Button":
+                    {
+                        currentBtn.transform.GetChild(0).GetComponent<Text>().material = basic;
+                        break;
+                    }
+                case "SliderMusic":
+                    {
+                        transform.GetChild(localLayer).GetChild(5).GetChild(0).GetComponent<Text>().material = basic;
+                        break;
+                    }
+                case "SliderSound":
+                    {
+                        transform.GetChild(localLayer).GetChild(5).GetChild(1).GetComponent<Text>().material = basic;
+                        break;
+                    }
+                case "SliderGame":
+                    {
+                        transform.GetChild(localLayer).GetChild(6).GetChild(0).GetComponent<Text>().material = basic;
+                        break;
+                    }
+            }
         }
         else
         {
-            currentBtn.transform.GetChild(0).GetComponent<Text>().material = on;
+            //Analyse the tag of the object and assign the on material
+            switch (currentBtn.tag)
+            {
+                case "Button":
+                    {
+                        currentBtn.transform.GetChild(0).GetComponent<Text>().material = on;
+                        break;
+                    }
+                case "SliderMusic":
+                    {
+                        transform.GetChild(localLayer).GetChild(5).GetChild(0).GetComponent<Text>().material = on;
+                        break;
+                    }
+                case "SliderSound":
+                    {
+                        transform.GetChild(localLayer).GetChild(5).GetChild(1).GetComponent<Text>().material = on;
+                        break;
+                    }
+                case "SliderGame":
+                    {
+                        transform.GetChild(localLayer).GetChild(6).GetChild(0).GetComponent<Text>().material = on;
+                        break;
+                    }
+            }
         }
     }
 

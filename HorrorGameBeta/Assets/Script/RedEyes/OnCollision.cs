@@ -15,6 +15,7 @@ public class OnCollision : MonoBehaviour {
     public GameObject menuOptions;
     public GameObject userLayout;
     public GameObject battery;
+    public GameObject newCurrentBtn;
     public AudioClip killRed;
     
     /// <summary>
@@ -32,6 +33,10 @@ public class OnCollision : MonoBehaviour {
             GetComponent<AudioSource>().Play();
             player.transform.LookAt(new Vector3(0, 9000, 0));
             menu.SetActive(true);
+            menu.GetComponent<MenuController>().SetNewBtn(true);
+            menu.GetComponent<MenuController>().localLayer = 3;
+            menu.GetComponent<MenuController>().currentBtn = newCurrentBtn;
+            menu.GetComponent<MenuController>().SetNewBtn(false);
             menuOptions.SetActive(false);
             menuGameOver.SetActive(true);
             userLayout.SetActive(false);

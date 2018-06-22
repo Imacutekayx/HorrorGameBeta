@@ -129,7 +129,7 @@ public class Movement : MonoBehaviour {
             GetComponent<AudioSource>().Play();
         }
         else if (((!Input.GetKey(forward) && !Input.GetKey(left) && !Input.GetKey(behind) && !Input.GetKey(right))
-            || (Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") == 0))
+            && (Input.GetAxis("Vertical") != 1 && Input.GetAxis("Horizontal") != -1 && Input.GetAxis("Vertical") != -1 && Input.GetAxis("Horizontal") != 1))
             && walking && loop)
         {
             //Check the component LightsOff of Kid and disable the component AreaCheck of RedEyes if true

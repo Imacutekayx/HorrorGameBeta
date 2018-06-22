@@ -73,6 +73,7 @@ public class StartGame : MonoBehaviour {
 
         //Menu
         menu.GetComponent<Canvas>().enabled = false;
+        menu.GetComponent<MenuController>().enabled = false;
         menuGameOver.SetActive(false);
         menuOptions.GetComponent<ToOptions>().inGame = true;
 
@@ -83,14 +84,14 @@ public class StartGame : MonoBehaviour {
 
         //STARTSCENE
         //Check if this is a retry
-        //if (!retry)
-        //{
-        //    StartCoroutine(StartScene());
-        //}
-        //else
-        //{
+        if (!retry)
+        {
+            StartCoroutine(StartScene());
+        }
+        else
+        {
             ResetParams();
-        //}
+        }
     }
 
     /// <summary>
@@ -134,6 +135,7 @@ public class StartGame : MonoBehaviour {
         //Menu
         menu.GetComponent<Canvas>().enabled = true;
         menu.SetActive(false);
+        menu.GetComponent<MenuController>().enabled = true;
         menuBase.SetActive(false);
 
         //Music
@@ -183,7 +185,7 @@ public class StartGame : MonoBehaviour {
         //Switches
         GameObject.FindWithTag("S0").GetComponent<Renderer>().material = green;
         GameObject.FindWithTag("S0").GetComponent<Switch>().enabled = false;
-        GameObject.FindWithTag("S0").GetComponent<Switch>().SwitchActived = 2;
+        GameObject.FindWithTag("S0").GetComponent<Switch>().SwitchActived = 0;
         GameObject.FindWithTag("S1").GetComponent<Renderer>().material = green;
         GameObject.FindWithTag("S1").GetComponent<Switch>().enabled = false;
         GameObject.FindWithTag("S2").GetComponent<Renderer>().material = green;

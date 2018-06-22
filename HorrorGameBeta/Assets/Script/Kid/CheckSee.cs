@@ -14,6 +14,7 @@ public class CheckSee : MonoBehaviour {
     public GameObject menu;
     public GameObject userLayout;
     public GameObject battery;
+    public GameObject newCurrentBtn;
     public AudioClip killKid;
     private Light spot;
 
@@ -60,6 +61,10 @@ public class CheckSee : MonoBehaviour {
                 GetComponent<AudioSource>().clip = killKid;
                 GetComponent<AudioSource>().Play();
                 menu.SetActive(true);
+                menu.GetComponent<MenuController>().SetNewBtn(true);
+                menu.GetComponent<MenuController>().localLayer = 3;
+                menu.GetComponent<MenuController>().currentBtn = newCurrentBtn;
+                menu.GetComponent<MenuController>().SetNewBtn(false);
                 menuOptions.SetActive(false);
                 menuGameOver.SetActive(true);
                 userLayout.SetActive(false);
