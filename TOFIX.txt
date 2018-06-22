@@ -1,7 +1,9 @@
+Installer bug
+->	-XML
+	-Music
 Bug Rotation World
 Bug BatteryBar
 ?Bug Area
 
-FRIDAY:AFTERNOON
-Installer
+MONDAY:
 Presentation

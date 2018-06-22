@@ -89,7 +89,7 @@
     <Compile Include="Assets\Script\RedEyes\Chase.cs" />
     <Compile Include="Assets\Script\RedEyes\OnCollision.cs" />
     <Compile Include="Assets\Script\RedEyes\Pathfinding.cs" />
-    <None Include="Assets\Save\controls.xml" />
+    <None Include="Assets\StreamingAssets\controls.xml" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/briandgr/Desktop/HorrorGameBeta/HorrorGameBeta/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>

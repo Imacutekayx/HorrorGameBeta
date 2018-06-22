@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<Controls xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Control>
+    <Key name="forward" value="W" />
+    <Key name="behind" value="S" />
+    <Key name="left" value="A" />
+    <Key name="right" value="D" />
+    <Key name="crouch" value="LeftControl" />
+    <Key name="sprint" value="LeftShift" />
+    <Key name="interact" value="E" />
+    <Key name="light" value="F" />
+    <Key name="escape" value="Escape" />
+  </Control>
+  <Sliding>
+    <Slider name="music" value="0.5" />
+    <Slider name="sound" value="0.5" />
+    <Slider name="sensibility" value="0.5" />
+  </Sliding>
+  <Gamepad>
+    <Button name="forward" value="JoystickButton10" />
+    <Button name="behind" value="JoystickButton10" />
+    <Button name="left" value="JoystickButton10" />
+    <Button name="right" value="JoystickButton10" />
+    <Button name="crouch" value="JoystickButton6" />
+    <Button name="sprint" value="JoystickButton7" />
+    <Button name="interact" value="JoystickButton2" />
+    <Button name="light" value="JoystickButton3" />
+    <Button name="escape" value="JoystickButton11" />
+  </Gamepad>
+</Controls>

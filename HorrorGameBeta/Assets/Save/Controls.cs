@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
+using UnityEngine;
 
 /// <summary>
 /// Class Controls which will be the link between the XML and the game
@@ -21,10 +22,10 @@ public class Controls{
     /// </summary>
     /// <param name="filepath">Path to the XML file</param>
     /// <returns>Controls</returns>
-    public static Controls LoadFromFile(string filepath)
+    public static Controls LoadFromFile()
     {
         XmlSerializer serializer = new XmlSerializer(typeof(Controls));
-        using(FileStream stream = new FileStream(filepath, FileMode.Open))
+        using(FileStream stream = new FileStream(Application.dataPath + "/StreamingAssets/controls.xml", FileMode.Open))
         {
             return serializer.Deserialize(stream) as Controls;
         }
@@ -34,10 +35,10 @@ public class Controls{
     /// Method which will save the informations of the game in the XML file
     /// </summary>
     /// <param name="path">Path to the XML file</param>
-    public void Save(string path)
+    public void Save()
     {
         XmlSerializer serializer = new XmlSerializer(typeof(Controls));
-        using(FileStream stream = new FileStream(path, FileMode.Create))
+        using(FileStream stream = new FileStream(Application.dataPath + "/StreamingAssets/controls.xml", FileMode.Create))
         {
             serializer.Serialize(stream, this);
         }

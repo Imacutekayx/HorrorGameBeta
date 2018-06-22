@@ -15,7 +15,7 @@ public class BeginGame : MonoBehaviour {
 	public void Begin () {
         panelMyuuji.SetActive(false);
         panelBase.SetActive(true);
-        panelOptions.GetComponent<ChangeSettings>().controls = Controls.LoadFromFile(Application.dataPath + "/Save/controls.xml");
+        panelOptions.GetComponent<ChangeSettings>().controls = Controls.LoadFromFile();
         musicPlayer.GetComponent<AudioSource>().Play();
         GetComponent<BeginGame>().enabled = false;
 	}

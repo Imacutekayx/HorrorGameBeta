@@ -185,7 +185,7 @@ public class StartGame : MonoBehaviour {
         //Switches
         GameObject.FindWithTag("S0").GetComponent<Renderer>().material = green;
         GameObject.FindWithTag("S0").GetComponent<Switch>().enabled = false;
-        GameObject.FindWithTag("S0").GetComponent<Switch>().SwitchActived = 2;
+        GameObject.FindWithTag("S0").GetComponent<Switch>().SwitchActived = 0;
         GameObject.FindWithTag("S1").GetComponent<Renderer>().material = green;
         GameObject.FindWithTag("S1").GetComponent<Switch>().enabled = false;
         GameObject.FindWithTag("S2").GetComponent<Renderer>().material = green;

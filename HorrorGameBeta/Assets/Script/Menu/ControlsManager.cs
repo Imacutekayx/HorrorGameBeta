@@ -38,7 +38,7 @@ public class ControlsManager : MonoBehaviour{
         s0 = GameObject.FindWithTag("S0");
         s1 = GameObject.FindWithTag("S1");
         s2 = GameObject.FindWithTag("S2");
-        controls = Controls.LoadFromFile(Application.dataPath + "/Save/controls.xml");
+        controls = Controls.LoadFromFile();
 
         //Keys
         player.GetComponent<Movement>().forward = controls.lstKeys[0].keyValue;
@@ -89,7 +89,7 @@ public class ControlsManager : MonoBehaviour{
         x = 0;
         keyShows = GameObject.FindGameObjectsWithTag("Keyshow");
         btnShows = GameObject.FindGameObjectsWithTag("BtnShow");
-        controls = Controls.LoadFromFile(Application.dataPath + "/Save/controls.xml");
+        controls = Controls.LoadFromFile();
         foreach(GameObject keyShow in keyShows)
         {
             keyShow.GetComponent<Text>().text = Convert.ToString(controls.lstKeys[x].keyValue);
@@ -146,7 +146,7 @@ public class ControlsManager : MonoBehaviour{
     /// <param name="value">KeyCode that will be assigned</param>
     public void ChangeKey(string name, KeyCode value)
     {
-        controls = Controls.LoadFromFile(Application.dataPath + "/Save/controls.xml");
+        controls = Controls.LoadFromFile();
         //Analyse each key in the list
         foreach(Keys key in controls.lstKeys)
         {
@@ -209,7 +209,7 @@ public class ControlsManager : MonoBehaviour{
                 }
             }
         }
-        controls.Save(Application.dataPath + "/Save/controls.xml");
+        controls.Save();
     }
 
     /// <summary>
@@ -219,7 +219,7 @@ public class ControlsManager : MonoBehaviour{
     /// <param name="value">String that will be assigned</param>
     public void ChangeBtn(string name, KeyCode value)
     {
-        controls = Controls.LoadFromFile(Application.dataPath + "/Save/controls.xml");
+        controls = Controls.LoadFromFile();
         //Analyse each key in the list
         foreach (Button button in controls.lstButtons)
         {
@@ -282,6 +282,6 @@ public class ControlsManager : MonoBehaviour{
                 }
             }
         }
-        controls.Save(Application.dataPath + "/Save/controls.xml");
+        controls.Save();
     }
 }
