@@ -5043,6 +5043,7 @@ MonoBehaviour:
   pnlMus: {fileID: 2146574753}
   pnlSou: {fileID: 615595958}
   pnlThx: {fileID: 1509503551}
+  menu: {fileID: 478266507}
   chkDev: 0
   chkMus: 0
   chkSou: 0
@@ -7083,6 +7084,8 @@ MonoBehaviour:
   house: {fileID: 0}
   musicPlayer: {fileID: 1758515535}
   creditCanvas: {fileID: 321478360}
+  endButton: {fileID: 1974004343}
+  menu: {fileID: 478266507}
   green: {fileID: 2100000, guid: ed076dbdd4078d244ba4ee222fb4b298, type: 2}
   bouton: {fileID: 8300000, guid: 52659a58b56d87d42a6489ed82f84d2b, type: 3}
   lightOn: {fileID: 8300000, guid: 7e81c45a589a36442ad5e7f7ba4587c4, type: 3}
@@ -7293,6 +7296,8 @@ MonoBehaviour:
   house: {fileID: 0}
   musicPlayer: {fileID: 0}
   creditCanvas: {fileID: 0}
+  endButton: {fileID: 0}
+  menu: {fileID: 0}
   green: {fileID: 2100000, guid: ed076dbdd4078d244ba4ee222fb4b298, type: 2}
   bouton: {fileID: 8300000, guid: 52659a58b56d87d42a6489ed82f84d2b, type: 3}
   lightOn: {fileID: 8300000, guid: 7e81c45a589a36442ad5e7f7ba4587c4, type: 3}
@@ -13074,7 +13079,7 @@ MonoBehaviour:
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: 29562275948988748ab1875d9ba785e8, type: 2}
+  m_Material: {fileID: 2100000, guid: e482fdfd2c3ad4145b8610af9372c211, type: 2}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -22739,17 +22744,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 690428187}
-        m_MethodName: ChargeKeys
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1466643450
@@ -30535,6 +30529,8 @@ MonoBehaviour:
   house: {fileID: 0}
   musicPlayer: {fileID: 0}
   creditCanvas: {fileID: 0}
+  endButton: {fileID: 0}
+  menu: {fileID: 0}
   green: {fileID: 2100000, guid: ed076dbdd4078d244ba4ee222fb4b298, type: 2}
   bouton: {fileID: 8300000, guid: 52659a58b56d87d42a6489ed82f84d2b, type: 3}
   lightOn: {fileID: 8300000, guid: 7e81c45a589a36442ad5e7f7ba4587c4, type: 3}

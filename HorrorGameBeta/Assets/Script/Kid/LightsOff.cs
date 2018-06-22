@@ -187,8 +187,10 @@ public class LightsOff : MonoBehaviour {
         yield return new WaitForSeconds(kid.GetComponent<AudioSource>().clip.length + 1);
         musicPlayer.GetComponent<AudioSource>().clip = endingMusic;
         musicPlayer.GetComponent<AudioSource>().Play();
-        GetComponent<CheckSee>().enabled = false;
         GetComponent<Spawn>().enabled = false;
+        GetComponent<CheckSee>().enabled = false;
+        transform.SetPositionAndRotation(new Vector3(18f, 30f, -28f), Quaternion.identity);
+        GameObject.FindWithTag("Player").GetComponent<Escape>().enabled = false;
         GetComponent<LightsOff>().enabled = false;
     }
 }

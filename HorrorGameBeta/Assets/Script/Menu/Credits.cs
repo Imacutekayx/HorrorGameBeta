@@ -11,6 +11,7 @@ public class Credits : MonoBehaviour {
     public GameObject pnlMus;
     public GameObject pnlSou;
     public GameObject pnlThx;
+    public GameObject menu;
     
     //Variables
     public bool chkDev;
@@ -24,6 +25,8 @@ public class Credits : MonoBehaviour {
     void Update () {
         if(timer*Time.deltaTime > 23 && !chkCur)
         {
+            menu.GetComponent<MenuController>().SetNewBtn(false);
+            menu.GetComponent<MenuController>().enabled = false;
             chkCur = true;
             Cursor.lockState = CursorLockMode.None;
         }

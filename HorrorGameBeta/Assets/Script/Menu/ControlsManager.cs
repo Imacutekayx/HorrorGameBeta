@@ -114,7 +114,10 @@ public class ControlsManager : MonoBehaviour{
         if(currentBtn != null)
         {
             Event e = Event.current;
-            ChangeBtn(currentBtn.name, e.keyCode);
+            if(e.functionKey)
+            {
+                ChangeBtn(currentBtn.name, e.keyCode);
+            }
         }
     }
 

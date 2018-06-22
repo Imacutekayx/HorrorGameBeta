@@ -12,9 +12,9 @@
     <Key name="escape" value="Escape" />
   </Control>
   <Sliding>
-    <Slider name="music" value="0.5" />
-    <Slider name="sound" value="0.5" />
-    <Slider name="sensibility" value="0.5" />
+    <Slider name="music" value="0.52" />
+    <Slider name="sound" value="0.420000076" />
+    <Slider name="sensibility" value="0.930000067" />
   </Sliding>
   <Gamepad>
     <Button name="forward" value="JoystickButton10" />

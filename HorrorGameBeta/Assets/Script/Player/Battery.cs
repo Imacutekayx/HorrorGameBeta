@@ -33,6 +33,7 @@ public class Battery : MonoBehaviour {
             if (Input.GetKeyDown(interact) || Input.GetKeyDown(interactBtn))
             {
                 lightPlayer.GetComponent<ToggleLight>().timer = 0;
+                lightPlayer.GetComponent<ToggleLight>().batteryTime = 100;
                 lightPlayer.GetComponent<ToggleLight>().enabled = true;
                 transform.SetPositionAndRotation(new Vector3(22f, -22f, -10f), Quaternion.Euler(90, 90, 0));
             }

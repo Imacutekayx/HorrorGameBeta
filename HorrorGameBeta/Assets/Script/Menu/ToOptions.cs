@@ -65,6 +65,8 @@ public class ToOptions : MonoBehaviour {
             {
                 light.GetComponent<Light>().enabled = true;
             }
+            kid.GetComponent<Renderer>().enabled = true;
+            kid.GetComponentInChildren<Renderer>().enabled = true;
         }
         panelOptions.SetActive(false);
         panelMenu.SetActive(true);

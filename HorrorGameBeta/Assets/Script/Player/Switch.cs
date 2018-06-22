@@ -12,6 +12,8 @@ public class Switch : MonoBehaviour {
     public GameObject house;
     public GameObject musicPlayer;
     public GameObject creditCanvas;
+    public GameObject endButton;
+    public GameObject menu;
     public Material green;
     public AudioClip bouton;
     public AudioClip lightOn;
@@ -95,6 +97,9 @@ public class Switch : MonoBehaviour {
                     creditCanvas.GetComponent<Credits>().chkThx = false;
                     creditCanvas.GetComponent<Credits>().chkCur = false;
                     creditCanvas.GetComponent<Credits>().enabled = true;
+                    menu.GetComponent<MenuController>().SetNewBtn(true);
+                    menu.GetComponent<MenuController>().currentBtn = endButton;
+                    menu.GetComponent<MenuController>().enabled = false;
                     musicPlayer.GetComponent<AudioSource>().clip = endingCreditMusic;
                     musicPlayer.GetComponent<AudioSource>().Play();
                 }

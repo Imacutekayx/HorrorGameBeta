@@ -190,11 +190,30 @@ public class MenuController : MonoBehaviour {
                         break;
                     }
                 case "BackOpt":
+                    {
+                        if (menuOptions.GetComponent<ToOptions>().inGame)
+                        {
+                            menu.GetComponent<MenuController>().localLayer = 0;
+                        }
+                        GetNewBtn(name, false);
+                        break;
+                    }
                 case "ValidateCon":
+                    {
+                        GetNewBtn(name, false);
+                        break;
+                    }
                 case "BackGam":
                     {
                         menu.GetComponent<MenuController>().localLayer = 0;
                         GetNewBtn(name, false);
+                        break;
+                    }
+                case "Button":
+                    {
+                        SetNewBtn(true);
+                        currentBtn = transform.GetChild(0).GetChild(0).gameObject;
+                        SetNewBtn(false);
                         break;
                     }
             }
