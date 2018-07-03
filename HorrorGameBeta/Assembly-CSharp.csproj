@@ -84,6 +84,7 @@
     <Compile Include="Assets\Script\Player\Rotation.cs" />
     <Compile Include="Assets\Script\Player\Switch.cs" />
     <Compile Include="Assets\Script\Player\ToggleLight.cs" />
+    <Compile Include="Assets\Script\Player\UWRotation.cs" />
     <Compile Include="Assets\Script\RedEyes\AreaCheck.cs" />
     <Compile Include="Assets\Script\RedEyes\AreaCollision.cs" />
     <Compile Include="Assets\Script\RedEyes\Chase.cs" />
