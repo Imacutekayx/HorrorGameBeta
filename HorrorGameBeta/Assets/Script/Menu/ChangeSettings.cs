@@ -56,7 +56,7 @@ public class ChangeSettings : MonoBehaviour {
     /// <param name="volume">Value of the slider</param>
     public void ChangeSensibility(float sensibility)
     {
-        player.GetComponent<Rotation>().sensibility = sensibility * 2 + 1;
+        player.GetComponent<Rotation>().sensibility = sensibility * 5 + 1;
     }
 
     /// <summary>

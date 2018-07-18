@@ -300,34 +300,43 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Save\Button.cs" />
     <Compile Include="Assets\Save\Controls.cs" />
     <Compile Include="Assets\Save\Keys.cs" />
     <Compile Include="Assets\Save\Slider.cs" />
-    <Compile Include="Assets\Script\Kid\ChangeSpawn.cs" />
-    <Compile Include="Assets\Script\Kid\CheckSee.cs" />
-    <Compile Include="Assets\Script\Kid\LightsOff.cs" />
-    <Compile Include="Assets\Script\Kid\Spawn.cs" />
+    <Compile Include="Assets\Script\AI\Depth\RushPlayer.cs" />
+    <Compile Include="Assets\Script\AI\Kid\ChangeSpawn.cs" />
+    <Compile Include="Assets\Script\AI\Kid\CheckSee.cs" />
+    <Compile Include="Assets\Script\AI\Kid\LightsOff.cs" />
+    <Compile Include="Assets\Script\AI\Kid\Spawn.cs" />
+    <Compile Include="Assets\Script\AI\RedEyes\AreaCheck.cs" />
+    <Compile Include="Assets\Script\AI\RedEyes\AreaCollision.cs" />
+    <Compile Include="Assets\Script\AI\RedEyes\Chase.cs" />
+    <Compile Include="Assets\Script\AI\RedEyes\OnCollision.cs" />
+    <Compile Include="Assets\Script\AI\RedEyes\Pathfinding.cs" />
     <Compile Include="Assets\Script\Menu\BeginGame.cs" />
     <Compile Include="Assets\Script\Menu\ChangeSettings.cs" />
     <Compile Include="Assets\Script\Menu\ControlsManager.cs" />
+    <Compile Include="Assets\Script\Menu\Credits.cs" />
+    <Compile Include="Assets\Script\Menu\MenuController.cs" />
     <Compile Include="Assets\Script\Menu\OnEnter.cs" />
     <Compile Include="Assets\Script\Menu\QuitGame.cs" />
     <Compile Include="Assets\Script\Menu\StartGame.cs" />
     <Compile Include="Assets\Script\Menu\ToOptions.cs" />
+    <Compile Include="Assets\Script\Player\Battery.cs" />
     <Compile Include="Assets\Script\Player\Escape.cs" />
+    <Compile Include="Assets\Script\Player\Instructions.cs" />
     <Compile Include="Assets\Script\Player\LookAt.cs" />
     <Compile Include="Assets\Script\Player\Movement.cs" />
+    <Compile Include="Assets\Script\Player\O2.cs" />
     <Compile Include="Assets\Script\Player\Rotation.cs" />
     <Compile Include="Assets\Script\Player\Switch.cs" />
     <Compile Include="Assets\Script\Player\ToggleLight.cs" />
-    <Compile Include="Assets\Script\RedEyes\AreaCheck.cs" />
-    <Compile Include="Assets\Script\RedEyes\AreaCollision.cs" />
-    <Compile Include="Assets\Script\RedEyes\Chase.cs" />
-    <Compile Include="Assets\Script\RedEyes\OnCollision.cs" />
-    <Compile Include="Assets\Script\RedEyes\Pathfinding.cs" />
+    <Compile Include="Assets\Script\Player\UWMovement.cs" />
+    <Compile Include="Assets\Script\Player\UWRotation.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Save\controls.xml" />
+    <None Include="Assets\StreamingAssets\controls.xml" />
     <None Include="C:\Users\Grego\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Resources\Styles\Main_Dark.uss" />
     <None Include="C:\Users\Grego\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Resources\Styles\Main_Light.uss" />
     <None Include="C:\Users\Grego\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Resources\Templates\Alert.uxml" />

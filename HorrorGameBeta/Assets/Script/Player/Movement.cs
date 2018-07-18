@@ -38,7 +38,6 @@ public class Movement : MonoBehaviour {
     private bool isSprint = false;
     private bool allowSprint = true;
     private bool walking = false;
-    private bool loop = false;
 
     //Use this for initialization
     void Start()
@@ -116,7 +115,7 @@ public class Movement : MonoBehaviour {
         //Basic movement
         if(((Input.GetKey(forward) || Input.GetKey(left) || Input.GetKey(behind) || Input.GetKey(right))
             || (Input.GetAxis("Vertical") == 1 || Input.GetAxis("Horizontal") == -1 || Input.GetAxis("Vertical") == -1 || Input.GetAxis("Horizontal") == 1))
-            && !walking && !loop)
+            && !walking)
         {
             //Check the component LightsOff of Kid and enable the component AreaCheck of RedEyes if true
             if (!kid.GetComponent<LightsOff>().enabled)
@@ -125,12 +124,11 @@ public class Movement : MonoBehaviour {
             }
             walking = true;
             GetComponent<AudioSource>().loop = true;
-            loop = true;
             GetComponent<AudioSource>().Play();
         }
         else if (((!Input.GetKey(forward) && !Input.GetKey(left) && !Input.GetKey(behind) && !Input.GetKey(right))
             && (Input.GetAxis("Vertical") != 1 && Input.GetAxis("Horizontal") != -1 && Input.GetAxis("Vertical") != -1 && Input.GetAxis("Horizontal") != 1))
-            && walking && loop)
+            && walking)
         {
             //Check the component LightsOff of Kid and disable the component AreaCheck of RedEyes if true
             if (!kid.GetComponent<LightsOff>().enabled)
@@ -140,7 +138,6 @@ public class Movement : MonoBehaviour {
             walking = false;
             GetComponent<AudioSource>().loop = false;
             GetComponent<AudioSource>().Stop();
-            loop = false;
         }
 
         //Movements

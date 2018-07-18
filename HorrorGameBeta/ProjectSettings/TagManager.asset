@@ -28,6 +28,7 @@ TagManager:
   - Instructions
   - BtnShow
   - Button
+  - SafePoints
   layers:
   - Default
   - TransparentFX

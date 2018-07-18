@@ -69,7 +69,6 @@ public class MenuController : MonoBehaviour {
                 //Count the number of buttons
                 for(int x = 0; x < transform.GetChild(localLayer).childCount; ++x)
                 {
-                    //TODO Fix out of buttons exception
                     if (transform.GetChild(localLayer).GetChild(x).tag == "Button" || transform.GetChild(localLayer).GetChild(x).tag == "SliderMusic"
                         || transform.GetChild(localLayer).GetChild(x).tag == "SliderSound" || transform.GetChild(localLayer).GetChild(x).tag == "SliderGame")
                     {
