@@ -6,152 +6,122 @@ public class RushPlayer : MonoBehaviour {
     //Objects
     public GameObject player;
     private GameObject[] safePoints;
+    private Vector3 lastPlayerPoint;
+    private Vector3 adding = new Vector3(0, -100, 0);
 
     //Variables
     public float safeDistance;
     public int speed;
     private float timer;
-    private bool isRushing = false;
-    private bool isOut = false;
-    private bool isSafe = false;
-    private float x;
-    private float y;
-    private float z;
-    private byte startLoc;
+    private float timerUpdate;
+    public bool isAwake = false;
+    public bool isRushing = false;
+    public bool isSafe = false;
+    private byte startPoint;
 
-	//Use this for initialization
-	void Start () {
+    //Use this for initialization
+    void Start () {
         player = GameObject.FindWithTag("Player");
         safePoints = GameObject.FindGameObjectsWithTag("SafePoints");
 	}
 	
 	//Update is called once per frame
 	void Update () {
-        //TODO Fix bug rotation && after limit
-        //Check the state of Depth
-        if (!isOut)
+        if(++timerUpdate * Time.deltaTime > 0.05)
         {
-            if (!isRushing)
+            timerUpdate = 0;
+            if (isAwake)
             {
-                //If the timer is over, start rushing the player
-                if (++timer * Time.deltaTime > 5)
+                if (isRushing)
                 {
-                    timer = 0;
-                    startLoc = (byte)Random.Range(0, 3);
-                    isRushing = true;
-
-                    //Teleport the Depth depending of the startLoc
-                    switch (startLoc)
+                    //Check if the Player is safe
+                    foreach(GameObject safePoint in safePoints)
                     {
-                        //Down
-                        case 0:
-                            {
-                                transform.SetPositionAndRotation(player.transform.position + new Vector3(0, -2500, 0), Quaternion.Euler(0f, 0f, 0f));
-                                break;
-                            }
-                        //Up
-                        case 1:
-                            {
-                                transform.SetPositionAndRotation(player.transform.position + new Vector3(0, 2500, 0), Quaternion.Euler(180f, 0f, 0f));
-                                break;
-                            }
-                        //Left
-                        case 2:
-                            {
-                                transform.SetPositionAndRotation(player.transform.position + new Vector3(0, 0, 2500), Quaternion.Euler(-90f, 0f, 0f));
-                                break;
-                            }
-                        //Right
-                        case 3:
-                            {
-                                transform.SetPositionAndRotation(player.transform.position + new Vector3(0, 0, -2500), Quaternion.Euler(90f, 0f, 0f));
-                                break;
-                            }
-                    }
-                    transform.LookAt(player.transform.position);
-                }
-            }
-            else
-            {
-                //If the timer is over, analyse the next target location
-                if (++timer * Time.deltaTime > 0.05)
-                {
-                    timer = 0;
-
-                    //Check if Depth is out of world
-                    switch (startLoc)
-                    {
-                        //Check y
-                        case 0:
-                        case 1:
-                            {
-                                if (CheckDifference(player.transform.position.y, transform.position.y) < 500 &&
-                                    CheckDifference(player.transform.position.y, transform.position.y) > -500)
-                                {
-                                    isRushing = false;
-                                    isOut = true;
-                                    if (startLoc == 0)
-                                    {
-                                        transform.position = Vector3.MoveTowards(transform.position, transform.position + new Vector3(0, 3000, 0), speed);
-                                    }
-                                    else
-                                    {
-                                        transform.position = Vector3.MoveTowards(transform.position, transform.position + new Vector3(0, -3000, 0), speed);
-                                    }
-                                }
-                                break;
-                            }
-                        //Check z
-                        case 2:
-                        case 3:
-                            {
-                                if (CheckDifference(player.transform.position.z, transform.position.z) < 500 &&
-                                    CheckDifference(player.transform.position.z, transform.position.z) > -500)
-                                {
-                                    isRushing = false;
-                                    isOut = true;
-                                    if (startLoc == 2)
-                                    {
-                                        transform.position = Vector3.MoveTowards(transform.position, transform.position + new Vector3(0, 0, -3000), speed);
-                                    }
-                                    else
-                                    {
-                                        transform.position = Vector3.MoveTowards(transform.position, transform.position + new Vector3(0, 0, 3000), speed);
-                                    }
-                                }
-                                break;
-                            }
-                    }
-
-                    if (!isOut)
-                    {
-                        //Analyse the distance with each safePoint
-                        foreach (GameObject point in safePoints)
+                        //Up&&Down
+                        if(startPoint == 0 || startPoint == 1)
                         {
-                            x = CheckDifference(player.transform.position.x, point.transform.position.x);
-                            z = CheckDifference(player.transform.position.z, point.transform.position.z);
-                            if (Mathf.Sqrt(Mathf.Pow(x, 2) + Mathf.Pow(z, 2)) + 2.5 < safeDistance)
+                            if(Mathf.Sqrt(Mathf.Pow(CheckDifference(player.transform.position.x, safePoint.transform.position.x), 2)
+                                + Mathf.Pow(CheckDifference(player.transform.position.z, safePoint.transform.position.z), 2)) < safeDistance){
+                                isSafe = true;
+                            }
+                        }
+                        else
+                        {
+                            if (Mathf.Sqrt(Mathf.Pow(CheckDifference(player.transform.position.x, safePoint.transform.position.x), 2)
+                                + Mathf.Pow(CheckDifference(player.transform.position.y, safePoint.transform.position.y), 2)) < safeDistance)
                             {
                                 isSafe = true;
                             }
                         }
+                    }
+                    if (!isSafe)
+                    {
+                        lastPlayerPoint = player.transform.position + adding;
+                    }
+                    isSafe = false;
 
-                        //Check if the player is in a safePoint
-                        if (!isSafe)
+                    //Check if the Depth is near the Player
+                    //Up&&Down
+                    if (startPoint == 0 || startPoint == 1)
+                    {
+                        if (Mathf.Sqrt(Mathf.Pow(CheckDifference(player.transform.position.x, transform.position.x), 2)
+                            + Mathf.Pow(CheckDifference(player.transform.position.z, transform.position.z), 2)) < 525)
                         {
-                            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed);
+                            isRushing = false;
+                            lastPlayerPoint = player.transform.position + (adding * 30);
                         }
-                        isSafe = false;
+                    }
+                    else
+                    {
+                        if (Mathf.Sqrt(Mathf.Pow(CheckDifference(player.transform.position.x, transform.position.x), 2)
+                            + Mathf.Pow(CheckDifference(player.transform.position.y, transform.position.y), 2)) < 525)
+                        {
+                            isRushing = false;
+                            lastPlayerPoint = player.transform.position + (adding * 30);
+                        }
                     }
                 }
+
+                if(transform.position.y > 2500 || transform.position.y < -2500 || transform.position.z > 2500 || transform.position.z < -2500)
+                {
+                    isAwake = false;
+                }
             }
-        }
-        else
-        {
-            if(++timer * Time.deltaTime > 10)
+            else
             {
-                timer = 0;
-                isOut = false;
+                if(++timer * Time.deltaTime > 5)
+                {
+                    timer = 0;
+                    startPoint = (byte)Random.Range(0, 3);
+                    switch (startPoint)
+                    {
+                        //Down
+                        case 0:
+                            adding = new Vector3(0, -100, 0);
+                            transform.position = player.transform.position + new Vector3(0, 2500, 0);
+                            break;
+
+                        //Up
+                        case 1:
+                            adding = new Vector3(0, 100, 0);
+                            transform.position = player.transform.position + new Vector3(0, -2500, 0);
+                            break;
+
+                        //Left
+                        case 2:
+                            adding = new Vector3(0, 0, -100);
+                            transform.position = player.transform.position + new Vector3(0, 0, 2500);
+                            break;
+
+                        //Right
+                        case 3:
+                            adding = new Vector3(0, 0, 100);
+                            transform.position = player.transform.position + new Vector3(0, 0, -2500);
+                            break;
+                    }
+                    isAwake = true;
+                    isRushing = true;
+                }
             }
         }
     }
@@ -161,8 +131,7 @@ public class RushPlayer : MonoBehaviour {
     {
         if(collision.collider.tag == "Player")
         {
-            isRushing = false;
-            transform.SetPositionAndRotation(player.transform.position + new Vector3(0, -2500, 0), Quaternion.identity);
+
         }
     }
 
